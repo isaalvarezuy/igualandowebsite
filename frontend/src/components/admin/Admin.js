@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import Axios from 'axios'
+import React from 'react';
 import NavbarAdmin from './NavbarAdmin';
 
 export default function Admin() {

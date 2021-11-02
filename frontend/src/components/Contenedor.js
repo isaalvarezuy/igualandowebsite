@@ -7,6 +7,8 @@ import { Route, Switch } from 'react-router-dom'
 import EditarContenido from './admin/EditarContenido'
 import SubirAlbum from './admin/SubirAlbum'
 import AmpliacionFoto from './client/AmpliacionFoto'
+import Posteos from './admin/posteos/PosteosContenedor'
+import PosteosContenedor from './admin/posteos/PosteosContenedor'
 
 
 
@@ -23,6 +25,7 @@ const Contenedor = () => {
                 <Route exact path="/admin" component={Admin} />
                 <Route path="/admin/actualizar" component={EditarContenido} />
                 <Route path="/admin/subir" component={SubirAlbum} />
+                <Route path="/admin/nuevoposteo" component={PosteosContenedor} />
             </Switch>
             {/*  <Navbar />
             <div className="w-10/12 mx-auto">

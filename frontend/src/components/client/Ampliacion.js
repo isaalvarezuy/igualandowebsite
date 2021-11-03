@@ -12,7 +12,7 @@ export default function Ampliacion(props) {
                 <div>
                     <h1>{album.titulo}</h1>
                     <div>
-                        {album.fotos.map(foto => <div key={foto.source}> <NavLink to={{ pathname: '/ampliacionFoto', aboutProps: { fotoActual: foto.source, fotos: album.fotos } }}><div className="w-60 float-left mr-4" ><img src={foto.source} /></div> </NavLink></div>)}
+                        {album.fotos.map(foto => <div key={foto.source}> <NavLink to={{ pathname: '/ampliacionFoto', aboutProps: { fotoActual: foto.source, fotos: album.fotos } }}><div className="w-60 float-left mr-4" ><img src={foto.source} alt="imagen del partido" /></div> </NavLink></div>)}
                     </div>
                 </div>
             </div>

@@ -24,7 +24,7 @@ const AmpliacionFoto = (props) => {
     return (
         <div>
             <p onClick={() => { (posActual > 0) ? setPosActual(posActual - 1) : setPosActual(fotos.length - 1) }}>anterior</p>
-            <img src={fotos[posActual].source} />
+            <img alt="Foto del partido" src={fotos[posActual].source} />
             <p onClick={() => { (posActual !== fotos.length - 1) ? setPosActual(posActual + 1) : setPosActual(0) }}>siguiente</p>
         </div>
     )

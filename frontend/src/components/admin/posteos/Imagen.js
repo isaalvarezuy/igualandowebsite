@@ -30,6 +30,7 @@ const Imagen = (props) => {
             });
     }
 
+
     return (
         <div>
             <img className="w-10/12 mx-auto" id="preview" src={preview} />

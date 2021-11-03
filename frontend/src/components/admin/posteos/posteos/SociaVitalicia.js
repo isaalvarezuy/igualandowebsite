@@ -12,9 +12,17 @@ const SociaVitalicia = (props) => {
 
     return (
         <div className="socia">
-            <div className="bgimage" style={{ background: `url(${sociaVitalicia.fotoFondo})  center/cover` }}></div>
+            {(sociaVitalicia.fotoFondo) ?
+                <div className="bgimage" style={{ background: `url(${sociaVitalicia.fotoFondo})  center/cover` }}></div> :
+                <div></div>
+            }
+
             <div className="tarjeta">
-                <div className="foto" style={{ background: `url(${sociaVitalicia.fotoMain})  center/cover` }}></div>
+                {(sociaVitalicia.fotoMain !== "") ?
+                    <div className="foto" style={{ background: `url(${sociaVitalicia.fotoMain})  center/cover` }}></div> :
+                    <div></div>
+                }
+
                 <svg className="circulo" viewBox="0 0 305 305" fill="none">
                     <path d="M53.5615 37.0094L61.2048 45.4709L59.6761 46.8981L50.9118 44.2475L56.2112 50.0584L54.6825 51.3837L47.0392 42.9223L48.5678 41.495L57.3322 44.1456L52.0328 38.3347L53.5615 37.0094Z" fill="#FFFCFA" />
                     <path d="M61.8163 39.66L57.4341 33.8492L59.0647 32.6258L63.243 38.2328C64.364 39.762 65.2812 39.9659 66.6061 38.9464C67.9309 37.927 68.0328 37.0095 66.9118 35.4803L62.7334 29.8733L64.364 28.65L68.6443 34.3589C70.3768 36.7036 70.1729 38.8445 67.829 40.4756C65.6889 42.2087 63.5487 42.0048 61.8163 39.66Z" fill="#FFFCFA" />
@@ -98,7 +106,11 @@ const SociaVitalicia = (props) => {
                     <h3>{sociaVitalicia.profesion}</h3>
                     <h3>{sociaVitalicia.fecha}</h3>
                 </div>
-                <img className="spcode" src={sociaVitalicia.spCode} />
+                {(sociaVitalicia.spCode !== "") ?
+                    <img className="spcode" src={sociaVitalicia.spCode} /> :
+                    <div></div>
+                }
+
             </div>
 
             <div className="frasePadre">

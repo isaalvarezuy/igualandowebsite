@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
+import { SelectField } from 'evergreen-ui'
 import { connect } from 'react-redux'
 import Imagen from './Imagen'
 import SociaVitalicia from './form/SociaVitalicia'
+import NavbarAdmin from '../NavbarAdmin'
 
 const PosteosContenedor = (props) => {
 
@@ -10,6 +12,7 @@ const PosteosContenedor = (props) => {
     const armarForm = (e) => {
         setTipoPosteo(e.target.value)
     }
+
 
     /* useEffect(() => {
 
@@ -24,20 +27,31 @@ const PosteosContenedor = (props) => {
     }) */
     return (
         <div>
-            {/*  <Upload /> */}
-            <select onChange={armarForm}>
-                <option disabled>Elegir tipo de posteo</option>
-                <option value="socia">Socia Vitalicia</option>
-                <option value="otro">otro</option>
-            </select>
-            {(tipoPosteo === "socia") ?
-                <div>
-                    <SociaVitalicia />
-                    <Imagen tipo="socia" /></div> :
-                <hr></hr>
-
-            }
-
+            <NavbarAdmin />
+            <div className="w-10/12 mx-auto">
+                <div className="grid grid-cols-12 gap-4">
+                    <div className="col-span-6">
+                        <SelectField onChange={armarForm}
+                            required
+                            label="Tipo de posteo"
+                        >
+                            <option value="socia">Socia Vitalicia</option>
+                            <option value="otro">otro</option>
+                            <option value="bar">Bar</option>
+                        </SelectField>
+                        {
+                            (tipoPosteo === "socia") ?
+                                <SociaVitalicia /> :
+                                <hr></hr>
+                        }
+                    </div>
+                    <div className="col-span-6">
+                        {(tipoPosteo === "socia") ?
+                            <Imagen tipo="socia" /> :
+                            <hr></hr>}
+                    </div>
+                </div>
+            </div >
         </div>
     )
 }

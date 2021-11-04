@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom'
 
 const NavbarAdmin = () => {
     return (
-        <div>
-            <nav className="w-full flex justify-between py-2 items-center px-14 fixed bg-white z-50" >
+        <div className="fixed w-full z-50">
+            <nav className="w-full flex justify-between py-2 items-center px-14  bg-white " >
                 <div ><NavLink to={{ pathname: "/" }}><svg xmlns="http://www.w3.org/2000/svg" width="57" height="56" viewBox="0 0 57 56" fill="none">
                     <path d="M7.85302 25.3496C9.62007 21.5958 13.5938 19.5882 17.4973 20.1461C18.3849 20.273 19.2689 20.5325 20.1225 20.9343C22.1424 21.8851 23.6568 23.475 24.5378 25.349C25.6663 27.7495 25.7558 30.6163 24.5378 33.2037" stroke="#F06F46" strokeWidth="5.68166" />
                     <path fillRule="evenodd" clipRule="evenodd" d="M13.4811 35.0452C16.6665 36.5446 20.4644 35.1779 21.9638 31.9925L27.1044 34.4124C24.6575 39.6105 18.9744 42.2479 13.5914 41.0519L12.4848 43.4027L14.469 44.3367C15.1382 44.6517 15.4254 45.4497 15.1104 46.1189L14.2279 47.9935C13.9129 48.6628 13.1149 48.95 12.4456 48.6349L10.4615 47.7009L8.48761 51.8941C8.23557 52.4295 7.59721 52.6592 7.06179 52.4072L4.25005 51.0836C3.71463 50.8315 3.48491 50.1932 3.73695 49.6578L5.71082 45.4646L3.68812 44.5124C3.01884 44.1974 2.73169 43.3994 3.04674 42.7302L3.92917 40.8556C4.24422 40.1863 5.04218 39.8991 5.71145 40.2142L7.73415 41.1663L8.83456 38.8287C4.44259 35.4503 2.83096 29.3618 5.28784 24.1425L10.4284 26.5624C8.92894 29.7478 10.2957 33.5457 13.4811 35.0452Z" fill="#F06F46" />
@@ -17,7 +17,14 @@ const NavbarAdmin = () => {
                     <NavLink to={{ pathname: "/" }} className="bg-orange py-3 px-8 rounded-3xl text-white text-base">Ir al sitio</NavLink>
                 </div>
             </nav>
-            <div className="bg-black h-8"> </div>
+            <div className="bg-black  py-2 items-center">
+                <div className="w-10/12 mx-auto flex justify-around">
+                    <NavLink className="text-white font-regular font-body hover:opacity-70 transition-all" to={{ pathname: "/admin/nuevoposteo" }}>Nuevo Posteo</NavLink>
+                    <NavLink className="text-white font-regular font-body hover:opacity-70 transition-all" to={{ pathname: "/admin/subir" }}>Nuestra Galería</NavLink>
+                    <NavLink className="text-white font-regular font-body hover:opacity-70 transition-all" to={{ pathname: "/admin/actualizar" }}>Editar Datos</NavLink>
+                </div>
+
+            </div>
         </div>
 
     )

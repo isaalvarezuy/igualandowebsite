@@ -10,7 +10,8 @@ module.exports = {
       orange: '#F06F46',
       orangelight: '#F1764F',
       white: '#FFFFFF',
-      black: '#171717'
+      black: '#171717',
+      input: '#C2C4D4'
     },
     fontSize: {
       'hero': '6.25rem',

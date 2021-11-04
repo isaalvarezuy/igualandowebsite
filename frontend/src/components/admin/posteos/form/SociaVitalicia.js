@@ -129,8 +129,6 @@ const SociaVitalicia = (props) => {
             </Pane>
 
 
-            <button className="btn block bg-orange py-2 px-4 rounded-3xl text-white text-base" onClick={guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase)}>Submit</button>
-
 
 
         </div>

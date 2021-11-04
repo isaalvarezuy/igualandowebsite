@@ -28,9 +28,9 @@ const PosteosContenedor = (props) => {
     return (
         <div>
             <NavbarAdmin />
-            <div className="w-10/12 mx-auto">
-                <div className="grid grid-cols-12 gap-4">
-                    <div className="col-span-6">
+            <div className="w-10/12 mx-auto pt-36">
+                <div className="grid grid-cols-2 gap-4">
+                    <div className="col-span-1">
                         <SelectField onChange={armarForm}
                             required
                             label="Tipo de posteo"
@@ -45,7 +45,7 @@ const PosteosContenedor = (props) => {
                                 <hr></hr>
                         }
                     </div>
-                    <div className="col-span-6">
+                    <div className="col-span-1">
                         {(tipoPosteo === "socia") ?
                             <Imagen tipo="socia" /> :
                             <hr></hr>}

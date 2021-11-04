@@ -1,61 +1,48 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Navbar from './Navbar'
 import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-export default function Galeria() {
+const Galeria = (props) => {
 
-    const [albumsFiltrados, setAlbumsFiltrados] = useState([])
-    const [albums, setAlbums] = useState([])
-    const [deportes, setDeportes] = useState([])
+
+    let { albums, deportes } = props;
+
     const [anios, setAnios] = useState([])
+    const [albumsFiltrados, setAlbumsFiltrados] = useState([])
 
     const campoDeporte = useRef()
     const campoTitulo = useRef()
     const campoAnio = useRef()
 
     useEffect(() => {
-        fetch('http://localhost:3001/listarDeportes', {
-            method: "GET",
-        }).then(r => r.json())
-            .then(r => {
 
-                setDeportes(r);
+        let aniosAux = []
 
-                fetch('http://localhost:3001/listarAlbums', {
-                    method: "GET",
-                }).then(r => r.json())
-                    .then(r => {
+        for (let i = 0; i < albums.length; i++) {
+            let anio = albums[i].fecha.substring(0, 4)
+            if (aniosAux.length === 0) {
+                aniosAux = [...aniosAux, anio]
+            } else {
+                let existe = false
+                for (let ii = 0; ii < aniosAux.length; ii++) {
+                    if (anio === aniosAux[ii]) {
+                        existe = true
+                    }
+                    if (existe === false) {
+                        aniosAux = [...aniosAux, anio]
+                    }
+                }
+            }
+        }
+        aniosAux.sort(function (a, b) {
+            return b - a;
+        });
 
-                        setAlbums(r);
-                        setAlbumsFiltrados(r)
+        setAnios(aniosAux)
+        setAlbumsFiltrados(albums)
 
-                        let aniosAux = []
-                        /* me guardo los años */
-                        for (let i = 0; i < r.length; i++) {
-                            let anio = r[i].fecha.substring(0, 4)
-                            if (aniosAux.length === 0) {
-                                aniosAux = [...aniosAux, anio]
-                            } else {
-                                let existe = false
-                                for (let ii = 0; ii < aniosAux.length; ii++) {
-                                    if (anio === aniosAux[ii]) {
-                                        existe = true
-                                    }
-                                    if (existe === false) {
-                                        aniosAux = [...aniosAux, anio]
-                                    }
-                                }
-                            }
-                        }
-                        aniosAux.sort(function (a, b) {
-                            return b - a;
-                        });
-                        setAnios(aniosAux)
-                    })
-            })
-
-
-    }, [])
+    }, [albums])
 
     const filtrar = () => {
 
@@ -97,3 +84,11 @@ export default function Galeria() {
 
     )
 }
+const mapStateToProps = (state) => ({
+    albums: state.albums,
+    deportes: state.deportes,
+
+})
+
+
+export default connect(mapStateToProps)(Galeria)

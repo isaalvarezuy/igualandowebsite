@@ -9,6 +9,12 @@ export const reducer = (state = initialState, action) => {
         case "LISTAR_EQUIPOS":
             return { ...state, equipos: action.payload }
 
+        case "LISTAR_ALBUMS":
+            return { ...state, albums: action.payload }
+
+        case "LISTAR_DEPORTES":
+            return { ...state, deportes: action.payload }
+
         case "EQUIPOS_ELEGIDOS":
             return { ...state, equipo1: action.payload }
 

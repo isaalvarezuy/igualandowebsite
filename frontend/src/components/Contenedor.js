@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Home from './client/Home'
 import Galeria from './client/Galeria'
 import Admin from './admin/Admin'
@@ -9,11 +9,30 @@ import SubirAlbum from './admin/SubirAlbum'
 import AmpliacionFoto from './client/AmpliacionFoto'
 import Posteos from './admin/posteos/PosteosContenedor'
 import PosteosContenedor from './admin/posteos/PosteosContenedor'
+import { connect } from 'react-redux'
 
+const Contenedor = (props) => {
 
+    useEffect(() => {
+        fetch('http://localhost:3001/listarAlbums', {
+            method: "GET",
+        }).then(r => r.json())
+            .then(r => {
+                props.dispatch({
+                    type: "LISTAR_ALBUMS", payload: r
+                });
+                fetch('http://localhost:3001/listarDeportes', {
+                    method: "GET",
+                }).then(r => r.json())
+                    .then(r => {
+                        props.dispatch({
+                            type: "LISTAR_DEPORTES", payload: r
+                        });
 
+                    })
 
-const Contenedor = () => {
+            })
+    }, [])
 
     return (
         <div>
@@ -39,5 +58,9 @@ const Contenedor = () => {
         </div>
     )
 }
+const mapStateToProps = (state) => ({
 
-export default Contenedor
+})
+
+
+export default connect(mapStateToProps)(Contenedor)

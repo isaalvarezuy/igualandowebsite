@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios'
+import NavbarAdmin from './NavbarAdmin';
+import { Table, TextInputField, TrashIcon, SelectField, FilePicker } from 'evergreen-ui'
 
 export default function SubirAlbum() {
 
@@ -11,6 +13,15 @@ export default function SubirAlbum() {
             .then(r => {
                 console.log(r);
                 setDeportes(r);
+
+                /* traer albumes */
+                fetch('http://localhost:3001/listarAlbums', {
+                    method: "GET",
+                }).then(r => r.json())
+                    .then(r => {
+                        setAlbums(r);
+                    })
+
             })
 
     }, [])
@@ -21,6 +32,7 @@ export default function SubirAlbum() {
     const [deporte, setDeporte] = useState("");
     const [fecha, setFecha] = useState("");
     const [mensaje, setMensaje] = useState("")
+    const [albums, setAlbums] = useState([])
 
     /* me traigo los deportes de la db */
 
@@ -48,6 +60,9 @@ export default function SubirAlbum() {
             .then(r => {
                 console.log(r);
                 setMensaje("album subido con exito")
+                /* actualizar albums */
+
+
             })
 
     }
@@ -75,20 +90,60 @@ export default function SubirAlbum() {
 
     return (
         <div>
-            <input type="text" onChange={e => setTitulo(e.target.value)} />
-            <select onChange={e => setDeporte(e.target.value)}>
-                {deportes.map(deporte => <option value={deporte._id}>{deporte.deporte}</option>)}
-            </select>
-            {/*  <input type="text"  /> */}
-            <input type="date" onChange={e => setFecha(e.target.value)} />
-            <input multiple type="file" name="image" onChange={e => {
-                setSelectedFile([...e.target.files]);
-                console.log([...e.target.files])
-            }} />
-            <button onClick={crearAlbum}>Submit</button>
-            {mensaje}
+            <NavbarAdmin />
+            <div className="w-10/12 mx-auto pt-48">
+                <div className="grid grid-cols-2 gap-12">
+                    <div className="col-span-1">
+                        <h2 className="font-title text-4xl" >Subir album</h2>
+                        <TextInputField
+                            label="Título"
+                            required
+                            placeholder="Título del album"
+                            onChange={e => setTitulo(e.target.value)}
+                        />
+                        <SelectField width="100%" onChange={e => setDeporte(e.target.value)} label="Deporte">
+                            {deportes.map(deporte => <option key={deporte._id} value={deporte._id}>{deporte.deporte}</option>)}
+                        </SelectField>
+                        <br></br>
+                        {/*  <input type="text"  /> */}
+                        <input type="date" className=" border px-2 font-body rounded border-input opacity-70 w-full" onChange={e => setFecha(e.target.value)} />
 
+                        <FilePicker className="mt-4"
+                            multiple
+                            width={"100%"}
+                            onChange={files => {
+                                setSelectedFile(files);
+                                console.log(files)
+                            }}
+                            placeholder="Subir fotos"
+                        />
 
-        </div>
+                        <button className="btn block bg-orange py-2 px-4 rounded-3xl text-white text-base mt-4" id="btn-download" download="post.jpg" onClick={crearAlbum}>Subir Album</button>
+
+                        {mensaje}
+                    </div>
+                    <div className="col-span-1">
+                        <h2 className="font-title text-4xl" >Albumes</h2>
+                        <Table>
+                            <Table.Head>
+                                <Table.TextHeaderCell>Título</Table.TextHeaderCell>
+                                <Table.TextHeaderCell>Fotos</Table.TextHeaderCell>
+                                <Table.TextHeaderCell>Acciones</Table.TextHeaderCell>
+                            </Table.Head>
+                            <Table.Body >
+                                {albums.map((album) => (
+                                    <Table.Row key={album._id} >
+                                        <Table.TextCell>{album.titulo}</Table.TextCell>
+                                        <Table.TextCell>{album.fotos.length}</Table.TextCell>
+                                        <Table.TextCell><TrashIcon /></Table.TextCell>
+                                    </Table.Row>
+                                ))}
+                            </Table.Body>
+                        </Table>
+                    </div>
+                </div>
+
+            </div>
+        </div >
     )
 }

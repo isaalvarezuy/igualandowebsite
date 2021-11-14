@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import Navbar from './Navbar'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { SearchInput, Select } from 'evergreen-ui'
 
 const Galeria = (props) => {
 
@@ -11,9 +12,10 @@ const Galeria = (props) => {
     const [anios, setAnios] = useState([])
     const [albumsFiltrados, setAlbumsFiltrados] = useState([])
 
-    const campoDeporte = useRef()
-    const campoTitulo = useRef()
-    const campoAnio = useRef()
+    const [titulo, setTitulo] = useState("")
+    const [deporte, setDeporte] = useState("todos")
+    const [anio, setAnio] = useState("todos")
+
 
     useEffect(() => {
 
@@ -44,14 +46,36 @@ const Galeria = (props) => {
 
     }, [albums])
 
-    const filtrar = () => {
+    useEffect(() => {
+        filtrar()
+    }, [titulo, deporte, anio])
 
-        let filtro = albums.filter(album => album.titulo.toLowerCase().includes(campoTitulo.current.value.toLowerCase()))
-        if (campoDeporte.current.value !== "todos") {
-            filtro = filtro.filter(album => album.deporte === campoDeporte.current.value)
+    const convertirAString = (fecha) => {
+
+        let aux = new Date(fecha);
+
+        let dia = aux.getDate();
+        if (dia < 10) {
+            dia = `0${dia}`
         }
-        if (campoAnio.current.value !== "todos") {
-            filtro = filtro.filter(album => album.fecha.includes(campoAnio.current.value))
+        let mes = aux.getMonth() + 1;
+        if (mes < 10) {
+            mes = `0${mes}`
+        }
+        let anio = aux.getFullYear();
+
+        let fechaString = `${dia}.${mes}.${anio}`
+        return (fechaString)
+
+    }
+
+    const filtrar = () => {
+        let filtro = albums.filter(album => album.titulo.toLowerCase().includes(titulo.toLowerCase()))
+        if (deporte !== "todos") {
+            filtro = filtro.filter(album => album.deporte === deporte)
+        }
+        if (anio !== "todos") {
+            filtro = filtro.filter(album => album.fecha.includes(anio))
         }
         setAlbumsFiltrados(filtro);
 
@@ -61,25 +85,49 @@ const Galeria = (props) => {
         <div>
             <Navbar />
             {/* filtros */}
-            <div className="pt-40">
-                <select onChange={filtrar} ref={campoDeporte}>
-                    <option value="todos">Todos los deportes</option>
-                    {deportes.map(deporte => <option key={deporte._id} value={deporte._id}>{deporte.deporte}</option>)}
+            <div style={{ paddingTop: '72px' }}>
+                <div className="bg-white  py-2 items-center">
+                    <div className="w-10/12 mx-auto grid grid-cols-4 gap-8 ">
+                        <div className="col-span-1">
+                            <SearchInput width="100%" placeholder="Buscar partido..." onChange={(e) => {
+                                setTitulo(e.target.value);
+                                filtrar()
+                            }} /></div>
+                        <div className="col-span-1">
+                            <Select width="100%" onChange={(e) => {
+                                setDeporte(e.target.value);
+                                filtrar()
+                            }} >
+                                <option value="todos">Todos los deportes</option>
+                                {deportes.map(deporte => <option key={deporte._id} value={deporte._id}>{deporte.deporte}</option>)}
+                            </Select>
+                        </div>
+                        <div className="col-span-1">
+                            <Select width='100%' onChange={(e) => {
+                                setAnio(e.target.value);
+                                filtrar()
+                            }} >
+                                <option value="todos">Cualquier año</option>
+                                {anios.map(anio => <option key={anio} value={anio}>{anio}</option>)}
+                            </Select>
+                        </div>
 
-                </select>
-                <input className="border" type="text" onChange={filtrar} ref={campoTitulo} />
 
-                <select onChange={filtrar} ref={campoAnio}>
-                    <option value="todos">Cualquier año</option>
-                    {anios.map(anio => <option key={anio} value={anio}>{anio}</option>)}
-                </select>
-            </div>
-            <div className="w-10/12 mx-auto pt-3">
-                <div>
-                    {albumsFiltrados.map(a => <div key={a._id}> <NavLink to={{ pathname: '/ampliacion', aboutProps: { album: a } }}><div className="w-60 float-left mr-4" ><img src={a.fotos[0].source} /><p >{a.titulo}</p></div> </NavLink></div>)}
+                    </div>
+
+                </div>
+
+                <div className="w-10/12 grid grid-cols-4 gap-8 mx-auto pt-3">
+
+                    {albumsFiltrados.map(a => <div className="col-span-1 text-center font-body font-semibold" key={a._id}> <NavLink to={{ pathname: '/ampliacion', aboutProps: { album: a } }}><div className="h-40 mb-2" style={{ background: `url(${a.fotos[0].source})  center/cover` }} ></div>
+                        {deportes.map(d => (d._id === a.deporte) ? <p key={d._id} className="text-xs tracking-wide opacity-75 uppercase">{d.deporte}</p> : "")}
+                        <p className="text-base font-semibold">{a.titulo}</p>
+                        <p className="text-sm font-normal opacity-75">{convertirAString(a.fecha)}</p>
+
+                    </NavLink></div>)}
                 </div>
             </div>
-        </div>
+        </div >
 
 
     )

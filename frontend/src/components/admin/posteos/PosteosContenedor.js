@@ -34,21 +34,20 @@ const PosteosContenedor = (props) => {
                         <SelectField onChange={armarForm}
                             required
                             label="Tipo de posteo"
-                        >
+                        > <option value="otro">otro</option>
                             <option value="socia">Socia Vitalicia</option>
-                            <option value="otro">otro</option>
                             <option value="bar">Bar</option>
                         </SelectField>
                         {
                             (tipoPosteo === "socia") ?
                                 <SociaVitalicia /> :
-                                <hr></hr>
+                                <div></div>
                         }
                     </div>
                     <div className="col-span-1">
                         {(tipoPosteo === "socia") ?
                             <Imagen tipo="socia" /> :
-                            <hr></hr>}
+                            <div></div>}
                     </div>
                 </div>
             </div >

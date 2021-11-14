@@ -65,7 +65,9 @@ const SociaVitalicia = (props) => {
         guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase);
     }
     let guardarFecha = (e) => {
-        let aux = new Date(e.target.value);
+        console.log(e.target.value);
+        let aux = new Date(`${e.target.value} GMT-3`);
+        console.log(aux)
         let dia = aux.getDate();
         if (dia < 10) {
             dia = `0${dia}`
@@ -77,6 +79,7 @@ const SociaVitalicia = (props) => {
         let anio = aux.getFullYear();
 
         fecha = `${dia}.${mes}.${anio}`
+        console.log(fecha)
         guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase);
     }
 

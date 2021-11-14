@@ -14,7 +14,7 @@ const Imagen = (props) => {
         domtoimage.toJpeg(document.getElementById('capture'), { quality: 0.95 }).then(
             function (dataUrl) {
                 preview = dataUrl;
-                console.log(dataUrl)
+                /*     console.log(dataUrl) */
                 document.getElementById("preview").src = preview;
             }
         )

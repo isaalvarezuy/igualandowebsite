@@ -91,10 +91,11 @@ export default function SubirAlbum() {
     return (
         <div>
             <NavbarAdmin />
-            <div className="w-10/12 mx-auto pt-48">
-                <div className="grid grid-cols-2 gap-12">
+
+            <div className="w-full p-4  md:p-0 md:w-10/12 mx-auto pt-24 md:pt-48 w-10/12 mx-auto ">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                     <div className="col-span-1">
-                        <h2 className="font-title text-4xl" >Subir album</h2>
+                        <h2 className="font-body font-semibold text-2xl mb-2" >Subir album</h2>
                         <TextInputField
                             label="Título"
                             required
@@ -123,7 +124,7 @@ export default function SubirAlbum() {
                         {mensaje}
                     </div>
                     <div className="col-span-1">
-                        <h2 className="font-title text-4xl" >Albumes</h2>
+                        <h2 className="font-body font-semibold text-2xl mb-2" >Albumes</h2>
                         <Table>
                             <Table.Head>
                                 <Table.TextHeaderCell>Título</Table.TextHeaderCell>

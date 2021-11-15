@@ -33,12 +33,12 @@ const Imagen = (props) => {
 
     return (
         <div>
-            <img className="w-10/12 mx-auto" id="preview" src={preview} />
-            <div className="w-10/12 mx-auto pt-4">
-                <button className="btn block bg-orange py-2 px-4 rounded-3xl text-white text-base" id="btn-download" download="post.jpg" onClick={descargarImg}>Descargar </button>
+            <img className="w-full md:w-10/12 mx-auto" id="preview" src={preview} />
+            <div className="w-full md:w-10/12 mx-auto pt-4">
+                <button className="btn w-full md:w-auto  bg-orange py-2 px-4 rounded-3xl text-white text-base" id="btn-download" download="post.jpg" onClick={descargarImg}>Descargar </button>
             </div>
             <div style={{ width: "1080px", height: "1080px", position: "relative" }}>
-                <div id="capture" style={{ width: "1080px", height: "1080px", position: "absolute", }}>
+                <div id="capture" style={{ width: "1080px", height: "1080px", position: "absolute", top: "0" }}>
                     {(tipo === "socia") ?
                         <SociaVitalicia /> :
                         <div></div>}

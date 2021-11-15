@@ -48,8 +48,8 @@ export default function EditarContenido() {
     return (
         <div>
             <NavbarAdmin />
-            <div className="w-10/12 mx-auto pt-48">
-                <div className="grid grid-cols-2 gap-12">
+            <div className="w-full p-4  md:p-0 md:w-10/12 mx-auto pt-24 md:pt-48"  >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12">
 
                     <div className="col-span-1">
                         <TextInputField
@@ -81,8 +81,7 @@ export default function EditarContenido() {
                         />
 
 
-                        <br />
-                        <button className="bg-orange py-3 px-8 rounded-3xl text-white text-base" onClick={guardarCambios}>Guardar cambios</button>
+                        <button className="w-full md:w-auto bg-orange py-3 px-8 rounded-3xl text-white text-base" onClick={guardarCambios}>Guardar cambios</button>
                     </div>
                 </div>
             </div>

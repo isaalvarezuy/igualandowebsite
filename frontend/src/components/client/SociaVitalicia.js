@@ -65,12 +65,21 @@ const SociaVitalicia = () => {
 
 
     return (
-        <div className="w-10/12 mx-auto">
-            <div className="grid grid-cols-2 py-24">
+        <div className="w-full md:w-10/12 mx-auto">
+            <div className="grid grid cols-1 md:grid-cols-2 p-4 lg:py-24">
 
-                <div className="col-span-1">
-                    <div className="relative mx-auto w-96 h-100">
-                        <div className="w-64 text-center bg-black rounded-xl py-4  left-16 absolute z-50">
+                <div className="col-span-1 ">
+                    <h2 className="md:hidden py-4 font-title text-5.5xl lg:text-hero text-left relative">Socias vitalicias
+                    <svg className="absolute right-8 bottom-6" xmlns="http://www.w3.org/2000/svg" width="118" height="24" viewBox="0 0 118 24" fill="none">
+                            <path fillRule="evenodd" clipRule="evenodd" d="M113.642 16.5005L106.571 23.5716L102.328 19.3289L109.399 12.2579L102.328 5.18678L106.571 0.944142L113.642 8.01521L117.885 12.2579L113.642 16.5005Z" fill="#F06F46" />
+                            <path fillRule="evenodd" clipRule="evenodd" d="M88.0857 16.5005L81.0147 23.5716L76.772 19.3289L83.8431 12.2579L76.772 5.18678L81.0147 0.944142L88.0857 8.01522L92.3284 12.2579L88.0857 16.5005Z" fill="#F06F46" />
+                            <path fillRule="evenodd" clipRule="evenodd" d="M62.5293 16.5005L55.4583 23.5716L51.2156 19.3289L58.2867 12.2579L51.2156 5.18678L55.4583 0.944142L62.5293 8.01522L66.772 12.2579L62.5293 16.5005Z" fill="#F06F46" />
+                            <path fillRule="evenodd" clipRule="evenodd" d="M36.9732 16.5005L29.9021 23.5716L25.6595 19.3289L32.7305 12.2579L25.6595 5.18678L29.9021 0.944142L36.9732 8.01522L41.2158 12.2579L36.9732 16.5005Z" fill="#F06F46" />
+                            <path fillRule="evenodd" clipRule="evenodd" d="M11.4168 16.5005L4.34572 23.5716L0.103075 19.3289L7.17415 12.2579L0.103075 5.18678L4.34572 0.944143L11.4168 8.01522L15.6594 12.2579L11.4168 16.5005Z" fill="#F06F46" />
+                        </svg>
+                    </h2>
+                    <div className="relative mx-auto w-full h-28 md:w-96 md:h-100">
+                        <div className="hidden md:block w-64 text-center bg-black rounded-xl py-4  left-16 absolute z-30">
                             {(episodio !== undefined) ?
                                 <div className="">
                                     <img className="w-56 mx-auto rounded-xl mb-4" src={episodio.items[0].images[0].url} />
@@ -91,11 +100,29 @@ const SociaVitalicia = () => {
                                 </div> :
                                 <div></div>
                             }   </div>
-                        <svg className="absolute -bottom-6 right-0" xmlns="http://www.w3.org/2000/svg" width="367" height="70" viewBox="0 0 367 70" fill="none">
+
+                        <div className="block md:hidden w-full text-center bg-black rounded-xl p-4  absolute z-30">
+                            {(episodio !== undefined) ?
+                                <div className="flex items-center">
+                                    <div className="w-24">
+                                        <img className="rounded-xl w-full" src={episodio.items[0].images[0].url} />
+                                    </div>
+                                    <div className="w-full">
+                                        <p className="font-semibold text-white "> {invitado}</p>
+                                        <p className="font-normal text-sm text-white mb-2"> {programa}</p>
+                                    </div>
+                                    <div className="w-9">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-35 w-35" viewBox="0 0 20 20" fill="#FFFFFF">
+                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </div> :
+                                <div></div>
+                            }   </div>
+                        <svg className="hidden md:block md:w-auto absolute bottom-4 md:-bottom-6 right-0" xmlns="http://www.w3.org/2000/svg" width="367" height="70" viewBox="0 0 367 70" fill="none">
                             <path d="M361.788 35.4349C365.359 75.5115 322.511 75.5115 326.081 35.4349C329.652 -4.64169 286.804 -4.64169 290.374 35.4349C293.945 75.5115 251.097 75.5115 254.667 35.4349C258.238 -4.64169 215.39 -4.6417 218.96 35.4349C222.531 75.5115 179.683 75.5115 183.253 35.4349C186.824 -4.6417 143.976 -4.6417 147.546 35.4349C151.117 75.5115 108.269 75.5115 111.839 35.4349C115.41 -4.6417 72.5616 -4.64171 76.1323 35.4349C79.703 75.5115 36.8546 75.5115 40.4253 35.4349C43.996 -4.64171 1.14755 -4.64171 4.71825 35.4349" stroke="#F06F46" strokeWidth="8.90591" />
                         </svg>
-
-                        <svg className="absolute -top-5 left-1" xmlns="http://www.w3.org/2000/svg" width="112" height="204" viewBox="0 0 112 204" fill="none">
+                        <svg className="h-full md:h-auto absolute -top-5 left-1" xmlns="http://www.w3.org/2000/svg" width="112" height="204" viewBox="0 0 112 204" fill="none">
                             <mask id="path-1-inside-1_15:2488" fill="white">
                                 <path d="M1.95638 200.256C2.78481 200.256 3.45638 200.928 3.45638 201.756C3.45638 202.584 2.78481 203.256 1.95638 203.256C1.12796 203.256 0.456383 202.584 0.456383 201.756C0.456383 200.928 1.12796 200.256 1.95638 200.256Z" />
                                 <path d="M17.3378 200.256C18.1662 200.256 18.8378 200.928 18.8378 201.756C18.8378 202.584 18.1662 203.256 17.3378 203.256C16.5094 203.256 15.8378 202.584 15.8378 201.756C15.8378 200.928 16.5094 200.256 17.3378 200.256Z" />
@@ -330,8 +357,8 @@ const SociaVitalicia = () => {
                 </div>
                 <div className="col-span-1 text-right flex align-center">
                     <div className="self-center">
-                        <h2 className="font-title text-hero text-right relative">Socias vitalicias
-                    <svg className="absolute bottom-6" xmlns="http://www.w3.org/2000/svg" width="118" height="24" viewBox="0 0 118 24" fill="none">
+                        <h2 className="hidden md:block font-title text-5xl lg:text-hero text-right relative">Socias vitalicias
+                    <svg className="absolute left-8 bottom-0 md:bottom-6" xmlns="http://www.w3.org/2000/svg" width="118" height="24" viewBox="0 0 118 24" fill="none">
                                 <path fillRule="evenodd" clipRule="evenodd" d="M113.642 16.5005L106.571 23.5716L102.328 19.3289L109.399 12.2579L102.328 5.18678L106.571 0.944142L113.642 8.01521L117.885 12.2579L113.642 16.5005Z" fill="#F06F46" />
                                 <path fillRule="evenodd" clipRule="evenodd" d="M88.0857 16.5005L81.0147 23.5716L76.772 19.3289L83.8431 12.2579L76.772 5.18678L81.0147 0.944142L88.0857 8.01522L92.3284 12.2579L88.0857 16.5005Z" fill="#F06F46" />
                                 <path fillRule="evenodd" clipRule="evenodd" d="M62.5293 16.5005L55.4583 23.5716L51.2156 19.3289L58.2867 12.2579L51.2156 5.18678L55.4583 0.944142L62.5293 8.01522L66.772 12.2579L62.5293 16.5005Z" fill="#F06F46" />
@@ -339,8 +366,8 @@ const SociaVitalicia = () => {
                                 <path fillRule="evenodd" clipRule="evenodd" d="M11.4168 16.5005L4.34572 23.5716L0.103075 19.3289L7.17415 12.2579L0.103075 5.18678L4.34572 0.944143L11.4168 8.01522L15.6594 12.2579L11.4168 16.5005Z" fill="#F06F46" />
                             </svg>
                         </h2>
-                        <p className="font-body text-base text-right mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Semper diam morbi purus, eget sit. Ultricies urna sed ultricies amet pharetra. Adipiscing morbi nunc, neque, lectus. Varius consectetur dignissim tortor adipiscing egestas dignissim quis.</p>
-                        <a href="https://open.spotify.com/show/6a14qoWlcAGixLfwVeyPOk?si=944b088ae93341f4" target="_blank" className="inline-block bg-orange py-3 px-8 rounded-3xl text-white text-base hover:bg-orangelight transition-all">Escuchanos en Spotify</a>
+                        <p className="py-4 md:py-0 font-body text-base text-left md:text-right mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Semper diam morbi purus, eget sit. Ultricies urna sed ultricies amet pharetra. Adipiscing morbi nunc, neque, lectus. Varius consectetur dignissim tortor adipiscing egestas dignissim quis.</p>
+                        <a href="https://open.spotify.com/show/6a14qoWlcAGixLfwVeyPOk?si=944b088ae93341f4" target="_blank" className="block text-center md:inline-block bg-orange py-3 px-8 rounded-3xl text-white text-base hover:bg-orangelight transition-all">Escuchanos en Spotify</a>
                     </div>
                 </div>
 

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Navbar from './Navbar'
-import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import AmpliacionFoto from './AmpliacionFoto'
 import { ArrowLeftIcon } from 'evergreen-ui'
@@ -13,6 +12,7 @@ const Ampliacion = (props) => {
     const [ampliacionEstado, setAmpliacionEstado] = useState("none")
     console.log(album)
     let { deportes, albums } = props
+
     const convertirAString = (fecha) => {
 
         let aux = new Date(fecha);
@@ -32,11 +32,14 @@ const Ampliacion = (props) => {
 
     }
 
+    const cerrarFoto = () => {
+        setFotoSeleccionada("");
+    }
+
     return (
         <div>
             <Navbar />
-
-            <div className="relative w-10/12 mx-auto" style={{ paddingTop: '72px' }}>
+            <div className="relative w-10/12 mx-auto" style={{ paddingTop: '88px' }}>
                 <svg className="absolute -z-10 -right-10 top-32" xmlns="http://www.w3.org/2000/svg" width="111" height="203" viewBox="0 0 111 203" fill="none">
                     <path d="M109.17 3C108.342 3 107.67 2.32843 107.67 1.5C107.67 0.671578 108.342 4.67019e-06 109.17 4.7064e-06C109.998 4.74261e-06 110.67 0.671578 110.67 1.5C110.67 2.32843 109.998 3 109.17 3Z" fill="#171717" />
                     <path d="M93.7885 3C92.9601 3 92.2885 2.32843 92.2885 1.5C92.2885 0.671577 92.9601 3.99785e-06 93.7885 4.03406e-06C94.617 4.07027e-06 95.2885 0.671577 95.2885 1.5C95.2885 2.32843 94.617 3 93.7885 3Z" fill="#171717" />
@@ -174,7 +177,7 @@ const Ampliacion = (props) => {
                     <div className="flex items-center "> {deportes.map(d => (d._id === album.deporte) ? <p key={d._id} className="font-body text-lg font-regular">{d.deporte}</p> : "")}
                         <p className="ml-2 font-body text-lg font-regular ">{convertirAString(album.fecha)}</p></div>
 
-                    <div className="grid grid-cols-4 gap-4 pt-4">
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-4">
                         {album.fotos.map(foto => <div className="col-span-1 h-40" style={{ background: `url(${foto.source}) center center /cover` }} key={foto.source} onClick={() => { setFotoSeleccionada(foto.source) }}></div>)}
                     </div>
                     <div className="flex items-center pt-4"> <ArrowLeftIcon size={12} />  <p className="ml-2 font-body text-body ">Volver a la galería</p></div>
@@ -185,7 +188,7 @@ const Ampliacion = (props) => {
                     <div className="flex items-center "> {deportes.map(d => (d._id === album.deporte) ? <p key={d._id} className="font-body text-lg font-regular">{d.deporte}</p> : "")}
                         <p className="ml-2 font-body text-lg font-regular ">{convertirAString(album.fecha)}</p></div>
 
-                    <div className="grid grid-cols-4 gap-4 pt-4">
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-4">
                         {album.fotos.map(foto => <div className="col-span-1 h-40" style={{ background: `url(${foto.source}) center center /cover` }} key={foto.source} onClick={() => { setFotoSeleccionada(foto.source) }}></div>)}
                     </div>
                     <div className="flex items-center pb-2"> <ArrowLeftIcon size={12} />  <p className="ml-2 font-body text-body">Volver a la galería</p></div>
@@ -193,7 +196,7 @@ const Ampliacion = (props) => {
                 </div>
             </div>
             {(fotoSeleccionada !== "") ?
-                <AmpliacionFoto fotoActual={fotoSeleccionada} fotos={album.fotos} /> :
+                <AmpliacionFoto fotoActual={fotoSeleccionada} cerrarFotoPadre={cerrarFoto} fotos={album.fotos} /> :
                 ""
             }
         </div >

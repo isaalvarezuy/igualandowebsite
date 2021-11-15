@@ -85,9 +85,9 @@ const Galeria = (props) => {
         <div>
             <Navbar />
             {/* filtros */}
-            <div style={{ paddingTop: '72px' }}>
+            <div style={{ paddingTop: '88px' }}>
                 <div className="bg-white  py-2 items-center">
-                    <div className="w-10/12 mx-auto grid grid-cols-4 gap-8 ">
+                    <div className="w-10/12 mx-auto grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 ">
                         <div className="col-span-1">
                             <SearchInput width="100%" placeholder="Buscar partido..." onChange={(e) => {
                                 setTitulo(e.target.value);
@@ -117,7 +117,7 @@ const Galeria = (props) => {
 
                 </div>
 
-                <div className="w-10/12 grid grid-cols-4 gap-8 mx-auto pt-3">
+                <div className="w-10/12 grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 mx-auto pt-3">
 
                     {albumsFiltrados.map(a => <div className="col-span-1 text-center font-body font-semibold" key={a._id}> <NavLink to={{ pathname: '/ampliacion', aboutProps: { album: a } }}><div className="h-40 mb-2" style={{ background: `url(${a.fotos[0].source})  center/cover` }} ></div>
                         {deportes.map(d => (d._id === a.deporte) ? <p key={d._id} className="text-xs tracking-wide opacity-75 uppercase">{d.deporte}</p> : "")}

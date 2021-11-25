@@ -50,7 +50,7 @@ const Ampliacion = (props) => {
 
     return (
         <div>
-            <Navbar />
+            <Navbar navbarBg={"solid"} />
             {(props.location.aboutProps !== undefined) ?
                 <div className="relative w-10/12 mx-auto" style={{ paddingTop: '88px', minHeight: "calc(100vh - 200px)" }}>
                     <svg className="absolute -z-10 -right-10 top-32" xmlns="http://www.w3.org/2000/svg" width="111" height="203" viewBox="0 0 111 203" fill="none">

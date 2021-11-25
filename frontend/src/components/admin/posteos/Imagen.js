@@ -22,7 +22,7 @@ const Imagen = (props) => {
     const descargarImg = () => {
         domtoimage.toJpeg(document.getElementById('capture'), { quality: 0.95 })
             .then(function (dataUrl) {
-                console.log(dataUrl)
+                /*  console.log(dataUrl) */
                 var link = document.createElement('a');
                 link.download = `${tipo}.jpeg`;
                 link.href = dataUrl;
@@ -43,7 +43,7 @@ const Imagen = (props) => {
                         <SociaVitalicia /> :
                         <div></div>}
                 </div>
-                <div id="capture" style={{ width: "1080px", height: "1080px", position: "absolute", backgroundColor: "white" }}>
+                <div id="capture" style={{ position: "fixed", top: 0, left: 0, width: "1080px", height: "1080px", position: "absolute", backgroundColor: "white" }}>
 
                 </div>
             </div>

@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 const NuestraGaleria = (props) => {
 
-    console.log(props)
+    /*  console.log(props) */
     let episodio;
     let n;
     let invitado;
@@ -25,7 +25,7 @@ const NuestraGaleria = (props) => {
                 <div className="col-span-1 text-left flex align-center">
                     <div className="self-center">
                         <h2 className="py-4 md:p-0 font-title text-5.5xl md:text-hero relative">Nuestra galería
-                    <svg className="absolute bottom-6 right-0" xmlns="http://www.w3.org/2000/svg" width="118" height="24" viewBox="0 0 118 24" fill="none">
+                    <svg className="absolute bottom-6 left-96" xmlns="http://www.w3.org/2000/svg" width="118" height="24" viewBox="0 0 118 24" fill="none">
                                 <path fillRule="evenodd" clipRule="evenodd" d="M113.642 16.5005L106.571 23.5716L102.328 19.3289L109.399 12.2579L102.328 5.18678L106.571 0.944142L113.642 8.01521L117.885 12.2579L113.642 16.5005Z" fill="#F06F46" />
                                 <path fillRule="evenodd" clipRule="evenodd" d="M88.0857 16.5005L81.0147 23.5716L76.772 19.3289L83.8431 12.2579L76.772 5.18678L81.0147 0.944142L88.0857 8.01522L92.3284 12.2579L88.0857 16.5005Z" fill="#F06F46" />
                                 <path fillRule="evenodd" clipRule="evenodd" d="M62.5293 16.5005L55.4583 23.5716L51.2156 19.3289L58.2867 12.2579L51.2156 5.18678L55.4583 0.944142L62.5293 8.01522L66.772 12.2579L62.5293 16.5005Z" fill="#F06F46" />
@@ -160,8 +160,10 @@ const NuestraGaleria = (props) => {
                                 </svg>
                             </div>
                         </div>
-                        <p className="font-body text-base mb-4 py-4 md:p-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Semper diam morbi purus, eget sit. Ultricies urna sed ultricies amet pharetra. Adipiscing morbi nunc, neque, lectus. Varius consectetur dignissim tortor adipiscing egestas dignissim quis.</p>
-                        <NavLink to={{ pathname: '/galeria' }}><a className="text-center block md:inline-block bg-orange py-3 px-8 rounded-3xl text-white text-base hover:bg-orangelight transition-all">Ver más fotos</a></NavLink>
+                        <p className="font-body text-base mb-4 py-4 md:p-0">
+                            Buscá en la primer galería uruguaya dedicada al deporte femenino fotos de tus partidos favoritos.
+                        </p>
+                        <NavLink to={{ pathname: '/galeria' }} className="text-center block md:inline-block bg-orange py-3 px-8 rounded-3xl text-white text-base hover:bg-orangelight transition-all">Ver más fotos</NavLink>
                     </div>
                 </div>
 

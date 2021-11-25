@@ -6,6 +6,7 @@ let Prueba = require("./modelos/Prueba");
 let Album = require("./modelos/Album");
 let Dato = require("./modelos/Dato");
 let Deporte = require("./modelos/Deporte");
+let Usuario = require("./modelos/Usuario");
 
 let mongoose = require("mongoose");
 
@@ -34,6 +35,14 @@ app.use((req, res, next) => {
 
 app.get("/", (req, res) => {
     res.send("Bienvenido");
+})
+
+app.post("/iniciarsesion", (req, res) => {
+    Usuario.findOne({ user: req.body.user, pass: req.body.pass }, (err, usuario) => {
+        if (err) return res.json({ mensaje: "Error al consultar" });
+        res.json(usuario);
+    })
+
 })
 
 app.get("/listarDeportes", (req, res) => {
@@ -89,7 +98,13 @@ app.post("/crearAlbum", (req, res) => {
     })
 })
 
-
+app.delete("/eliminarAlbum", (req, res) => {
+    console.log(req.body)
+    Album.findByIdAndDelete(req.body.idBorrar, (err, album) => {
+        if (err) return res.json({ mensaje: "Error al eliminar album" });
+        res.json(album);
+    })
+})
 
 
 

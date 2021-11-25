@@ -20,15 +20,10 @@ module.exports = {
       '100': 100,
       'auto': 'auto',
     },
-    colors: {
-      orange: '#F06F46',
-      orangelight: '#F1764F',
-      white: '#FFFFFF',
-      black: '#171717',
-      input: '#C2C4D4'
-    },
+
     fontSize: {
       'hero': '6.25rem',
+      'xxs': '0.5rem',
       'xs': '0.75rem',
       'sm': '.875rem',
       'base': '1rem',
@@ -47,6 +42,13 @@ module.exports = {
       height: {
         84: '340px',
         100: '420px'
+      },
+      colors: {
+        orange: '#F06F46',
+        orangelight: '#F1764F',
+        white: '#FFFFFF',
+        black: '#171717',
+        input: '#C2C4D4'
       },
     },
   },

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import NavbarAdmin from './NavbarAdmin'
 import { TextInputField } from 'evergreen-ui'
+import Input from './posteos/Input'
 
 export default function EditarContenido() {
 
@@ -52,35 +53,9 @@ export default function EditarContenido() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12">
 
                     <div className="col-span-1">
-                        <TextInputField
-                            label="Programas al aire"
-                            required
-                            placeholder={programas}
-                            defaultValue={programas}
-                            onChange={(e) => {
-                                setProgramas(parseInt(e.target.value))
-                            }}
-                        />
-                        <TextInputField
-                            label=" Socias Vitalicias"
-                            required
-                            placeholder={socias}
-                            defaultValue={socias}
-                            onChange={(e) => {
-                                setSocias(parseInt(e.target.value))
-                            }}
-                        />
-                        <TextInputField
-                            label="Partidos cubiertos"
-                            required
-                            placeholder={partidos}
-                            defaultValue={partidos}
-                            onChange={(e) => {
-                                setPartidos(parseInt(e.target.value))
-                            }}
-                        />
-
-
+                        <Input type={"number"} label={"Programas al aire"} defaultValue={programas} funcion={setProgramas} />
+                        <Input type={"number"} label={"Socias Vitalicia"} defaultValue={socias} funcion={setSocias} />
+                        <Input type={"number"} label={"Partidos cubiertos"} defaultValue={partidos} funcion={setPartidos} />
                         <button className="w-full md:w-auto bg-orange py-3 px-8 rounded-3xl text-white text-base" onClick={guardarCambios}>Guardar cambios</button>
                     </div>
                 </div>

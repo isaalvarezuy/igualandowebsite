@@ -3,6 +3,8 @@ import Navbar from './Navbar'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { SearchInput, Select } from 'evergreen-ui'
+import Footer from './Footer'
+import Input from '../admin/posteos/Input'
 
 const Galeria = (props) => {
 
@@ -24,15 +26,15 @@ const Galeria = (props) => {
         for (let i = 0; i < albums.length; i++) {
             let anio = albums[i].fecha.substring(0, 4)
             if (aniosAux.length === 0) {
-                aniosAux = [...aniosAux, anio]
+                aniosAux = [...aniosAux, { "_id": anio, "nombre": anio }]
             } else {
                 let existe = false
                 for (let ii = 0; ii < aniosAux.length; ii++) {
-                    if (anio === aniosAux[ii]) {
+                    if (anio === aniosAux[ii].nombre) {
                         existe = true
                     }
                     if (existe === false) {
-                        aniosAux = [...aniosAux, anio]
+                        aniosAux = [...aniosAux, { "_id": anio, "nombre": anio }]
                     }
                 }
             }
@@ -40,7 +42,6 @@ const Galeria = (props) => {
         aniosAux.sort(function (a, b) {
             return b - a;
         });
-
         setAnios(aniosAux)
         setAlbumsFiltrados(albums)
 
@@ -49,6 +50,22 @@ const Galeria = (props) => {
     useEffect(() => {
         filtrar()
     }, [titulo, deporte, anio])
+
+    const buscarPorDeporte = (recibido) => {
+        setDeporte(recibido);
+        filtrar()
+    }
+
+    const buscarPorAnio = (recibido) => {
+        console.log(recibido)
+        setAnio(recibido);
+        filtrar()
+    }
+    const buscarPorTitulo = (recibido) => {
+        console.log(recibido)
+        setTitulo(recibido);
+        filtrar()
+    }
 
     const convertirAString = (fecha) => {
 
@@ -74,6 +91,7 @@ const Galeria = (props) => {
         if (deporte !== "todos") {
             filtro = filtro.filter(album => album.deporte === deporte)
         }
+
         if (anio !== "todos") {
             filtro = filtro.filter(album => album.fecha.includes(anio))
         }
@@ -85,31 +103,18 @@ const Galeria = (props) => {
         <div>
             <Navbar />
             {/* filtros */}
-            <div style={{ paddingTop: '88px' }}>
+            <div style={{ paddingTop: '88px', minHeight: "calc(100vh - 200px)" }} >
                 <div className="bg-white  py-2 items-center">
                     <div className="w-10/12 mx-auto grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 ">
+
                         <div className="col-span-1">
-                            <SearchInput width="100%" placeholder="Buscar partido..." onChange={(e) => {
-                                setTitulo(e.target.value);
-                                filtrar()
-                            }} /></div>
-                        <div className="col-span-1">
-                            <Select width="100%" onChange={(e) => {
-                                setDeporte(e.target.value);
-                                filtrar()
-                            }} >
-                                <option value="todos">Todos los deportes</option>
-                                {deportes.map(deporte => <option key={deporte._id} value={deporte._id}>{deporte.deporte}</option>)}
-                            </Select>
+                            <Input type={"search"} label={"Buscar Partido..."} funcion={buscarPorTitulo} />
                         </div>
                         <div className="col-span-1">
-                            <Select width='100%' onChange={(e) => {
-                                setAnio(e.target.value);
-                                filtrar()
-                            }} >
-                                <option value="todos">Cualquier año</option>
-                                {anios.map(anio => <option key={anio} value={anio}>{anio}</option>)}
-                            </Select>
+                            <Input type={"select"} opciones={deportes} funcion={buscarPorDeporte} defaultValue={"Todos los deportes"} />
+                        </div>
+                        <div className="col-span-1">
+                            <Input type={"select"} opciones={anios} funcion={buscarPorAnio} defaultValue={"Todos los años"} />
                         </div>
 
 
@@ -127,6 +132,7 @@ const Galeria = (props) => {
                     </NavLink></div>)}
                 </div>
             </div>
+            <Footer />
         </div >
 
 

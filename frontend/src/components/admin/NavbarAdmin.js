@@ -26,8 +26,8 @@ const NavbarAdmin = () => {
                         </NavLink>
                         <div className="md:hidden" onClick={toggleMenu}>
                             {(menu === "cerrado") ?
-                                <svg xmlns="http://www.w3.org/2000/svg" class="display:block h-6 w-6 stroke-current text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                                <svg xmlns="http://www.w3.org/2000/svg" className="display:block h-6 w-6 stroke-current text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
                                 </svg> :
                                 <svg xmlns="http://www.w3.org/2000/svg" className=" display:block h-6 w-6 stroke-current text-black" fill="none" viewBox="0 0 24 24" stroke="">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -41,9 +41,9 @@ const NavbarAdmin = () => {
                 </nav>
                 <div className="hidden md:block bg-black  py-2 items-center">
                     <div className="w-10/12 mx-auto flex justify-around">
-                        <NavLink className="text-white font-regular font-body hover:opacity-70 transition-all" to={{ pathname: "/admin/nuevoposteo" }}>Nuevo Posteo</NavLink>
-                        <NavLink className="text-white font-regular font-body hover:opacity-70 transition-all" to={{ pathname: "/admin/subir" }}>Nuestra Galería</NavLink>
-                        <NavLink className="text-white font-regular font-body hover:opacity-70 transition-all" to={{ pathname: "/admin/actualizar" }}>Editar Datos</NavLink>
+                        <NavLink className="text-white font-regular font-body hover:opacity-70 transition-all" to={{ pathname: "/admin", aboutProps: "nuevoPosteo" }}>Nuevo Posteo</NavLink>
+                        <NavLink className="text-white font-regular font-body hover:opacity-70 transition-all" to={{ pathname: "/admin", aboutProps: "nuestraGaleria" }}>Nuestra Galería</NavLink>
+                        <NavLink className="text-white font-regular font-body hover:opacity-70 transition-all" to={{ pathname: "/admin", aboutProps: "editarDatos" }}>Editar Datos</NavLink>
                     </div>
 
                 </div>{
@@ -51,9 +51,9 @@ const NavbarAdmin = () => {
                         "" :
                         <div className="md:hidden bg-black  p-4 items-center flex flex-col">
 
-                            <NavLink className="text-white py-3 font-regular font-body hover:opacity-70 transition-all" to={{ pathname: "/admin/nuevoposteo" }}>Nuevo Posteo</NavLink>
-                            <NavLink className="text-white py-3 font-regular font-body hover:opacity-70 transition-all" to={{ pathname: "/admin/subir" }}>Nuestra Galería</NavLink>
-                            <NavLink className="text-white py-3 font-regular font-body hover:opacity-70 transition-all" to={{ pathname: "/admin/actualizar" }}>Editar Datos</NavLink>
+                            <NavLink className="text-white py-3 font-regular font-body hover:opacity-70 transition-all" to={{ pathname: "/admin/nuevoposteo", aboutProps: "nuevoPosteo" }}>Nuevo Posteo</NavLink>
+                            <NavLink className="text-white py-3 font-regular font-body hover:opacity-70 transition-all" to={{ pathname: "/admin/subir", aboutProps: "nuestraGaleria" }}>Nuestra Galería</NavLink>
+                            <NavLink className="text-white py-3 font-regular font-body hover:opacity-70 transition-all" to={{ pathname: "/admin/actualizar", aboutProps: "editarDatos" }}>Editar Datos</NavLink>
                             <NavLink to={{ pathname: "/" }} className="w-full mt-2 text-center bg-orange py-3 px-8 rounded-3xl text-white text-base">Ir al sitio</NavLink>
                         </div>
                 }

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { TextInputField, FilePicker, Pane, Label, Textarea } from 'evergreen-ui'
+import Input from '../Input'
+
 
 const SociaVitalicia = (props) => {
 
@@ -12,62 +14,68 @@ const SociaVitalicia = (props) => {
     let fecha = "";
     let frase = "";
 
+    const [fotoFondoSubida, setFotoFondoSubida] = useState("")
+    const [fotoMainSubida, setFotoMainSubida] = useState("")
+
     let guardarDatos = (fondo, main, nombre, profesion, fecha, spCode, frase) => {
         props.dispatch({
             type: "SOCIA_VITALICIA", payload: { "fotoFondo": fondo, "fotoMain": main, "nombre": nombre, "profesion": profesion, "fecha": fecha, "spCode": spCode, "frase": frase }
         });
     }
 
-    let guardarFotoFondo = (e) => {
-        const file = e[0];
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onloadend = () => {
-            fondo = reader.result
-            guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase);
+    let guardarFotoFondo = (recibido) => {
+        const file = recibido.target.files[0];
+        if (file !== undefined) {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onloadend = () => {
+                fondo = reader.result
+                guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase);
+            }
+
         }
 
     }
 
-    let guardarFotoMain = (e) => {
-        console.log(e)
-        console.log(e[0]);
-        const file = e[0];
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onloadend = () => {
-            main = reader.result
-            guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase);
-        }
-
-
-
-    }
-
-    let guardarSpCode = (e) => {
-        const file = e[0];
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onloadend = () => {
-            spCode = reader.result;
-            guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase);
+    let guardarFotoMain = (recibido) => {
+        const file = recibido.target.files[0];
+        if (file !== undefined) {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onloadend = () => {
+                main = reader.result
+                guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase);
+            }
         }
     }
 
-    let guardarNombre = (e) => {
-        nombre = e.target.value;
+    let guardarSpCode = (recibido) => {
+        const file = recibido.target.files[0];
+        if (file !== undefined) {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onloadend = () => {
+                spCode = reader.result;
+                guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase);
+            }
+        }
+    }
+
+    let guardarNombre = (recibido) => {
+        /*  console.log(recibido) */
+        nombre = recibido;
         guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase);
 
     }
 
-    let guardarProfesion = (e) => {
-        profesion = e.target.value;
+    let guardarProfesion = (recibido) => {
+        profesion = recibido;
         guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase);
     }
-    let guardarFecha = (e) => {
-        console.log(e.target.value);
-        let aux = new Date(`${e.target.value} GMT-3`);
-        console.log(aux)
+    let guardarFecha = (recibido) => {
+        /*  console.log(recibido); */
+        let aux = new Date(`${recibido} GMT-3`);
+        /*   console.log(aux) */
         let dia = aux.getDate();
         if (dia < 10) {
             dia = `0${dia}`
@@ -79,59 +87,29 @@ const SociaVitalicia = (props) => {
         let anio = aux.getFullYear();
 
         fecha = `${dia}.${mes}.${anio}`
-        console.log(fecha)
+        /*   console.log(fecha) */
         guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase);
     }
 
-    let guardarFrase = (e) => {
-        frase = e.target.value;
+    let guardarFrase = (recibido) => {
+        frase = recibido;
         guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase);
     }
 
     return (
+
         <div>
+            <Input label={"Nombre"} funcion={guardarNombre} type={"text"} />
+            <Input label={"Profesión"} funcion={guardarProfesion} type={"text"} />
+            <Input label={"Fecha"} funcion={guardarFecha} type={"date"} />
 
-            <TextInputField
-                label="Nombre"
-                required
-                placeholder="Nombre de la socia"
-                onChange={guardarNombre}
-            />
+            <Input label={"Frase"} funcion={guardarFrase} type={"textarea"} />
 
-            <TextInputField
-                label="Profesión"
-                required
-                placeholder="Profesión"
-                onChange={guardarProfesion}
-            />
+            <Input label={"Foto de Fondo"} funcion={guardarFotoFondo} type={"file"} />
 
+            <Input label={"Foto de la Socia"} funcion={guardarFotoMain} type={"file"} />
 
-
-
-            <label> Fecha
-                <input type="date" onChange={guardarFecha} />
-            </label>
-
-            <FilePicker className="pt-2"
-
-                onChange={guardarFotoFondo}
-                placeholder="Foto de fondo"
-            />
-            <FilePicker className="pt-4"
-                onChange={guardarFotoMain}
-                placeholder="Foto principal"
-            />
-            <FilePicker className="pt-4"
-                onChange={guardarSpCode}
-                placeholder="Código de Spotify"
-            />
-            <Pane className="pt-4" onChange={guardarFrase}>
-                <Label htmlFor="textarea-2" marginBottom={4} display="block">
-                    Frase </Label>
-                <Textarea id="textarea-2" placeholder="Ingresar frase.." />
-            </Pane>
-
-
+            <Input label={"Código de Spotify"} funcion={guardarSpCode} type={"file"} />
 
 
         </div>

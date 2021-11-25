@@ -3,6 +3,8 @@ import { initialState } from '../store/initialState';
 export const reducer = (state = initialState, action) => {
     console.log(state, action);
     switch (action.type) {
+        case "PRUEBA":
+            return state
         case "DATOS_ENVIADOS":
             return { ...state, img: action.payload.img, texto: action.payload.texto }
 
@@ -15,11 +17,21 @@ export const reducer = (state = initialState, action) => {
         case "LISTAR_DEPORTES":
             return { ...state, deportes: action.payload }
 
+        case "AGREGAR_ALBUM":
+            return { ...state, albums: [...state.albums, action.payload] }
+
+        case "ELIMINAR_ALBUM":
+            let albumsNuevos = state.albums.filter(album => album._id !== action.payload._id);
+            return { ...state, albums: albumsNuevos }
+
         case "EQUIPOS_ELEGIDOS":
             return { ...state, equipo1: action.payload }
 
         case "SOCIA_VITALICIA":
             return { ...state, sociaVitalicia: { "fotoMain": action.payload.fotoMain, "fotoFondo": action.payload.fotoFondo, "nombre": action.payload.nombre, "profesion": action.payload.profesion, "fecha": action.payload.fecha, "spCode": action.payload.spCode, "frase": action.payload.frase } }
+
+        case "SESION_INICIADA":
+            return { ...state, usuarioLogueado: action.payload }
 
         default:
             return state

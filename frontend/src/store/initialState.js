@@ -13,6 +13,7 @@ export const initialState = {
         { nombre: "Vicky Burisich", rol: "Periodista deportivo", chiste: "Yendo al Chuy", foto: "https://res.cloudinary.com/isita/image/upload/v1636928039/static/Avatars_web_2x-2_nywwjl.png" },
         { nombre: "Facundo Banchero", rol: "Periodista deportivo", chiste: "El dueño del programa", foto: "https://res.cloudinary.com/isita/image/upload/v1636928040/static/Avatars_web_2x-3_dzfe9j.png" },
         { nombre: "Mariana Alvarez", rol: "Periodista deportivo", chiste: "El dueño del programa", foto: "https://res.cloudinary.com/isita/image/upload/v1636928040/static/Avatars_web_2x-4_kskzfv.png" },
-    ]
+    ],
+    usuarioLogueado: ""
 
 }

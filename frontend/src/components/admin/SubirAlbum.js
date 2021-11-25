@@ -1,47 +1,65 @@
 import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux'
 import Axios from 'axios'
 import NavbarAdmin from './NavbarAdmin';
-import { Table, TextInputField, TrashIcon, SelectField, FilePicker } from 'evergreen-ui'
+import Input from './posteos/Input'
+import Tabla from './Tabla'
+import Popup from './posteos/Popup'
+import Alerta from './Alerta'
 
-export default function SubirAlbum() {
+const SubirAlbum = (props) => {
 
-    useEffect(() => {
-
-        fetch('http://localhost:3001/listarDeportes', {
-            method: "GET",
-        }).then(r => r.json())
-            .then(r => {
-                console.log(r);
-                setDeportes(r);
-
-                /* traer albumes */
-                fetch('http://localhost:3001/listarAlbums', {
-                    method: "GET",
-                }).then(r => r.json())
-                    .then(r => {
-                        setAlbums(r);
-                    })
-
-            })
-
-    }, [])
-
+    let { albums, deportes } = props;
     const [selectedFile, setSelectedFile] = useState([]);
     const [titulo, setTitulo] = useState("");
-    const [deportes, setDeportes] = useState([]);
     const [deporte, setDeporte] = useState("");
     const [fecha, setFecha] = useState("");
     const [mensaje, setMensaje] = useState("")
-    const [albums, setAlbums] = useState([])
+    const [popup, setPopup] = useState(false)
+    const [albumElegidoId, setAlbumElegidoId] = useState("")
+    const [albumElegidoNombre, setAlbumElegidoNombre] = useState("")
 
     /* me traigo los deportes de la db */
 
+    const guardarFecha = (e) => {
+        console.log(e)
+        let aux = new Date(`${e} GMT-3`);
+        setFecha(aux);
+    }
 
+    const borrarAlbum = (recibido) => {
+        let idBorrar = recibido.target.dataset.id;
+        fetch(`http://localhost:3001/eliminarAlbum`, {
+            method: "DELETE",
+            body: JSON.stringify({ idBorrar: idBorrar }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(r => r.json())
+            .then(album => {
+                console.log(album);
+                props.dispatch({ type: "ELIMINAR_ALBUM", payload: album });
+                cerrarPopup();
+
+            })
+    }
+
+    const abrirPopup = (recibido) => {
+        console.log(recibido.target.dataset)
+        setAlbumElegidoId(recibido.target.dataset.id)
+        setAlbumElegidoNombre(recibido.target.dataset.titulo)
+        setPopup(true)
+    }
+
+    const cerrarPopup = () => {
+        setPopup(false)
+    }
 
     const crearAlbum = async () => {
+        console.log(selectedFile)
         const fotos = await uploadImages()
         console.log(fotos)
-        /* creo el objeto album */
+
         let nuevoAlbum = {
             titulo: titulo,
             deporte: deporte,
@@ -49,7 +67,7 @@ export default function SubirAlbum() {
             fotos: fotos
         }
 
-        /* agrego el album a la la collection albums */
+
         fetch('http://localhost:3001/crearAlbum', {
             method: "POST",
             body: JSON.stringify(nuevoAlbum),
@@ -59,9 +77,8 @@ export default function SubirAlbum() {
         }).then(r => r.json())
             .then(r => {
                 console.log(r);
+                props.dispatch({ type: "AGREGAR_ALBUM", payload: r });
                 setMensaje("album subido con exito")
-                /* actualizar albums */
-
 
             })
 
@@ -91,60 +108,44 @@ export default function SubirAlbum() {
     return (
         <div>
             <NavbarAdmin />
+            {(popup !== false) ?
+                < Popup className={`${popup}`} borrarAlbum={borrarAlbum} idBorrar={albumElegidoId} nombreBorrar={albumElegidoNombre} cerrarPopup={cerrarPopup} />
+                : ""}
+
 
             <div className="w-full p-4  md:p-0 md:w-10/12 mx-auto pt-24 md:pt-48 w-10/12 mx-auto ">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                     <div className="col-span-1">
                         <h2 className="font-body font-semibold text-2xl mb-2" >Subir album</h2>
-                        <TextInputField
-                            label="Título"
-                            required
-                            placeholder="Título del album"
-                            onChange={e => setTitulo(e.target.value)}
-                        />
-                        <SelectField width="100%" onChange={e => setDeporte(e.target.value)} label="Deporte">
-                            {deportes.map(deporte => <option key={deporte._id} value={deporte._id}>{deporte.deporte}</option>)}
-                        </SelectField>
-                        <br></br>
-                        {/*  <input type="text"  /> */}
-                        <input type="date" className=" border px-2 font-body rounded border-input opacity-70 w-full" onChange={e => setFecha(e.target.value)} />
+                        <Input type={"text"} label={"Título"} funcion={setTitulo} />
 
-                        <FilePicker className="mt-4"
-                            multiple
-                            width={"100%"}
-                            onChange={files => {
-                                setSelectedFile(files);
-                                console.log(files)
-                            }}
-                            placeholder="Subir fotos"
-                        />
 
-                        <button className="btn block bg-orange py-2 px-4 rounded-3xl text-white text-base mt-4" id="btn-download" download="post.jpg" onClick={crearAlbum}>Subir Album</button>
+                        <Input type={"select"} opciones={deportes} funcion={setDeporte} label={"Deporte"} />
+
+                        <Input type={"date"} label={"Fecha"} funcion={guardarFecha} />
+
+                        <Input type={"multiple files"} label={"Subir fotos"} funcion={setSelectedFile} />
+
+                        <button className="btn block bg-orange py-2 px-4 rounded-3xl text-white text-base mt-4" onClick={crearAlbum}>Subir Album</button>
 
                         {mensaje}
                     </div>
                     <div className="col-span-1">
                         <h2 className="font-body font-semibold text-2xl mb-2" >Albumes</h2>
-                        <Table>
-                            <Table.Head>
-                                <Table.TextHeaderCell>Título</Table.TextHeaderCell>
-                                <Table.TextHeaderCell>Fotos</Table.TextHeaderCell>
-                                <Table.TextHeaderCell>Acciones</Table.TextHeaderCell>
-                            </Table.Head>
-                            <Table.Body >
-                                {albums.map((album) => (
-                                    <Table.Row key={album._id} >
-                                        <Table.TextCell>{album.titulo}</Table.TextCell>
-                                        <Table.TextCell>{album.fotos.length}</Table.TextCell>
-                                        <Table.TextCell><TrashIcon /></Table.TextCell>
-                                    </Table.Row>
-                                ))}
-                            </Table.Body>
-                        </Table>
+
+                        <Tabla abrirPopup={abrirPopup} albums={albums} />
                     </div>
                 </div>
-
             </div>
+            {/*  <Alerta mensaje={mensaje} /> */}
         </div >
     )
 }
+const mapStateToProps = (state) => ({
+    albums: state.albums,
+    deportes: state.deportes,
+
+})
+
+
+export default connect(mapStateToProps)(SubirAlbum)

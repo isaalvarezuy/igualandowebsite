@@ -25,8 +25,6 @@ const SociaVitalicia = () => {
 
         })
             .then((r => r.json())).then(r => {
-
-                console.log(r)
                 fetch('https://api.spotify.com/v1/shows/6a14qoWlcAGixLfwVeyPOk/episodes?market=ES&limit=1&offset=0', {
                     method: 'GET', headers: {
                         'Accept': 'application/json',
@@ -35,9 +33,9 @@ const SociaVitalicia = () => {
                     }
                 })
                     .then((response) => {
-                        console.log(response.json().then(
+                        (response.json().then(
                             (r) => {
-                                console.log(r)
+                                /*   console.log(r) */
                                 setEpisodio(r);
                             }
                         ));
@@ -358,7 +356,7 @@ const SociaVitalicia = () => {
                 <div className="col-span-1 text-right flex align-center">
                     <div className="self-center">
                         <h2 className="hidden md:block font-title text-5xl lg:text-hero text-right relative">Socias vitalicias
-                    <svg className="absolute left-8 bottom-0 md:bottom-6" xmlns="http://www.w3.org/2000/svg" width="118" height="24" viewBox="0 0 118 24" fill="none">
+                    <svg className="absolute right-96 bottom-0 md:bottom-6" xmlns="http://www.w3.org/2000/svg" width="118" height="24" viewBox="0 0 118 24" fill="none">
                                 <path fillRule="evenodd" clipRule="evenodd" d="M113.642 16.5005L106.571 23.5716L102.328 19.3289L109.399 12.2579L102.328 5.18678L106.571 0.944142L113.642 8.01521L117.885 12.2579L113.642 16.5005Z" fill="#F06F46" />
                                 <path fillRule="evenodd" clipRule="evenodd" d="M88.0857 16.5005L81.0147 23.5716L76.772 19.3289L83.8431 12.2579L76.772 5.18678L81.0147 0.944142L88.0857 8.01522L92.3284 12.2579L88.0857 16.5005Z" fill="#F06F46" />
                                 <path fillRule="evenodd" clipRule="evenodd" d="M62.5293 16.5005L55.4583 23.5716L51.2156 19.3289L58.2867 12.2579L51.2156 5.18678L55.4583 0.944142L62.5293 8.01522L66.772 12.2579L62.5293 16.5005Z" fill="#F06F46" />
@@ -366,7 +364,9 @@ const SociaVitalicia = () => {
                                 <path fillRule="evenodd" clipRule="evenodd" d="M11.4168 16.5005L4.34572 23.5716L0.103075 19.3289L7.17415 12.2579L0.103075 5.18678L4.34572 0.944143L11.4168 8.01522L15.6594 12.2579L11.4168 16.5005Z" fill="#F06F46" />
                             </svg>
                         </h2>
-                        <p className="py-4 md:py-0 font-body text-base text-left md:text-right mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Semper diam morbi purus, eget sit. Ultricies urna sed ultricies amet pharetra. Adipiscing morbi nunc, neque, lectus. Varius consectetur dignissim tortor adipiscing egestas dignissim quis.</p>
+                        <p className="py-4 md:py-0 font-body text-base text-left md:text-right mb-4">
+                            Todos los Domingos recibimos en nuestro programa a una figura del deporte femenino. Charlamos del deporte, los sacrificios y la vida misma. Si te perdiste algun capítulo podés escucharlos en nuestro Spotify.
+                        </p>
                         <a href="https://open.spotify.com/show/6a14qoWlcAGixLfwVeyPOk?si=944b088ae93341f4" target="_blank" className="block text-center md:inline-block bg-orange py-3 px-8 rounded-3xl text-white text-base hover:bg-orangelight transition-all">Escuchanos en Spotify</a>
                     </div>
                 </div>

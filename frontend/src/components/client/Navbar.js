@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
-const Navbar = () => {
+const Navbar = (props) => {
+    let navbarBg = props.navbarBg
     const [menu, setMenu] = useState("cerrado")
     const toggleMenu = () => {
         if (menu === "cerrado") {
@@ -11,7 +12,7 @@ const Navbar = () => {
         }
     }
     return (
-        <div className="w-screen fixed top-0 bg-white z-50  ">
+        <div className={navbarBg === "solid" ? 'bg-white w-screen fixed top-0  z-50' : 'w-screen fixed top-0  z-50'}>
             <nav className="w-full flex justify-between items-center p-4  md:py-2 md:px-14  " >
                 <div className="w-full md:w-auto flex items-center justify-between" >
                     <NavLink to={{ pathname: "/" }}><svg xmlns="http://www.w3.org/2000/svg" width="57" height="56" viewBox="0 0 57 56" fill="none">
@@ -23,8 +24,8 @@ const Navbar = () => {
                     </NavLink>
                     <div className="md:hidden" onClick={toggleMenu}>
                         {(menu === "cerrado") ?
-                            <svg xmlns="http://www.w3.org/2000/svg" class="display:block h-6 w-6 stroke-current text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                            <svg xmlns="http://www.w3.org/2000/svg" className="display:block h-6 w-6 stroke-current text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
                             </svg> :
                             <svg xmlns="http://www.w3.org/2000/svg" className=" display:block h-6 w-6 stroke-current text-black" fill="none" viewBox="0 0 24 24" stroke="">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -37,18 +38,18 @@ const Navbar = () => {
                     <NavLink to={{ pathname: '/', aboutProps: { id: "quienes" } }} className="py-3 px-4 text-base opacity-100 hover:opacity-80 transition-all">Quiénes somos</NavLink>
                     <NavLink to={{ pathname: '/', aboutProps: { id: "sociasVitalicias" } }} className="py-3 px-4 text-base opacity-100 hover:opacity-80 transition-all">Socias Vitalicias</NavLink>
                     <NavLink to={{ pathname: '/', aboutProps: { id: "galeria" } }} className="py-3 px-4 text-base opacity-100 hover:opacity-80 transition-all">Nuestra galería</NavLink>
-                    <NavLink to={{ pathname: '/', aboutProps: { id: "sumate" } }} className="py-3 px-4 text-base opacity-100 hover:opacity-80 transition-all">Sumate</NavLink>
+                    <NavLink to={{ pathname: '/', aboutProps: { id: "sumate" } }} className="text-center block md:inline-block bg-orange py-3 px-8 rounded-3xl text-white text-base hover:bg-orangelight transition-all">Sumate</NavLink>
                 </div>
 
             </nav>
             {/* Hamburger menu */}
             {(menu === "cerrado") ?
                 "" :
-                <div className=" md:hidden flex flex-col w-full fixed bg-white z-50 text-center transition-all " >
-                    <NavLink to={{ pathname: '/', aboutProps: { id: "quienes" } }} className="py-3 px-4 text-base opacity-100 hover:opacity-80 transition-all">Quiénes somos</NavLink>
-                    <NavLink to={{ pathname: '/', aboutProps: { id: "sociasVitalicias" } }} className="py-3 px-4 text-base opacity-100 hover:opacity-80 transition-all">Socias Vitalicias</NavLink>
-                    <NavLink to={{ pathname: '/', aboutProps: { id: "galeria" } }} className="py-3 px-4 text-base opacity-100 hover:opacity-80 transition-all">Nuestra galería</NavLink>
-                    <NavLink to={{ pathname: '/', aboutProps: { id: "sumate" } }} className="py-3 px-4 text-base opacity-100 hover:opacity-80 transition-all">Sumate</NavLink>
+                <div className=" md:hidden flex flex-col w-full fixed bg-white z-50 text-center transition-all p-4" >
+                    <NavLink to={{ pathname: '/', aboutProps: { id: "quienes" } }} className="py-3 px-4 text-base opacity-100 hover:opacity-80 transition-all" onClick={() => { setMenu("cerrado") }}>Quiénes somos</NavLink>
+                    <NavLink to={{ pathname: '/', aboutProps: { id: "sociasVitalicias" } }} className="py-3 px-4 text-base opacity-100 hover:opacity-80 transition-all" onClick={() => { setMenu("cerrado") }}>Socias Vitalicias</NavLink>
+                    <NavLink to={{ pathname: '/', aboutProps: { id: "galeria" } }} className="py-3 px-4 text-base opacity-100 hover:opacity-80 transition-all" onClick={() => { setMenu("cerrado") }}>Nuestra galería</NavLink>
+                    <NavLink to={{ pathname: '/', aboutProps: { id: "sumate" } }} className="text-center block md:inline-block bg-orange py-3 px-8 rounded-3xl text-white text-base hover:bg-orangelight transition-all" onClick={() => { setMenu("cerrado") }}>Sumate</NavLink>
                 </div>
             }
         </div>

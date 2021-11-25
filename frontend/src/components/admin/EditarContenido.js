@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import NavbarAdmin from './NavbarAdmin'
-import { TextInputField } from 'evergreen-ui'
+import { connect } from 'react-redux'
 import Input from './posteos/Input'
 
-export default function EditarContenido() {
-
+const EditarContenido = (props) => {
+    let { url } = props
     useEffect(() => {
 
-        fetch('http://localhost:3001/traerDatos', {
+        fetch(`${url}/traerDatos`, {
             method: "GET",
         }).then(r => r.json())
             .then(r => {
@@ -34,7 +34,7 @@ export default function EditarContenido() {
 
         console.log(nuevosDatos)
 
-        fetch('http://localhost:3001/modificarDatos', {
+        fetch(`${url}/modificarDatos`, {
             method: "PUT",
             body: JSON.stringify(nuevosDatos),
             headers: {
@@ -64,3 +64,10 @@ export default function EditarContenido() {
         </div>
     )
 }
+
+const mapStateToProps = (state) => ({
+    url: state.url
+})
+
+
+export default connect(mapStateToProps)(EditarContenido)

@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
 
-export default function () {
+const Stats = (props) => {
+
+    let { url } = props
 
     const [programas, setProgramas] = useState();
     const [socias, setSocias] = useState()
     const [partidos, setPartidos] = useState()
 
-    fetch('http://localhost:3001/traerDatos', {
+    fetch(`${url}/traerDatos`, {
         method: "GET",
     }).then(r => r.json())
         .then(r => {
@@ -53,3 +56,10 @@ export default function () {
         </div>
     )
 }
+
+const mapStateToProps = (state) => ({
+    url: state.url
+})
+
+
+export default connect(mapStateToProps)(Stats)

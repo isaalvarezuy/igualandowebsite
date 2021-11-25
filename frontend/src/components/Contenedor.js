@@ -12,16 +12,17 @@ import Admin from './admin/Admin'
 import { connect } from 'react-redux'
 
 const Contenedor = (props) => {
-
+    let { url } = props
     useEffect(() => {
-        fetch('http://localhost:3001/listarAlbums', {
+
+        fetch(`${url}/listarAlbums`, {
             method: "GET",
         }).then(r => r.json())
             .then(r => {
                 props.dispatch({
                     type: "LISTAR_ALBUMS", payload: r
                 });
-                fetch('http://localhost:3001/listarDeportes', {
+                fetch(`${url}/listarDeportes`, {
                     method: "GET",
                 }).then(r => r.json())
                     .then(r => {
@@ -60,7 +61,7 @@ const Contenedor = (props) => {
     )
 }
 const mapStateToProps = (state) => ({
-
+    url: state.url
 })
 
 

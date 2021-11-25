@@ -9,7 +9,7 @@ import Alerta from './Alerta'
 
 const SubirAlbum = (props) => {
 
-    let { albums, deportes } = props;
+    let { albums, deportes, url } = props;
     const [selectedFile, setSelectedFile] = useState([]);
     const [titulo, setTitulo] = useState("");
     const [deporte, setDeporte] = useState("");
@@ -29,7 +29,7 @@ const SubirAlbum = (props) => {
 
     const borrarAlbum = (recibido) => {
         let idBorrar = recibido.target.dataset.id;
-        fetch(`http://localhost:3001/eliminarAlbum`, {
+        fetch(`${url}/eliminarAlbum`, {
             method: "DELETE",
             body: JSON.stringify({ idBorrar: idBorrar }),
             headers: {
@@ -68,7 +68,7 @@ const SubirAlbum = (props) => {
         }
 
 
-        fetch('http://localhost:3001/crearAlbum', {
+        fetch(`${url}/crearAlbum`, {
             method: "POST",
             body: JSON.stringify(nuevoAlbum),
             headers: {
@@ -144,6 +144,7 @@ const SubirAlbum = (props) => {
 const mapStateToProps = (state) => ({
     albums: state.albums,
     deportes: state.deportes,
+    url: state.url
 
 })
 

@@ -17,7 +17,7 @@ const PosteosContenedor = (props) => {
 
     /* useEffect(() => {
 
-        fetch('http://localhost:3001/listarEquipos', {
+        fetch(`${url}/listarEquipos`, {
             method: 'GET',
         }).then(r => r.json())
             .then(equipos => {
@@ -55,7 +55,7 @@ const PosteosContenedor = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-
+    url: state.url
 })
 
 

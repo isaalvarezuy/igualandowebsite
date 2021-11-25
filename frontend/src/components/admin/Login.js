@@ -7,6 +7,8 @@ const Login = (props) => {
 
     let history = useHistory();
 
+    let { url } = props
+
     const [error, setError] = useState("")
     const [mensaje, setMensaje] = useState("")
     const user = useRef(null);
@@ -19,7 +21,7 @@ const Login = (props) => {
             pass: pass.current.value
         }
 
-        fetch(`http://localhost:3001/iniciarsesion`, {
+        fetch(`${url}/iniciarsesion`, {
             method: "POST",
             body: JSON.stringify(usuario),
             headers: {
@@ -79,7 +81,7 @@ const Login = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-    usuarioLogueado: state.usuarioLogueado
+    url: state.url
 })
 
 export default connect(mapStateToProps)(Login)

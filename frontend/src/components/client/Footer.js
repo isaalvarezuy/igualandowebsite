@@ -22,7 +22,7 @@ const Footer = () => {
                 <NavLink className=" font-regular font-body opacity-50 hover:opacity-70 transition-all pb-2 " to={{ pathname: "/", aboutProps: { id: "quienes" } }}>Quiénes Somos</NavLink>
                 <NavLink className=" font-regular font-body opacity-50 hover:opacity-70 transition-all pb-2 " to={{ pathname: "/", aboutProps: { id: "sociasVitalicias" } }}>Socias Vitalicias</NavLink>
                 <NavLink className=" font-regular font-body opacity-50 hover:opacity-70 transition-all pb-2 " to={{ pathname: "/", aboutProps: { id: "galeria" } }}>Nuestra Galería</NavLink>
-                <NavLink className=" font-regular font-body opacity-50 hover:opacity-70 transition-all pb-2 " to={{ pathname: "/", aboutProps: { id: "sumate" } }}>Contacto</NavLink>
+                <NavLink className=" font-regular font-body opacity-50 hover:opacity-70 transition-all pb-2 " to={{ pathname: "/", aboutProps: { id: "sumate" } }}>Sumate</NavLink>
 
 
             </div>

@@ -1,5 +1,6 @@
 {
   "name": "website",
+  "homepage": "https://isaalvarrez.github.io/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

@@ -80,7 +80,7 @@ const SociaVitalicia = () => {
                         <div className="hidden md:block w-64 text-center bg-black rounded-xl py-4  left-16 absolute z-30">
                             {(episodio !== undefined) ?
                                 <div className="">
-                                    <img className="w-56 mx-auto rounded-xl mb-4" src={episodio.items[0].images[0].url} />
+                                    <img className="w-56 mx-auto rounded-xl mb-4" src="https://res.cloudinary.com/isita/image/upload/v1638128101/static/Instagram_post_-_59_eb6mfy.png" />
                                     <p className="font-semibold text-white "> {invitado}</p>
                                     <p className="font-normal text-sm text-white mb-2"> {programa}</p>
                                     <svg className="mx-auto mb-2" xmlns="http://www.w3.org/2000/svg" width="227" height="32" viewBox="0 0 227 32" fill="none">
@@ -103,7 +103,7 @@ const SociaVitalicia = () => {
                             {(episodio !== undefined) ?
                                 <div className="flex items-center">
                                     <div className="w-24">
-                                        <img className="rounded-xl w-full" src={episodio.items[0].images[0].url} />
+                                        <img className="rounded-xl w-full" src="https://res.cloudinary.com/isita/image/upload/v1638128101/static/Instagram_post_-_59_eb6mfy.png" />
                                     </div>
                                     <div className="w-full">
                                         <p className="font-semibold text-white "> {invitado}</p>
@@ -365,7 +365,7 @@ const SociaVitalicia = () => {
                             </svg>
                         </h2>
                         <p className="py-4 md:py-0 font-body text-base text-left md:text-right mb-4">
-                            Todos los Domingos recibimos en nuestro programa a una figura del deporte femenino. Charlamos del deporte, los sacrificios y la vida misma. Si te perdiste algun capítulo podés escucharlos en nuestro Spotify.
+                            Todos los Domingos recibimos en nuestro programa a una figura del deporte femenino. Charlamos del deporte, los sacrificios y la vida misma.
                         </p>
                         <a href="https://open.spotify.com/show/6a14qoWlcAGixLfwVeyPOk?si=944b088ae93341f4" target="_blank" className="block text-center md:inline-block bg-orange py-3 px-8 rounded-3xl text-white text-base hover:bg-orangelight transition-all">Escuchanos en Spotify</a>
                     </div>

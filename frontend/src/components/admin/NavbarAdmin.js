@@ -42,18 +42,18 @@ const NavbarAdmin = () => {
                 <div className="hidden md:block bg-black  py-2 items-center">
                     <div className="w-10/12 mx-auto flex justify-around">
                         <NavLink className="text-white font-regular font-body hover:opacity-70 transition-all" to={{ pathname: "/admin", aboutProps: "nuevoPosteo" }}>Nuevo Posteo</NavLink>
-                        <NavLink className="text-white font-regular font-body hover:opacity-70 transition-all" to={{ pathname: "/admin", aboutProps: "nuestraGaleria" }}>Nuestra Galería</NavLink>
+                        <NavLink className="text-white font-regular font-body hover:opacity-70 transition-all" to={{ pathname: "/admin", aboutProps: "nuestraGaleria" }}>Gestionar Galería</NavLink>
                         <NavLink className="text-white font-regular font-body hover:opacity-70 transition-all" to={{ pathname: "/admin", aboutProps: "editarDatos" }}>Editar Datos</NavLink>
                     </div>
 
                 </div>{
                     (menu === "cerrado") ?
                         "" :
-                        <div className="md:hidden bg-black  p-4 items-center flex flex-col">
+                        <div className="md:hidden bg-white  p-4 items-center flex flex-col">
 
-                            <NavLink className="text-white py-3 font-regular font-body hover:opacity-70 transition-all" to={{ pathname: "/admin/nuevoposteo", aboutProps: "nuevoPosteo" }}>Nuevo Posteo</NavLink>
-                            <NavLink className="text-white py-3 font-regular font-body hover:opacity-70 transition-all" to={{ pathname: "/admin/subir", aboutProps: "nuestraGaleria" }}>Nuestra Galería</NavLink>
-                            <NavLink className="text-white py-3 font-regular font-body hover:opacity-70 transition-all" to={{ pathname: "/admin/actualizar", aboutProps: "editarDatos" }}>Editar Datos</NavLink>
+                            <NavLink className="text-black py-3 font-regular font-body hover:opacity-70 transition-all" to={{ pathname: "/admin/nuevoposteo", aboutProps: "nuevoPosteo" }}>Nuevo Posteo</NavLink>
+                            <NavLink className="text-black py-3 font-regular font-body hover:opacity-70 transition-all" to={{ pathname: "/admin/subir", aboutProps: "nuestraGaleria" }}>Gestionar Galería</NavLink>
+                            <NavLink className="text-black py-3 font-regular font-body hover:opacity-70 transition-all" to={{ pathname: "/admin/actualizar", aboutProps: "editarDatos" }}>Editar Datos</NavLink>
                             <NavLink to={{ pathname: "/" }} className="w-full mt-2 text-center bg-orange py-3 px-8 rounded-3xl text-white text-base">Ir al sitio</NavLink>
                         </div>
                 }

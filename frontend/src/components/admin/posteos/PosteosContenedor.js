@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import Imagen from './Imagen'
 import SociaVitalicia from './form/SociaVitalicia'
 import NavbarAdmin from '../NavbarAdmin'
-import Input from './Input'
+import Input from '../../formComponents/Input'
 
 const PosteosContenedor = (props) => {
 

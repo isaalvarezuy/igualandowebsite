@@ -1,4 +1,5 @@
 import { initialState } from '../store/initialState';
+import { addStaticComposition } from 'remotion/dist/register-root';
 
 export const reducer = (state = initialState, action) => {
     console.log(state, action);
@@ -28,7 +29,7 @@ export const reducer = (state = initialState, action) => {
             return { ...state, equipo1: action.payload }
 
         case "SOCIA_VITALICIA":
-            return { ...state, sociaVitalicia: { "fotoMain": action.payload.fotoMain, "fotoFondo": action.payload.fotoFondo, "nombre": action.payload.nombre, "profesion": action.payload.profesion, "fecha": action.payload.fecha, "spCode": action.payload.spCode, "frase": action.payload.frase } }
+            return { ...state, sociaVitalicia: { "fotoMain": action.payload.fotoMain, "fotoFondo": action.payload.fotoFondo, "nombre": action.payload.nombre, "profesion": action.payload.profesion, "fecha": action.payload.fecha, "spCode": action.payload.spCode, "frase": action.payload.frase, "darkMode": action.payload.darkMode } }
 
         case "SESION_INICIADA":
             return { ...state, usuarioLogueado: action.payload }

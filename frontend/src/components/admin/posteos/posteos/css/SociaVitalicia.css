@@ -5,8 +5,6 @@
 .socia {
     height:1080px;
     width:1080px;
-   background: rgba(23, 23, 23, 1);
-    ;
     position: relative
 }
 
@@ -22,7 +20,6 @@ filter: grayscale(1)
 .socia .tarjeta {
     width:420px;
     height:670px;
-    background-color:#FA6A3C;
     border-radius: 32px;
     position: absolute;
     left:132px;
@@ -33,7 +30,6 @@ filter: grayscale(1)
 .socia .foto {
     width:258px;
     height:258px;
-    background-color:purple;
     position: absolute;
     border-radius: 100%;
     left: 81px;
@@ -59,7 +55,6 @@ filter: grayscale(1)
 .socia .texto > * {
 height:32px;
 margin-top:8px;
-color:#FFFCFA
 }
 
 .socia .texto h2{
@@ -89,7 +84,7 @@ color:#FFFCFA
     }
     
 .socia .frase p {
-    color:white;
+
     font-size: 70px;  
     width: 320px;
     font-family: 'Bison';
@@ -100,7 +95,6 @@ color:#FFFCFA
 }
 
 .socia .frase span {
-    color:red;
     font-size: 70px;  
     width: 320px;
     font-family: 'Bison';

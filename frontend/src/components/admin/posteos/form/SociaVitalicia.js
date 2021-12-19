@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { TextInputField, FilePicker, Pane, Label, Textarea } from 'evergreen-ui'
-import Input from '../Input'
+import Input from '../../../formComponents/Input'
+import Switch from '../../../formComponents/Switch'
 
 
 const SociaVitalicia = (props) => {
@@ -13,13 +13,14 @@ const SociaVitalicia = (props) => {
     let profesion = "";
     let fecha = "";
     let frase = "";
+    let darkMode = true;
 
     const [fotoFondoSubida, setFotoFondoSubida] = useState("")
     const [fotoMainSubida, setFotoMainSubida] = useState("")
 
-    let guardarDatos = (fondo, main, nombre, profesion, fecha, spCode, frase) => {
+    let guardarDatos = (fondo, main, nombre, profesion, fecha, spCode, frase, darkMode) => {
         props.dispatch({
-            type: "SOCIA_VITALICIA", payload: { "fotoFondo": fondo, "fotoMain": main, "nombre": nombre, "profesion": profesion, "fecha": fecha, "spCode": spCode, "frase": frase }
+            type: "SOCIA_VITALICIA", payload: { "fotoFondo": fondo, "fotoMain": main, "nombre": nombre, "profesion": profesion, "fecha": fecha, "spCode": spCode, "frase": frase, "darkMode": darkMode }
         });
     }
 
@@ -30,7 +31,7 @@ const SociaVitalicia = (props) => {
             reader.readAsDataURL(file);
             reader.onloadend = () => {
                 fondo = reader.result
-                guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase);
+                guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase, darkMode);
             }
 
         }
@@ -44,7 +45,7 @@ const SociaVitalicia = (props) => {
             reader.readAsDataURL(file);
             reader.onloadend = () => {
                 main = reader.result
-                guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase);
+                guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase, darkMode);
             }
         }
     }
@@ -56,7 +57,7 @@ const SociaVitalicia = (props) => {
             reader.readAsDataURL(file);
             reader.onloadend = () => {
                 spCode = reader.result;
-                guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase);
+                guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase, darkMode);
             }
         }
     }
@@ -64,13 +65,13 @@ const SociaVitalicia = (props) => {
     let guardarNombre = (recibido) => {
         /*  console.log(recibido) */
         nombre = recibido;
-        guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase);
+        guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase, darkMode);
 
     }
 
     let guardarProfesion = (recibido) => {
         profesion = recibido;
-        guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase);
+        guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase, darkMode);
     }
     let guardarFecha = (recibido) => {
         /*  console.log(recibido); */
@@ -88,17 +89,23 @@ const SociaVitalicia = (props) => {
 
         fecha = `${dia}.${mes}.${anio}`
         /*   console.log(fecha) */
-        guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase);
+        guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase, darkMode);
     }
 
     let guardarFrase = (recibido) => {
         frase = recibido;
-        guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase);
+        guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase, darkMode);
+    }
+    let guardarDarkMode = (recibido) => {
+        console.log(recibido)
+        darkMode = recibido;
+        guardarDatos(fondo, main, nombre, profesion, fecha, spCode, frase, darkMode);
     }
 
     return (
 
         <div>
+            <Switch funcion={guardarDarkMode} />
             <Input label={"Nombre"} funcion={guardarNombre} type={"text"} />
             <Input label={"Profesión"} funcion={guardarProfesion} type={"text"} />
             <Input label={"Fecha"} funcion={guardarFecha} type={"date"} />

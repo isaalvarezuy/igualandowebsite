@@ -30,6 +30,8 @@ export const reducer = (state = initialState, action) => {
 
         case "SOCIA_VITALICIA":
             return { ...state, sociaVitalicia: { "fotoMain": action.payload.fotoMain, "fotoFondo": action.payload.fotoFondo, "nombre": action.payload.nombre, "profesion": action.payload.profesion, "fecha": action.payload.fecha, "spCode": action.payload.spCode, "frase": action.payload.frase, "darkMode": action.payload.darkMode } }
+        case "NOTICIAS":
+            return { ...state, noticias: { "foto": action.payload.foto, "titulo": action.payload.titulo, "darkMode": action.payload.darkMode } }
 
         case "SESION_INICIADA":
             return { ...state, usuarioLogueado: action.payload }

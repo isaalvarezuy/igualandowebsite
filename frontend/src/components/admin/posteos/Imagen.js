@@ -2,10 +2,12 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import domtoimage from 'dom-to-image';
 import SociaVitalicia from './posteos/SociaVitalicia';
+import Noticias from './posteos/Noticias'
 
 const Imagen = (props) => {
 
-    let tipo = props.tipo;
+    let { tipo } = props;
+    console.log(tipo)
     let preview;
     let screenHeight;
 
@@ -39,15 +41,17 @@ const Imagen = (props) => {
 
     return (
         <div id="contenedorImg" style={{ overflow: "hidden" }}>
-            <img className="w-full md:w-10/12 mx-auto" id="preview" src={preview} />
+            <img className="w-full md:w-10/12 mx-auto " id="preview" src={preview} />
             <div className="w-full md:w-10/12 mx-auto pt-4">
                 <button className="btn w-full md:w-auto  bg-orange py-2 px-4 rounded-3xl text-white text-base" id="btn-download" download="post.jpg" onClick={descargarImg}>Descargar </button>
             </div>
-            <div style={{ position: "fixed", top: 0, left: 0, width: "1080px", height: "1080px", position: "relative" }}>
-                <div id="capture" style={{ width: "1080px", height: "1080px", position: "absolute", top: "0" }}>
+            <div style={{ position: "fixed", top: 0, left: 0, width: "1080px", height: "1080px", position: "relative", }}>
+                <div id="capture" style={{ width: "1080px", height: "1080px", position: "absolute", top: "0", zIndex: -10 }}>
                     {(tipo === "socia") ?
                         <SociaVitalicia /> :
-                        <div></div>}
+                        (tipo === "noticias") ?
+                            <Noticias /> :
+                            <div></div>}
                 </div>
                 <div id="capture" style={{ position: "fixed", top: 0, left: 0, width: "1080px", height: "1080px", position: "absolute", backgroundColor: "white" }}>
 
@@ -56,14 +60,14 @@ const Imagen = (props) => {
 
 
 
-        </div>
+        </div >
     )
 }
 
 
 const mapStateToProps = (state) => ({
-
-    sociaVitalicia: state.sociaVitalicia
+    sociaVitalicia: state.sociaVitalicia,
+    noticias: state.noticias
 
 })
 

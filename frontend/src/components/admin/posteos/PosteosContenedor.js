@@ -5,6 +5,8 @@ import Imagen from './Imagen'
 import SociaVitalicia from './form/SociaVitalicia'
 import NavbarAdmin from '../NavbarAdmin'
 import Input from '../../formComponents/Input'
+import Noticias from './form/Noticias'
+
 
 const PosteosContenedor = (props) => {
 
@@ -33,24 +35,28 @@ const PosteosContenedor = (props) => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="col-span-1">
                         <div className="mb-6 col-span-1">
-                            <Input type={"select"} label={"Tipo de Posteo"} funcion={setTipoPosteo} opciones={[{ "nombre": "Otro", "_id": "" }, { "nombre": "Socia Vitalicia", "_id": "socia" }]} />
+                            <Input type={"select"} label={"Tipo de Posteo"} funcion={setTipoPosteo} opciones={[{ "nombre": "Otro", "_id": "" }, { "nombre": "Socia Vitalicia", "_id": "socia" }, { "nombre": "Noticias", "_id": "noticias" }]} />
                         </div>
 
 
                         {
                             (tipoPosteo === "socia") ?
                                 <SociaVitalicia /> :
-                                <div></div>
+                                (tipoPosteo === "noticias") ?
+                                    <Noticias /> :
+                                    < div ></div>
                         }
                     </div>
                     <div className="col-span-1">
-                        {(tipoPosteo === "socia") ?
-                            <Imagen tipo="socia" /> :
-                            <div></div>}
+                        {
+                            <Imagen tipo={tipoPosteo} />
+                        }
                     </div>
+
                 </div>
             </div >
-        </div>
+
+        </div >
     )
 }
 

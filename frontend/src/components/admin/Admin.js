@@ -5,6 +5,7 @@ import PosteosContenedor from './posteos/PosteosContenedor'
 import SubirAlbum from './SubirAlbum'
 import EditarContenido from './EditarContenido'
 import Login from './Login'
+import StoriesContenedor from './stories/StoriesContenedor'
 
 const Admin = (props) => {
 
@@ -23,7 +24,9 @@ const Admin = (props) => {
                         <SubirAlbum /> :
                         (pagina === "editarDatos") ?
                             <EditarContenido /> :
-                            <PosteosContenedor />
+                            (pagina === "nuevoPosteo") ?
+                                <PosteosContenedor /> :
+                                <StoriesContenedor />
                     }
                 </div>
             }

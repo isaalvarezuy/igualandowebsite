@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import Input from '../../posteos/Input'
+import Input from '../../../formComponents/Input'
 
 const Programa = (props) => {
 

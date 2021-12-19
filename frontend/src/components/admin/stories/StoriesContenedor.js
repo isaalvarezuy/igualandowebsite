@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import NavbarAdmin from '../NavbarAdmin'
-import Input from '../posteos/Input'
 import Programa from './form/Programa'
 import ReactPlayer from 'react-player'
+import Input from '../../formComponents/Input'
 
 const StoriesContenedor = (props) => {
 

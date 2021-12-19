@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux'
 import Axios from 'axios'
 import NavbarAdmin from './NavbarAdmin';
-import Input from './posteos/Input'
+import Input from '../formComponents/Input'
 import Tabla from './Tabla'
 import Popup from './posteos/Popup'
 import Alerta from './Alerta'

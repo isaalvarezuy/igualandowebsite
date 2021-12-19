@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import NavbarAdmin from './NavbarAdmin'
 import { connect } from 'react-redux'
-import Input from './posteos/Input'
+import Input from '../formComponents/Input'
 
 const EditarContenido = (props) => {
     let { url } = props

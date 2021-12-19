@@ -6,6 +6,7 @@ import SubirAlbum from './SubirAlbum'
 import EditarContenido from './EditarContenido'
 import Login from './Login'
 import StoriesContenedor from './stories/StoriesContenedor'
+import Noticias from './posteos/posteos/Noticias'
 
 const Admin = (props) => {
 
@@ -24,12 +25,13 @@ const Admin = (props) => {
                         <SubirAlbum /> :
                         (pagina === "editarDatos") ?
                             <EditarContenido /> :
-                            (pagina === "nuevoPosteo") ?
-                                <PosteosContenedor /> :
-                                <StoriesContenedor />
+                            (pagina === "nuevaStory") ?
+                                <StoriesContenedor /> :
+                                <PosteosContenedor />
                     }
                 </div>
             }
+            {/* <Noticias /> */}
 
         </div>
     )

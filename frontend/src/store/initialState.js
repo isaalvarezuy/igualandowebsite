@@ -4,7 +4,7 @@ export const initialState = {
     texto: "",
     equipos: [],
     equipo1: "",
-    sociaVitalicia: { "fotoFondo": "", "fotoMain": "", "nombre": "", "profesion": "", "fecha": "", "spCode": "", "frase": "" },
+    sociaVitalicia: { "fotoFondo": "", "fotoMain": "", "nombre": "", "profesion": "", "fecha": "", "spCode": "", "frase": "", "darkMode": false },
     albums: [],
     deportes: [],
     integrantes: [

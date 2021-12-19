@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { SearchInput, Select } from 'evergreen-ui'
 import Footer from './Footer'
-import Input from '../admin/posteos/Input'
+import Input from '../formComponents/Input'
 
 const Galeria = (props) => {
 

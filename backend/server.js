@@ -2,7 +2,7 @@ let express = require("express");
 let app = express();
 let cors = require("cors");
 
-let Prueba = require("./modelos/Prueba");
+let Equipo = require("./modelos/Equipo");
 let Album = require("./modelos/Album");
 let Dato = require("./modelos/Dato");
 let Deporte = require("./modelos/Deporte");
@@ -53,8 +53,8 @@ app.get("/listarDeportes", (req, res) => {
 })
 
 app.get("/listarEquipos", (req, res) => {
-    Prueba.find((err, equipos) => {
-        console.log("hole")
+    Equipo.find((err, equipos) => {
+        console.log("entro")
         if (err) return res.json({ mensaje: "Error al consultar" });
         res.json(equipos);
     })

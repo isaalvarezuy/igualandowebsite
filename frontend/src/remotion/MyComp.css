@@ -1,6 +1,6 @@
 .flickerContainer span{
   -webkit-text-fill-color: #171717; /* Will override color (regardless of order) */
-  -webkit-text-stroke-width: 1px;
+  -webkit-text-strokeWidth: 1px;
   -webkit-text-stroke-color: white;
   text-align:center;
   width:100%;

@@ -3,11 +3,12 @@ import { connect } from 'react-redux'
 import domtoimage from 'dom-to-image';
 import SociaVitalicia from './posteos/SociaVitalicia';
 import Noticias from './posteos/Noticias'
+import ProximoPartido from './posteos/ProximoPartido'
 
 const Imagen = (props) => {
 
     let { tipo } = props;
-    console.log(tipo)
+
     let preview;
     let screenHeight;
 
@@ -51,7 +52,9 @@ const Imagen = (props) => {
                         <SociaVitalicia /> :
                         (tipo === "noticias") ?
                             <Noticias /> :
-                            <div></div>}
+                            (tipo === "proximoPartido") ?
+                                <ProximoPartido /> :
+                                ""}
                 </div>
                 <div id="capture" style={{ position: "fixed", top: 0, left: 0, width: "1080px", height: "1080px", position: "absolute", backgroundColor: "white" }}>
 
@@ -67,7 +70,8 @@ const Imagen = (props) => {
 
 const mapStateToProps = (state) => ({
     sociaVitalicia: state.sociaVitalicia,
-    noticias: state.noticias
+    noticias: state.noticias,
+    proximoPartido: state.proximoPartido
 
 })
 

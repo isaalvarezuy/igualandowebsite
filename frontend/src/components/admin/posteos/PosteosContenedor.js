@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { SelectField } from 'evergreen-ui'
 import { connect } from 'react-redux'
 import Imagen from './Imagen'
@@ -6,28 +6,22 @@ import SociaVitalicia from './form/SociaVitalicia'
 import NavbarAdmin from '../NavbarAdmin'
 import Input from '../../formComponents/Input'
 import Noticias from './form/Noticias'
+import ProximoPartido from './form/ProximoPartido'
 
 
 const PosteosContenedor = (props) => {
 
     const [tipoPosteo, setTipoPosteo] = useState("")
 
+    let { url } = props;
+
+
+
     const armarForm = (e) => {
         console.log(e.target.value)
     }
 
 
-    /* useEffect(() => {
-
-        fetch(`${url}/listarEquipos`, {
-            method: 'GET',
-        }).then(r => r.json())
-            .then(equipos => {
-                console.log(equipos)
-                props.dispatch({ type: "LISTAR_EQUIPOS", payload: equipos });
-                props.dispatch({ type: "VER" });
-            })         
-    }) */
     return (
         <div>
             <NavbarAdmin />
@@ -35,7 +29,7 @@ const PosteosContenedor = (props) => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="col-span-1">
                         <div className="mb-6 col-span-1">
-                            <Input type={"select"} label={"Tipo de Posteo"} funcion={setTipoPosteo} opciones={[{ "nombre": "Otro", "_id": "" }, { "nombre": "Socia Vitalicia", "_id": "socia" }, { "nombre": "Noticias", "_id": "noticias" }]} />
+                            <Input type={"select"} label={"Tipo de Posteo"} funcion={setTipoPosteo} opciones={[{ "nombre": "Otro", "_id": "" }, { "nombre": "Socia Vitalicia", "_id": "socia" }, { "nombre": "Noticias", "_id": "noticias" }, { "nombre": "Próximo Partido", "_id": "proximoPartido" }]} />
                         </div>
 
 
@@ -44,7 +38,9 @@ const PosteosContenedor = (props) => {
                                 <SociaVitalicia /> :
                                 (tipoPosteo === "noticias") ?
                                     <Noticias /> :
-                                    < div ></div>
+                                    (tipoPosteo === "proximoPartido") ?
+                                        <ProximoPartido /> :
+                                        ""
                         }
                     </div>
                     <div className="col-span-1">

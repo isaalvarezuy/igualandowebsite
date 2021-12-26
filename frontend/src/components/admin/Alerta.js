@@ -3,7 +3,7 @@ import React from 'react'
 
 const Alerta = (props) => {
 
-    let { mensaje, tipo } = props
+    let { mensaje } = props
 
     return (
         <div className="fixed bottom-10 w-full flex justify-center">

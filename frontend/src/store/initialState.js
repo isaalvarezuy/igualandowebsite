@@ -6,6 +6,7 @@ export const initialState = {
     equipo1: "",
     sociaVitalicia: { "fotoFondo": "", "fotoMain": "", "nombre": "", "profesion": "", "fecha": "", "spCode": "", "frase": "", "darkMode": false },
     noticias: { "foto": "", "titulo": "", "darkMode": false },
+    proximoPartido: { "eqLocal": "", "eqVisitante": "", "fecha": "", "hora": "", "lugar": "", "fotoLocal": "", "fotoVisitante": "", "deporte": [], "darkMode": false },
     albums: [],
     deportes: [],
     integrantes: [
@@ -16,7 +17,7 @@ export const initialState = {
         { nombre: "Mariana Alvarez", rol: "Periodista deportivo", chiste: "Y los resultados son...", foto: "https://res.cloudinary.com/isita/image/upload/v1636928040/static/Avatars_web_2x-4_kskzfv.png" },
     ],
     usuarioLogueado: "",
-    url: "https://igualando.herokuapp.com",
+    url: "http://localhost:3001",
 
 }
 

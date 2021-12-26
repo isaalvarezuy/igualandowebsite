@@ -33,6 +33,9 @@ export const reducer = (state = initialState, action) => {
         case "NOTICIAS":
             return { ...state, noticias: { "foto": action.payload.foto, "titulo": action.payload.titulo, "darkMode": action.payload.darkMode } }
 
+        case "PROXIMO_PARTIDO":
+            return { ...state, proximoPartido: { "eqLocal": action.payload.eqLocal, "eqVisitante": action.payload.eqVisitante, "fecha": action.payload.fecha, "hora": action.payload.hora, "lugar": action.payload.lugar, "fotoLocal": action.payload.fotoLocal, "fotoVisitante": action.payload.fotoVisitante, "deporte": action.payload.deporte, "darkMode": action.payload.darkMode } }
+
         case "SESION_INICIADA":
             return { ...state, usuarioLogueado: action.payload }
 

@@ -5,7 +5,7 @@ const Switch = (props) => {
     let toggle = false;
 
     return (
-        <div id="switch" className="flex ">
+        <div id="switch" className="flex mb-2">
 
             <label className="switch mt-2 ">
                 <input type="checkbox" onClick={e => {

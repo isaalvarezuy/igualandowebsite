@@ -6,6 +6,7 @@ import SubirAlbum from './SubirAlbum'
 import EditarContenido from './EditarContenido'
 import Login from './Login'
 import StoriesContenedor from './stories/StoriesContenedor'
+import FinalPartido from './posteos/posteos/FinalPartido'
 
 const Admin = (props) => {
 
@@ -30,7 +31,7 @@ const Admin = (props) => {
                     }
                 </div>
             }
-            {/*  {<ProximoPartido />} */}
+
 
         </div>
     )

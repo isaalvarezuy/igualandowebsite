@@ -7,6 +7,7 @@ export const initialState = {
     sociaVitalicia: { "fotoFondo": "", "fotoMain": "", "nombre": "", "profesion": "", "fecha": "", "spCode": "", "frase": "", "darkMode": false },
     noticias: { "foto": "", "titulo": "", "darkMode": false },
     proximoPartido: { "eqLocal": "", "eqVisitante": "", "fecha": "", "hora": "", "lugar": "", "fotoLocal": "", "fotoVisitante": "", "deporte": [], "darkMode": false },
+    finalPartido: { "eqLocal": "", "eqVisitante": "", "pLocal": "", "pVisitante": "", "foto": "", "deporte": [], "darkMode": false },
     albums: [],
     deportes: [],
     integrantes: [

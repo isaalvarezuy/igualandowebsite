@@ -36,6 +36,10 @@ export const reducer = (state = initialState, action) => {
         case "PROXIMO_PARTIDO":
             return { ...state, proximoPartido: { "eqLocal": action.payload.eqLocal, "eqVisitante": action.payload.eqVisitante, "fecha": action.payload.fecha, "hora": action.payload.hora, "lugar": action.payload.lugar, "fotoLocal": action.payload.fotoLocal, "fotoVisitante": action.payload.fotoVisitante, "deporte": action.payload.deporte, "darkMode": action.payload.darkMode } }
 
+        case "FINAL_PARTIDO":
+            return { ...state, finalPartido: { "eqLocal": action.payload.eqLocal, "eqVisitante": action.payload.eqVisitante, "pLocal": action.payload.pLocal, "pVisitante": action.payload.pVisitante, "foto": action.payload.foto, "deporte": action.payload.deporte, "darkMode": action.payload.darkMode } }
+
+
         case "SESION_INICIADA":
             return { ...state, usuarioLogueado: action.payload }
 

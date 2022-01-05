@@ -1,14 +1,18 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import domtoimage from 'dom-to-image';
 import SociaVitalicia from './posteos/SociaVitalicia';
 import Noticias from './posteos/Noticias'
 import ProximoPartido from './posteos/ProximoPartido'
 import FinalPartido from './posteos/FinalPartido'
+import Alerta from '../Alerta'
 
 const Imagen = (props) => {
 
-    let { tipo } = props;
+    const [disabledState, setDisabledState] = useState(true)
+    const [mensajeError, setMensajeError] = useState("")
+
+    let { tipo, sociaVitalicia, noticias, proximoPartido, finalPartido } = props;
 
     let preview;
     let screenHeight;
@@ -22,6 +26,50 @@ const Imagen = (props) => {
 
             }
         )
+        if (tipo === "socia") {
+            console.log(sociaVitalicia)
+            if (sociaVitalicia.fecha !== "" && sociaVitalicia.fotoFondo !== "" && sociaVitalicia.fotoMain !== "" && sociaVitalicia.frase !== "" && sociaVitalicia.nombre !== "" && sociaVitalicia.profesion !== "" && sociaVitalicia.spCode !== "") {
+                document.getElementById("btn-download").disabled = false;
+                document.getElementById("btn-download").style.opacity = "1";
+
+            } else {
+                document.getElementById("btn-download").disabled = true;
+                document.getElementById("btn-download").style.opacity = "0.7";
+            }
+        }
+        if (tipo === "noticias") {
+            console.log(noticias)
+            if (noticias.foto !== "" && noticias.titulo !== "") {
+                document.getElementById("btn-download").disabled = false;
+                document.getElementById("btn-download").style.opacity = "1";
+            } else {
+                document.getElementById("btn-download").disabled = true;
+                document.getElementById("btn-download").style.opacity = "0.7";
+            }
+        }
+        if (tipo === "proximoPartido") {
+            console.log(proximoPartido)
+            if (proximoPartido.deporte !== "" && proximoPartido.eqLocal !== "" && proximoPartido.eqVisitante !== "" && proximoPartido.fecha !== "" && proximoPartido.fotoLocal !== "" && proximoPartido.fotoVisitante !== "" && proximoPartido.hora !== "" && proximoPartido.lugar !== "") {
+                document.getElementById("btn-download").disabled = false;
+                document.getElementById("btn-download").style.opacity = "1";
+            } else {
+                document.getElementById("btn-download").disabled = true;
+                document.getElementById("btn-download").style.opacity = "0.7";
+            }
+        }
+        if (tipo === "finalPartido") {
+            console.log(finalPartido)
+            if (finalPartido.deporte !== [] && finalPartido.eqLocal !== "" && finalPartido.eqVisitante !== "" && finalPartido.foto !== "" && finalPartido.pLocal !== "" && finalPartido.pVisitante !== "") {
+                document.getElementById("btn-download").disabled = false;
+                document.getElementById("btn-download").style.opacity = "1";
+            } else {
+                document.getElementById("btn-download").disabled = true;
+                document.getElementById("btn-download").style.opacity = "0.7";
+            }
+        }
+
+
+
     }
     )
     /*  const cropView = () => {
@@ -41,12 +89,14 @@ const Imagen = (props) => {
     }
 
 
+
     return (
         <div id="contenedorImg" style={{ overflow: "hidden" }}>
             <img className="w-full md:w-10/12 mx-auto " id="preview" src={preview} />
             <div className="w-full md:w-10/12 mx-auto pt-4">
-                <button className="btn w-full md:w-auto  bg-orange py-2 px-4 rounded-3xl text-white text-base" id="btn-download" download="post.jpg" onClick={descargarImg}>Descargar </button>
+                <button className="btn disabled:opacity-75 w-full md:w-auto  bg-orange py-2 px-4 rounded-3xl text-white text-base" id="btn-download" download="post.jpg" onClick={descargarImg}>Descargar </button>
             </div>
+            {mensajeError !== "" ? < Alerta tipo={"error"} mensaje={mensajeError} /> : null}
             <div style={{ position: "fixed", top: 0, left: 0, width: "1080px", height: "1080px", position: "relative", }}>
                 <div id="capture" style={{ width: "1080px", height: "1080px", position: "absolute", top: "0", zIndex: -10 }}>
                     {(tipo === "socia") ?

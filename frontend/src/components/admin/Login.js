@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react'
 import { useHistory } from "react-router-dom";
 import { connect } from 'react-redux';
 import Alerta from './Alerta';
+import Input from '../formComponents/Input'
 
 const Login = (props) => {
 
@@ -9,36 +10,45 @@ const Login = (props) => {
 
     let { url } = props
 
-    const [error, setError] = useState("")
+    const [visible, setVisible] = useState(0)
     const [mensaje, setMensaje] = useState("")
-    const user = useRef(null);
-    const pass = useRef(null);
+
+    const [user, setUser] = useState("")
+    const [pass, setPass] = useState("")
 
     const iniciarSesion = () => {
 
-        let usuario = {
-            user: user.current.value,
-            pass: pass.current.value
+        if (user === "" || pass === "") {
+            setMensaje("Los campos no pueden estar vacíos");
+            setVisible(1);
         }
-
-        fetch(`${url}/iniciarsesion`, {
-            method: "POST",
-            body: JSON.stringify(usuario),
-            headers: {
-                'Content-Type': 'application/json'
+        else {
+            let usuario = {
+                user: user,
+                pass: pass
             }
-        }).then(r => r.json())
-            .then(usuario => {
-                console.log(usuario);
 
-                if (usuario === null) {
-                    setError(true)
-                } else {
-                    props.dispatch({ type: "SESION_INICIADA", payload: usuario })
-                    history.push("/admin")
+            fetch(`${url}/iniciarsesion`, {
+                method: "POST",
+                body: JSON.stringify(usuario),
+                headers: {
+                    'Content-Type': 'application/json'
                 }
+            }).then(r => r.json())
+                .then(usuario => {
+                    console.log(usuario);
 
-            })
+                    if (usuario === null) {
+                        setVisible(1)
+                        setMensaje("Usuario o contraseña incorrecto")
+                    } else {
+                        setVisible(0)
+                        props.dispatch({ type: "SESION_INICIADA", payload: usuario })
+                        history.push("/admin")
+                    }
+
+                })
+        }
     }
 
     return (
@@ -56,7 +66,10 @@ const Login = (props) => {
                     <path d="M41.919 52.5204C40.7631 50.0615 38.7842 47.9841 36.1318 46.7356C35.0046 46.205 33.8462 45.8661 32.6888 45.7006C27.5669 44.9685 22.3601 47.6101 20.047 52.5239M51.6613 47.9403C49.4787 43.2975 45.719 39.3502 40.7168 36.9955C38.6095 36.0036 36.4181 35.359 34.212 35.0437C24.5418 33.6615 14.69 38.6278 10.307 47.939" stroke="#FFFCFA" strokeWidth="3.78947" />
                     <path fillRule="evenodd" clipRule="evenodd" d="M36.1323 46.7337C38.7847 47.9823 40.7635 50.0597 41.9195 52.5186L51.6618 47.9384C49.4792 43.2957 45.7195 39.3484 40.7173 36.9937C38.61 36.0017 36.4186 35.3572 34.2125 35.0419C24.5423 33.6597 14.6905 38.626 10.3075 47.9371L20.0475 52.5221C22.3606 47.6083 27.5674 44.9667 32.6893 45.6988C33.8467 45.8642 35.0051 46.2031 36.1323 46.7337Z" fill="#F06F46" />
                 </svg>
-                <div className="mb-6 col-span-1">
+
+                <Input type={"text"} label={"Nombre de usuario"} funcion={setUser} />
+                <Input type={"password"} label={"Contraseña"} funcion={setPass} />
+                {/* <div className="mb-6 col-span-1">
                     <div className="relative border border-black rounded-md px-3 py-2 shadow-sm  ">
                         <label htmlFor="nombre" className="absolute -top-2 left-2 bg-white -mt-px inline-block px-1  text-xs font-medium text-black">Nombre de usuario</label>
                         <input ref={user} required type="text" name="nombre" id="nombre" className="block w-full border-0 p-0 text-black placeholder-black placeholder-opacity-50 focus:ring-0 ring-opacity-0 focus:outline-none sm:text-sm" />
@@ -67,15 +80,13 @@ const Login = (props) => {
                         <label htmlFor="password" className="absolute -top-2 left-2 bg-white -mt-px inline-block px-1  text-xs font-medium text-black">Contraseña</label>
                         <input ref={pass} required type="password" name="password" id="password" className="block w-full border-0 p-0 text-black placeholder-black placeholder-opacity-50 focus:ring-0 ring-opacity-0 focus:outline-none sm:text-sm" />
                     </div>
-                </div>
+                </div> */}
 
                 <button className="bg-orange py-3 px-8 rounded-3xl text-white text-base w-full" onClick={iniciarSesion}>Iniciar Sesión</button>
                 <p className="font-body mt-4 text-sm text-center">¿No tenes una cuenta? Registrate acá</p>
-
-
             </div>
 
-
+            <Alerta tipo={"error"} mensaje={mensaje} visible={visible} funcion={setVisible} />
         </div>
     )
 }

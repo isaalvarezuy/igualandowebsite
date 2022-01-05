@@ -9,7 +9,7 @@ const Input = (props) => {
     return (
 
         <div className="mb-6 col-span-1 group ">
-            {(type === "text" || type === "date") ?
+            {(type === "text" || type === "date" || type === "password") ?
                 <div className="relative border border-black border-opacity-50 group-hover:border-opacity-70 group-focus:border-opacity-100 rounded-md px-3 py-2 shadow-sm  ">
                     <label htmlFor={label} className="absolute -top-2 left-2 bg-white -mt-px inline-block px-1  text-xs font-medium text-black text-opacity-60 group-hover:text-opacity-80 group-focus:text-opacity-100 ">{label}</label>
                     <input type={type} onChange={(e) => { props.funcion(e.target.value) }} required name={label} id={label} className="block w-full border-0 p-0 text-black placeholder-black placeholder-opacity-50 focus:ring-0 ring-opacity-0 focus:outline-none sm:text-sm" />

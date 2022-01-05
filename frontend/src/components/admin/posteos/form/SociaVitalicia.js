@@ -13,7 +13,7 @@ const SociaVitalicia = (props) => {
     let profesion = "";
     let fecha = "";
     let frase = "";
-    let darkMode = true;
+    let darkMode = false;
 
     const [fotoFondoSubida, setFotoFondoSubida] = useState("")
     const [fotoMainSubida, setFotoMainSubida] = useState("")

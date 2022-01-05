@@ -6,7 +6,7 @@ import SubirAlbum from './SubirAlbum'
 import EditarContenido from './EditarContenido'
 import Login from './Login'
 import StoriesContenedor from './stories/StoriesContenedor'
-import FinalPartido from './posteos/posteos/FinalPartido'
+import Alerta from './Alerta'
 
 const Admin = (props) => {
 
@@ -30,6 +30,7 @@ const Admin = (props) => {
                                 <PosteosContenedor />
                     }
                 </div>
+
             }
 
 

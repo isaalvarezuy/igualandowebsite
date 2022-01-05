@@ -9,6 +9,12 @@ import Alerta from './Alerta'
 
 const SubirAlbum = (props) => {
 
+    useEffect(() => {
+        setDeporte(deportes[0].id)
+    }, [])
+
+    const [visible, setVisible] = useState(0)
+    const [tipoMensaje, setTipoMensaje] = useState(0)
     let { albums, deportes, url } = props;
     const [selectedFile, setSelectedFile] = useState([]);
     const [titulo, setTitulo] = useState("");
@@ -19,7 +25,16 @@ const SubirAlbum = (props) => {
     const [albumElegidoId, setAlbumElegidoId] = useState("")
     const [albumElegidoNombre, setAlbumElegidoNombre] = useState("")
 
-    /* me traigo los deportes de la db */
+    useEffect(() => {
+        if (titulo !== "" && deporte !== "" && fecha !== "" && selectedFile !== "") {
+            document.getElementById("btn-upload").disabled = false;
+            document.getElementById("btn-upload").style.opacity = "1";
+        } else {
+            document.getElementById("btn-upload").disabled = true;
+            document.getElementById("btn-upload").style.opacity = "0.7";
+        }
+    }, [titulo, deporte, fecha, selectedFile])
+
 
     const guardarFecha = (e) => {
         console.log(e)
@@ -78,7 +93,9 @@ const SubirAlbum = (props) => {
             .then(r => {
                 console.log(r);
                 props.dispatch({ type: "AGREGAR_ALBUM", payload: r });
-                setMensaje("album subido con exito")
+                setMensaje("Álbum subido con éxito")
+                setTipoMensaje("exito")
+                setVisible(1)
 
             })
 
@@ -86,7 +103,9 @@ const SubirAlbum = (props) => {
 
 
     const uploadImages = () => {
-        setMensaje("subiendo fotos...")
+        setMensaje("Subiendo fotos...")
+        setTipoMensaje("loading")
+        setVisible(1)
         const fotos = selectedFile.map(file => {
             const formData = new FormData()
             formData.append("file", file);
@@ -126,9 +145,8 @@ const SubirAlbum = (props) => {
 
                         <Input type={"multiple files"} label={"Subir fotos"} funcion={setSelectedFile} />
 
-                        <button className="btn block bg-orange py-2 px-4 rounded-3xl text-white text-base mt-4" onClick={crearAlbum}>Subir Album</button>
+                        <button id="btn-upload" className="btn block bg-orange py-2 px-4 rounded-3xl text-white text-base mt-4 " onClick={crearAlbum}>Subir Album</button>
 
-                        {mensaje}
                     </div>
                     <div className="col-span-1">
                         <h2 className="font-body font-semibold text-2xl mb-2" >Albumes</h2>
@@ -137,7 +155,7 @@ const SubirAlbum = (props) => {
                     </div>
                 </div>
             </div>
-            {/*  <Alerta mensaje={mensaje} /> */}
+            <Alerta tipo={tipoMensaje} mensaje={mensaje} visible={visible} funcion={setVisible} />
         </div >
     )
 }

@@ -9,7 +9,7 @@ const Input = (props) => {
     return (
 
         <div className="mb-6 col-span-1 group ">
-            {(type === "text" || type === "date") ?
+            {(type === "text" || type === "date" || type === "password") ?
                 <div className="relative border border-black border-opacity-50 group-hover:border-opacity-70 group-focus:border-opacity-100 rounded-md px-3 py-2 shadow-sm  ">
                     <label htmlFor={label} className="absolute -top-2 left-2 bg-white -mt-px inline-block px-1  text-xs font-medium text-black text-opacity-60 group-hover:text-opacity-80 group-focus:text-opacity-100 ">{label}</label>
                     <input type={type} onChange={(e) => { props.funcion(e.target.value) }} required name={label} id={label} className="block w-full border-0 p-0 text-black placeholder-black placeholder-opacity-50 focus:ring-0 ring-opacity-0 focus:outline-none sm:text-sm" />
@@ -84,9 +84,9 @@ const Input = (props) => {
                                     </div> :
                                     (type = "search") ?
                                         <div className="relative border border-black border-opacity-50 group-hover:border-opacity-70 group-focus:border-opacity-100 rounded-md px-3 py-2 shadow-sm  ">
-                                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
 
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-black text-opacity-50 group-hover:text-opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-black text-opacity-50 group-hover:text-opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                                 </svg>
                                             </div>

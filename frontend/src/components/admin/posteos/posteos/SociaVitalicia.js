@@ -19,7 +19,7 @@ const SociaVitalicia = (props) => {
                     <div className="bgimage" style={{ background: `url(${sociaVitalicia.fotoFondo})  center/cover` }}></div> :
                     <div></div>
                 }
-                <img src="https://res.cloudinary.com/isita/image/upload/v1639943728/sample.jpg" />
+
                 <div className="tarjeta bg-orange">
                     {(sociaVitalicia.fotoMain !== "") ?
                         <div className="foto" style={{ background: `url(${sociaVitalicia.fotoMain})  center/cover` }}></div> :

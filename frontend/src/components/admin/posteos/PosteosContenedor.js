@@ -22,6 +22,9 @@ const PosteosContenedor = (props) => {
         console.log(e.target.value)
     }
 
+    useEffect(() => {
+        setTipoPosteo("socia")
+    }, [])
 
     return (
         <div>
@@ -30,7 +33,7 @@ const PosteosContenedor = (props) => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="col-span-1">
                         <div className="mb-6 col-span-1">
-                            <Input type={"select"} label={"Tipo de Posteo"} funcion={setTipoPosteo} opciones={[{ "nombre": "Otro", "_id": "" }, { "nombre": "Socia Vitalicia", "_id": "socia" }, { "nombre": "Noticias", "_id": "noticias" }, { "nombre": "Próximo Partido", "_id": "proximoPartido" }, { "nombre": "Fin del Partido", "_id": "finalPartido" }]} />
+                            <Input type={"select"} label={"Tipo de Posteo"} funcion={setTipoPosteo} opciones={[{ "nombre": "Socia Vitalicia", "_id": "socia" }, { "nombre": "Noticias", "_id": "noticias" }, { "nombre": "Próximo Partido", "_id": "proximoPartido" }, { "nombre": "Fin del Partido", "_id": "finalPartido" }]} />
                         </div>
 
 

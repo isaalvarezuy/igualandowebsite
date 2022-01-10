@@ -1,6 +1,62 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux'
+import Input from '../formComponents/Input'
+import Alerta from '../admin/Alerta'
 
-const Form = () => {
+const Form = (props) => {
+    let { url } = props
+
+    const [nombre, setNombre] = useState("")
+    const [mail, setMail] = useState("")
+    const [mensaje, setMensaje] = useState("")
+
+    const [mensajeAlerta, setMensajeAlerta] = useState("")
+    const [visible, setVisible] = useState(0)
+    const [tipoMensaje, setTipoMensaje] = useState(0)
+
+
+    useEffect(() => {
+        /* validar boton */
+        if (nombre !== "" && mail !== "" && mensaje !== "") {
+            document.getElementById("btn-form").disabled = false;
+            document.getElementById("btn-form").style.opacity = "1";
+        } else {
+            document.getElementById("btn-form").disabled = true;
+            document.getElementById("btn-form").style.opacity = "0.7";
+        }
+    }, [nombre, mail, mensaje])
+
+
+    const enviarForm = () => {
+        let form = {
+            nombre: nombre,
+            mail: mail,
+            mensaje: mensaje,
+        }
+
+
+        fetch(`${url}/enviarForm`, {
+            method: "POST",
+            body: JSON.stringify(form),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(r => r.json())
+            .then(r => {
+                if (r === "exito") {
+                    setMensajeAlerta("Mensaje enviado con éxito")
+                    setTipoMensaje("exito")
+                    setVisible(1)
+                } else {
+                    setMensajeAlerta("Algo salió mal. Intentá de nuevo.")
+                    setTipoMensaje("error")
+                    setVisible(1)
+                }
+
+            })
+    }
+
+
     return (
         <div className="w-full p-4 md:p-0" style={{ background: "linear-gradient(180deg, rgba(252,253,254,1) 30%, rgba(23,23,23,1) 30%, rgba(23,23,23,1) 100%)" }}>
             <div className="w-full md:w-10/12 mx-auto bg-orange md:p-8 rounded-2xl">
@@ -13,36 +69,18 @@ const Form = () => {
                             </h2>
 
                         <p className="mt-0 md:-mt-4 font-body text-base md:p-0">Si querés ser parte del equipo o querés compartir tu historia ponete en contacto con nosotros!</p>
+                        {mail}-{mensaje}-{nombre}
+                        <div className="mt-4" >
+                            <Input contactForm={true} type={"text"} label={"Nombre"} placeholder={"Escribe tu nombre..."} funcion={setNombre} />
+                            <Input contactForm={true} type={"mail"} label={"Mail"} placeholder={"Escribe tu mail..."} funcion={setMail} />
+                            <Input contactForm={true} type={"textarea"} label={"Mensaje"} placeholder={"Escribe tu mensaje..."} funcion={setMensaje} />
 
-
-                        <form className="mt-4">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-4">
-                                <div className="mb-4 col-span-1">
-                                    <div className="relative border border-black rounded-md px-3 py-2 shadow-sm  ">
-                                        <label htmlFor="nombre" className="absolute -top-2 left-2 -mt-px inline-block px-1 bg-orange text-xs font-medium text-black">Nombre</label>
-                                        <input required type="text" name="nombre" id="nombre" className="block w-full bg-orange border-0 p-0 text-black placeholder-black placeholder-opacity-50 focus:ring-0 ring-opacity-0 focus:outline-none sm:text-sm" placeholder="Escribe tu nombre" />
-                                    </div>
-                                </div>
-                                <div className="mb-4 col-span-1">
-                                    <div className="relative border border-black rounded-md px-3 py-2 shadow-sm ">
-                                        <label htmlFor="mail" className="absolute -top-2 left-2 -mt-px inline-block px-1 bg-orange text-xs font-medium text-black">E-mail</label>
-                                        <input required type="mail" name="mail" id="mail" className="block w-full bg-orange border-0 p-0 text-black placeholder-black placeholder-opacity-50 focus:ring-0 ring-opacity-0 focus:outline-none sm:text-sm" placeholder="Escribe tu mail" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="mb-4">
-                                <div className="relative border border-black rounded-md px-3 py-2 shadow-sm">
-                                    <label htmlFor="mail" className="absolute -top-2 left-2 -mt-px inline-block px-1 bg-orange text-xs font-medium text-black">Mensaje</label>
-                                    <textarea required name="mail" id="mail" className="block w-full border-0 p-0 bg-orange text-black placeholder-black placeholder-opacity-50 focus:ring-0 focus:border-0 ring-opacity-0 focus:outline-none resize-none h-16" placeholder="Escribe tu mensaje" />
-                                </div>
-                            </div>
-                            <button className="text-center block w-full md:w-auto md:inline-block bg-black py-3 px-8 rounded-3xl text-white text-base hover:bg-opacity-80 transition-all">Enviar</button>
-                        </form>
+                            <button onClick={enviarForm} id="btn-form" className="text-center block w-full md:w-auto md:inline-block bg-black py-3 px-8 rounded-3xl text-white text-base hover:bg-opacity-80 transition-all">Enviar</button>
+                        </div>
 
 
                     </div>
-
-
+                    <Alerta tipo={tipoMensaje} mensaje={mensajeAlerta} visible={visible} funcion={setVisible} />
 
                     <div className="hidden md:block col-span-1 flex items-center">
                         <img className="mx-auto w-9/12" srcSet="https://res.cloudinary.com/isita/image/upload/v1636937642/static/Group_101_1x_hjfzqp.png 1x,https://res.cloudinary.com/isita/image/upload/v1636937642/static/Group_101_2x_wgjlzg.png 2x" />
@@ -53,4 +91,10 @@ const Form = () => {
     )
 }
 
-export default Form
+const mapStateToProps = (state) => ({
+    url: state.url
+
+})
+
+
+export default connect(mapStateToProps)(Form)

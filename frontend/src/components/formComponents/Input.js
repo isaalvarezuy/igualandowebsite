@@ -2,19 +2,19 @@ import React, { useState } from 'react'
 
 const Input = (props) => {
 
-    let { label, type, defaultValue, fotoSubida, opciones } = props;
+    let { label, type, defaultValue, fotoSubida, opciones, placeholder, contactForm } = props;
     const [filename, setFilename] = useState("")
     const [fileCount, setFileCount] = useState(0)
 
     return (
 
         <div className="mb-6 col-span-1 group ">
-            {(type === "text" || type === "date" || type === "password") ?
+            {(type === "text" && contactForm === undefined || type === "date" || type === "password") ?
                 <div className="relative border border-black border-opacity-50 group-hover:border-opacity-70 group-focus:border-opacity-100 rounded-md px-3 py-2 shadow-sm  ">
                     <label htmlFor={label} className="absolute -top-2 left-2 bg-white -mt-px inline-block px-1  text-xs font-medium text-black text-opacity-60 group-hover:text-opacity-80 group-focus:text-opacity-100 ">{label}</label>
                     <input type={type} onChange={(e) => { props.funcion(e.target.value) }} required name={label} id={label} className="block w-full border-0 p-0 text-black placeholder-black placeholder-opacity-50 focus:ring-0 ring-opacity-0 focus:outline-none sm:text-sm" />
                 </div> :
-                (type === "textarea") ?
+                (type === "textarea" && contactForm === undefined) ?
                     <div className="relative border border-black border-opacity-50 group-hover:border-opacity-70 group-focus:border-opacity-100 rounded-md px-3 py-2 shadow-sm  ">
                         <label htmlFor={label} className="absolute -top-2 left-2 bg-white -mt-px inline-block px-1  text-xs font-medium text-black text-opacity-60 group-hover:text-opacity-80 group-focus:text-opacity-100 ">{label}</label>
                         <textarea onChange={(e) => { props.funcion(e.target.value) }} name={label} id={label} className="block w-full border-0 p-0 text-black placeholder-black placeholder-opacity-50 focus:ring-0 ring-opacity-0 focus:outline-none sm:text-sm resize-none"></textarea>
@@ -82,7 +82,7 @@ const Input = (props) => {
                                         </div>
 
                                     </div> :
-                                    (type = "search") ?
+                                    (type === "search") ?
                                         <div className="relative border border-black border-opacity-50 group-hover:border-opacity-70 group-focus:border-opacity-100 rounded-md px-3 py-2 shadow-sm  ">
                                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
 
@@ -91,10 +91,17 @@ const Input = (props) => {
                                                 </svg>
                                             </div>
 
-                                            <input placeholder={label} type={type} onChange={(e) => { props.funcion(e.target.value) }} required name={label} id={label} className=" pl-8 block w-full border-0 p-0 text-black placeholder-black placeholder-opacity-50 focus:ring-0 ring-opacity-0 focus:outline-none sm:text-sm" />
+                                            <input placeholder={label} type="text" onChange={(e) => { props.funcion(e.target.value) }} required name={label} id={label} className=" pl-8 block w-full border-0 p-0 text-black placeholder-black placeholder-opacity-50 focus:ring-0 ring-opacity-0 focus:outline-none sm:text-sm" />
                                         </div>
-                                        :
-                                        ""
+                                        : (contactForm === true && type !== "textarea") ?
+                                            <div className="relative border border-black border-opacity-50 group-hover:border-opacity-70 group-focus:border-opacity-100 rounded-md px-3 py-2 shadow-sm  ">
+                                                <label htmlFor={label} className=" bg-orange absolute -top-2 left-2 bg-white -mt-px inline-block px-1  text-xs font-medium text-black text-opacity-60 group-hover:text-opacity-80 group-focus:text-opacity-100 ">{label}</label>
+                                                <input type={type} onChange={(e) => { props.funcion(e.target.value) }} placeholder={props.placeholder} required name={label} id={label} className=" bg-orange block w-full border-0 p-0 text-black placeholder-black placeholder-opacity-50 focus:ring-0 ring-opacity-0 focus:outline-none sm:text-sm" />
+                                            </div> : (type === "textarea" && contactForm === true) ?
+                                                <div className="relative border border-black border-opacity-50 group-hover:border-opacity-70 group-focus:border-opacity-100 rounded-md px-3 py-2 shadow-sm  ">
+                                                    <label htmlFor={label} className=" bg-orange absolute -top-2 left-2 bg-white -mt-px inline-block px-1  text-xs font-medium text-black text-opacity-60 group-hover:text-opacity-80 group-focus:text-opacity-100 ">{label}</label>
+                                                    <textarea placeholder={placeholder} onChange={(e) => { props.funcion(e.target.value) }} name={label} id={label} className="bg-orange block w-full border-0 p-0 text-black placeholder-black placeholder-opacity-50 focus:ring-0 ring-opacity-0 focus:outline-none sm:text-sm resize-none"></textarea>
+                                                </div> : ""
 
             }
 

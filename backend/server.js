@@ -8,7 +8,17 @@ let Dato = require("./modelos/Dato");
 let Deporte = require("./modelos/Deporte");
 let Usuario = require("./modelos/Usuario");
 
+
 let mongoose = require("mongoose");
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'isabeltendenciasdeldiseno@gmail.com',
+        pass: 'pruebamailinator'
+    }
+});
 
 mongoose.connect("mongodb+srv://admin:admin@cluster0.8eqwb.mongodb.net/igualando?retryWrites=true&w=majority",
     { useNewUrlParser: true }
@@ -44,6 +54,8 @@ app.post("/iniciarsesion", (req, res) => {
     })
 
 })
+
+
 
 app.get("/listarDeportes", (req, res) => {
     Deporte.find((err, deporte) => {
@@ -96,6 +108,28 @@ app.post("/crearAlbum", (req, res) => {
         if (err) return res.json({ mensaje: "Error al insertar" });
         res.json(album);
     })
+})
+app.post("/enviarForm", (req, res) => {
+    console.log(req.body);
+
+    var mailOptions = {
+        from: `${req.body.mail}`,
+        to: 'isabelalvence@gmail.com',
+        subject: `Mensaje de ${req.body.nombre} - desde igualandolacancha.com`,
+        html: `<h2>Recibiste el siguiente mensaje desde el formulario de contacto de tu sitio web</h2><br>
+        ${req.body.mensaje}<br>
+        <br>
+        Enviado por  ${req.body.nombre} desde ${req.body.mail}`
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            res.json("error");
+        } else {
+            console.log('Email sent: ' + info.response);
+            res.json("exito");
+        }
+    });
 })
 
 app.delete("/eliminarAlbum", (req, res) => {

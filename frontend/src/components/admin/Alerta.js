@@ -15,7 +15,7 @@ const Alerta = (props) => {
     }, [visible]);
 
     return (
-        <div className="duration-500 fixed  bottom-8 mx-auto" style={{ width: '400px', left: 'calc(50% - 200px)', opacity: `${visible}` }}>
+        <div className="duration-500 fixed  bottom-8 mx-auto" style={{ width: '400px', left: 'calc(50% - 200px)', opacity: `${visible}`, zIndex: 9999999 }}>
             {(tipo === "error") ?
                 <div className="rounded-md shadow-sm bg-red-500 w-full p-4 w-10/12 flex flex-row items-center ">
 

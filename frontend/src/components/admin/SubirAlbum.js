@@ -55,6 +55,9 @@ const SubirAlbum = (props) => {
                 console.log(album);
                 props.dispatch({ type: "ELIMINAR_ALBUM", payload: album });
                 cerrarPopup();
+                setMensaje("Album eliminado con éxito")
+                setTipoMensaje("exito")
+                setVisible(1)
 
             })
     }

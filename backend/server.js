@@ -55,12 +55,35 @@ app.post("/iniciarsesion", (req, res) => {
 
 })
 
+app.post("/insertar", (req, res) => {
+    console.log(req.body);
+
+    let usuario = new Usuario({
+        user: req.body.user,
+        pass: req.body.pass,
+        nombreCompleto: req.body.nombreCompleto,
+        rol: req.body.rol,
+        apodo: req.body.apodo,
+        explicacion: req.body.explicacion,
+        avatar: req.body.avatar,
+    })
+    usuario.save((err, usuario) => {
+        if (err) return res.json({ mensaje: "Error al insertar" });
+        res.json(usuario);
+    })
+})
 
 
 app.get("/listarDeportes", (req, res) => {
     Deporte.find((err, deporte) => {
         if (err) return res.json({ mensaje: "Error al consultar" });
         res.json(deporte);
+    })
+})
+app.get("/listarUsuarios", (req, res) => {
+    Usuario.find((err, usuario) => {
+        if (err) return res.json({ mensaje: "Error al consultar" });
+        res.json(usuario);
     })
 })
 

@@ -69,7 +69,7 @@ const Form = (props) => {
                             </h2>
 
                         <p className="mt-0 md:-mt-4 font-body text-base md:p-0">Si querés ser parte del equipo o querés compartir tu historia ponete en contacto con nosotros!</p>
-                        {mail}-{mensaje}-{nombre}
+
                         <div className="mt-4" >
                             <Input contactForm={true} type={"text"} label={"Nombre"} placeholder={"Escribe tu nombre..."} funcion={setNombre} />
                             <Input contactForm={true} type={"mail"} label={"Mail"} placeholder={"Escribe tu mail..."} funcion={setMail} />

@@ -8,6 +8,8 @@ import Login from './Login'
 import StoriesContenedor from './stories/StoriesContenedor'
 import Alerta from './Alerta'
 
+import IntegranteStory from './stories/IntegranteStory'
+
 const Admin = (props) => {
 
     console.log(props.location.aboutProps)
@@ -32,6 +34,7 @@ const Admin = (props) => {
                 </div>
 
             }
+            {/*  <IntegranteStory integrante={"61de177df900c63ba93c6693"} /> */}
 
 
         </div>

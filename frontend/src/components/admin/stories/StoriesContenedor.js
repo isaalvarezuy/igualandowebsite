@@ -1,11 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import NavbarAdmin from '../NavbarAdmin'
 import Programa from './form/Programa'
 import ReactPlayer from 'react-player'
 import Input from '../../formComponents/Input'
+import IntegranteStory from './IntegranteStory'
+import Switch from '../../formComponents/Switch'
+import FormIntegranteStory from './form/FormIntegranteStory'
 
 const StoriesContenedor = (props) => {
+
+
+
 
     const [tipoPosteo, setTipoPosteo] = useState("")
     const [video, setVideo] = useState("")
@@ -23,18 +29,27 @@ const StoriesContenedor = (props) => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="col-span-1">
                         <div className="mb-6 col-span-1">
-                            <Input type={"select"} label={"Tipo de Story"} funcion={setTipoPosteo} opciones={[{ "nombre": "Otro", "_id": "" }, { "nombre": "Próximo Programa", "_id": "programa" }]} />
+                            <Input type={"select"} label={"Tipo de Story"} funcion={setTipoPosteo} opciones={[{ "nombre": "Conocé al equipo", "_id": "equipo" }, { "nombre": "Próximo Programa", "_id": "programa" }]} />
                         </div>
                         {
                             (tipoPosteo === "programa") ?
                                 <Programa funcion={setVideo} /> :
-                                <div></div>
+                                (tipoPosteo === "equipo") ?
+                                    <div>
+                                        <FormIntegranteStory />
+                                    </div> : ""
                         }
 
 
                     </div>
                     <div className="col-span-1">
-                        <ReactPlayer playing={true} volume={0} height="500px" loop={true} url={video} className="mx-auto" />
+                        {(tipoPosteo === "programa") ?
+                            <ReactPlayer playing={true} volume={0} height="500px" loop={true} url={video} className="mx-auto" /> :
+                            (tipoPosteo === "equipo") ?
+                                <div>
+                                    <IntegranteStory />
+                                </div> : ""}
+
                     </div>
 
                 </div>
@@ -44,7 +59,8 @@ const StoriesContenedor = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-    url: state.url
+    url: state.url,
+    usuarios: state.usuarios
 })
 
 

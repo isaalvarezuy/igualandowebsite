@@ -21,9 +21,16 @@ export const reducer = (state = initialState, action) => {
         case "AGREGAR_ALBUM":
             return { ...state, albums: [...state.albums, action.payload] }
 
+        case "AGREGAR_USUARIO":
+            return { ...state, usuarios: [...state.usuarios, action.payload] }
+
         case "ELIMINAR_ALBUM":
             let albumsNuevos = state.albums.filter(album => album._id !== action.payload._id);
             return { ...state, albums: albumsNuevos }
+
+        case "ELIMINAR_USUARIO":
+            let usuariosNuevos = state.usuarios.filter(usuario => usuario._id !== action.payload._id);
+            return { ...state, usuarios: usuariosNuevos }
 
         case "EQUIPOS_ELEGIDOS":
             return { ...state, equipo1: action.payload }

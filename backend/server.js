@@ -162,6 +162,13 @@ app.delete("/eliminarAlbum", (req, res) => {
         res.json(album);
     })
 })
+app.delete("/eliminarUsuario", (req, res) => {
+    console.log(req.body)
+    Usuario.findByIdAndDelete(req.body.idBorrar, (err, usuario) => {
+        if (err) return res.json({ mensaje: "Error al eliminar album" });
+        res.json(usuario);
+    })
+})
 
 
 

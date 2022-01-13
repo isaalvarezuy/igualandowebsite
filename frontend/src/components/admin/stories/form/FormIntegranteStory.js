@@ -45,7 +45,7 @@ export const FormIntegranteStory = (props) => {
     return (
 
         <div>
-            <Input type={"select"} label={"Integrante"} opciones={usuariosSelect} funcion={guardarIntegrante} />
+            <Input type={"select"} label={"Integrante"} defaultValue={"Elegí un integrante"} opciones={usuariosSelect} funcion={guardarIntegrante} />
             <Switch funcion={guardarDarkMode} />
         </div>
     )

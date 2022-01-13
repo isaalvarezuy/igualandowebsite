@@ -28,14 +28,23 @@ export const IntegranteStory = (props) => {
 
     }
     )
-
-
-
-
+    const descargarImg = () => {
+        domtoimage.toJpeg(document.getElementById('storyEquipo'), { quality: 0.95 })
+            .then(function (dataUrl) {
+                /*  console.log(dataUrl) */
+                var link = document.createElement('a');
+                link.download = `story ${usuario[0].nombreCompleto}.jpeg`;
+                link.href = dataUrl;
+                link.click();
+            });
+    }
 
     return (
         <div>
-            <img className="w-full md:w-1/2 mx-auto " id="preview" src={preview} />
+            <img className="w-full md:w-1/3 mx-auto " id="preview" src={preview} />
+            <div className="w-full md:w-10/12 mx-auto pt-4">
+                <button className="btn disabled:opacity-75 w-full md:w-auto  bg-orange py-2 px-4 rounded-3xl text-white text-base" id="btn-download" download="post.jpg" onClick={descargarImg}>Descargar </button>
+            </div>
             <div className={storyEquipo.darkMode === true ? 'dark' : ''}>
                 <div id="storyEquipo" className="bg-white dark:bg-black relative" style={{ width: '1080px', height: '1920px' }}>
                     <svg className="absolute top-0 left-0" xmlns="http://www.w3.org/2000/svg" width="123" height="840" viewBox="0 0 123 840" fill="none">

@@ -80,7 +80,7 @@ const Form = (props) => {
 
 
                     </div>
-                    <Alerta tipo={tipoMensaje} mensaje={mensajeAlerta} visible={visible} funcion={setVisible} />
+                    <Alerta tipo={tipoMensaje} mensaje={mensajeAlerta} visible={visible} funcion={setVisible} duracion={2000} />
 
                     <div className="hidden md:block col-span-1 flex items-center">
                         <img className="mx-auto w-9/12" srcSet="https://res.cloudinary.com/isita/image/upload/v1636937642/static/Group_101_1x_hjfzqp.png 1x,https://res.cloudinary.com/isita/image/upload/v1636937642/static/Group_101_2x_wgjlzg.png 2x" />

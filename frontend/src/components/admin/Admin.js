@@ -6,9 +6,7 @@ import SubirAlbum from './SubirAlbum'
 import EditarContenido from './EditarContenido'
 import Login from './Login'
 import StoriesContenedor from './stories/StoriesContenedor'
-import Alerta from './Alerta'
-
-import IntegranteStory from './stories/IntegranteStory'
+import GestionarUsuarios from './GestionarUsuarios'
 
 const Admin = (props) => {
 
@@ -29,7 +27,9 @@ const Admin = (props) => {
                             <EditarContenido /> :
                             (pagina === "nuevaStory") ?
                                 <StoriesContenedor /> :
-                                <PosteosContenedor />
+                                (pagina === "gestionarUsuarios") ?
+                                    <GestionarUsuarios /> :
+                                    <PosteosContenedor />
                     }
                 </div>
 

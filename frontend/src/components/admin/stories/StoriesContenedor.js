@@ -16,6 +16,9 @@ const StoriesContenedor = (props) => {
     const [tipoPosteo, setTipoPosteo] = useState("")
     const [video, setVideo] = useState("")
 
+    useEffect(() => {
+        setTipoPosteo("equipo")
+    }, [])
     const armarForm = (e) => {
         console.log(e.target.value)
     }

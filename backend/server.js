@@ -64,7 +64,6 @@ app.post("/insertar", (req, res) => {
         nombreCompleto: req.body.nombreCompleto,
         rol: req.body.rol,
         apodo: req.body.apodo,
-        explicacion: req.body.explicacion,
         avatar: req.body.avatar,
     })
     usuario.save((err, usuario) => {

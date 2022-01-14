@@ -10,21 +10,27 @@ export const FormIntegranteStory = (props) => {
     const [usuariosSelect, setUsuariosSelect] = useState([])
     let integrante;
     let darkMode = false;
+    let descripcion;
 
-    let guardarDatos = (integrante, darkMode) => {
+    let guardarDatos = (integrante, darkMode, descripcion) => {
         props.dispatch({
-            type: "STORY_EQUIPO", payload: { "integrante": integrante, "darkMode": darkMode }
+            type: "STORY_EQUIPO", payload: { "integrante": integrante, "darkMode": darkMode, "descripcion": descripcion }
         });
     }
 
     const guardarIntegrante = (recibido) => {
         integrante = recibido
-        guardarDatos(integrante, darkMode)
+        guardarDatos(integrante, darkMode, descripcion)
     }
 
     const guardarDarkMode = (recibido) => {
         darkMode = recibido
-        guardarDatos(integrante, darkMode)
+        guardarDatos(integrante, darkMode, descripcion)
+    }
+
+    const guardarDescripcion = (recibido) => {
+        descripcion = recibido
+        guardarDatos(integrante, darkMode, descripcion)
     }
 
 
@@ -47,6 +53,7 @@ export const FormIntegranteStory = (props) => {
         <div>
             <Input type={"select"} label={"Integrante"} defaultValue={"Elegí un integrante"} opciones={usuariosSelect} funcion={guardarIntegrante} />
             <Switch funcion={guardarDarkMode} />
+            <Input type={"textarea"} label={"Mini descripción"} funcion={guardarDescripcion} />
         </div>
     )
 }

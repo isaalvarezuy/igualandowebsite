@@ -7,7 +7,6 @@ let usuarioSchema = new Schema({
     nombreCompleto: String,
     rol: String,
     apodo: String,
-    explicacion: String,
     avatar: String,
 });
 

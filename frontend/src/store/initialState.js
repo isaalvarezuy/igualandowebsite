@@ -27,7 +27,7 @@ export const initialState = {
         { id: 5, src: "https://res.cloudinary.com/isita/image/upload/v1641861366/static/fondos/Property_1_Variant5_cp76k0.png" }
     ],
     usuarios: [],
-    storyEquipo: { integrante: "", darkMode: false }
+    storyEquipo: { integrante: "", darkMode: false, descripcion: "" }
 
 }
 

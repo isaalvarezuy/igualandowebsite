@@ -48,7 +48,7 @@ export const reducer = (state = initialState, action) => {
             return { ...state, finalPartido: { "eqLocal": action.payload.eqLocal, "eqVisitante": action.payload.eqVisitante, "pLocal": action.payload.pLocal, "pVisitante": action.payload.pVisitante, "foto": action.payload.foto, "deporte": action.payload.deporte, "darkMode": action.payload.darkMode } }
 
         case "STORY_EQUIPO":
-            return { ...state, storyEquipo: { "integrante": action.payload.integrante, "darkMode": action.payload.darkMode } }
+            return { ...state, storyEquipo: { "integrante": action.payload.integrante, "darkMode": action.payload.darkMode, "descripcion": action.payload.descripcion } }
 
         case "SESION_INICIADA":
             return { ...state, usuarioLogueado: action.payload }

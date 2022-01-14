@@ -19,7 +19,6 @@ export const Registro = (props) => {
     const [nombreCompleto, setNombreCompleto] = useState("")
     const [rol, setRol] = useState("")
     const [apodo, setApodo] = useState("")
-    const [explicacion, setExplicacion] = useState("")
     const [fondo, setFondo] = useState("")
     const [base64img, setBase64img] = useState("")
     const [avatar, setAvatar] = useState("")
@@ -27,14 +26,14 @@ export const Registro = (props) => {
     useEffect(() => {
         console.log(avatar)
 
-        if (user !== "" && nombreCompleto !== "" && rol !== "" && apodo !== "" && explicacion !== "" && fondo !== "" && avatar !== "") {
+        if (user !== "" && nombreCompleto !== "" && rol !== "" && apodo !== "" && fondo !== "" && avatar !== "") {
             document.getElementById("btn-create").disabled = false;
             document.getElementById("btn-create").style.opacity = "1";
         } else {
             document.getElementById("btn-create").disabled = true;
             document.getElementById("btn-create").style.opacity = "0.7";
         }
-    }, [user, nombreCompleto, rol, apodo, explicacion, fondo, avatar])
+    }, [user, nombreCompleto, rol, apodo, fondo, avatar])
 
     const crearUsuario = () => {
 
@@ -48,7 +47,6 @@ export const Registro = (props) => {
             nombreCompleto: nombreCompleto,
             rol: rol,
             apodo: apodo,
-            explicacion: explicacion,
             avatar: avatar
         }
 
@@ -65,6 +63,7 @@ export const Registro = (props) => {
                 setTipoMensaje("exito")
                 setVisible(1)
                 props.dispatch({ type: "AGREGAR_USUARIO", payload: resp });
+                props.cerrarPopupRegistro();
             })
 
     }
@@ -107,7 +106,9 @@ export const Registro = (props) => {
                         Axios.post("https://api.cloudinary.com/v1_1/isita/image/upload", formData).then((r) => {
                             console.log(r.data.url)
                             setAvatar(r.data.url)
-                            setVisible(0)
+                            setMensaje("Avatar creado")
+                            setTipoMensaje("exito")
+                            setVisible(1)
                         })
                     })
 
@@ -123,38 +124,48 @@ export const Registro = (props) => {
     }
 
     return (
-        <div className="w-full">
-            <Alerta tipo={tipoMensaje} mensaje={mensaje} visible={visible} funcion={setVisible} duracion={3000} />
-            <h2 className="font-body font-semibold text-2xl mb-2" >Agregar Usuario</h2>
-            <Input type={"text"} label={"Nombre de Usuario"} funcion={setUser} />
-            <Input type={"text"} label={"Nombre Completo"} funcion={setNombreCompleto} />
-            <Input type={"text"} label={"Rol"} funcion={setRol} />
-            <Input type={"text"} label={"Apodo"} funcion={setApodo} />
-            <Input type={"textarea"} label={"Explicación"} funcion={setExplicacion} />
+        <div className=" fixed h-full w-full flex items-center jusitfy-center z-50 bg-black bg-opacity-20 ">
+            <div className="w-8/12 mx-auto bg-white p-12 pt-6 h-auto rounded-xl">
+                <div className="w-full flex justify-end"><button className="group" onClick={(e) => { props.cerrarPopupRegistro() }} >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                </div>
+                <div className="grid grid-cols-2">
+                    <div className="grid-colspan-1">
+                        <Alerta tipo={tipoMensaje} mensaje={mensaje} visible={visible} funcion={setVisible} duracion={3000} />
+                        <h2 className="font-body font-semibold text-2xl mb-2" >Agregar Usuario</h2>
+                        <Input type={"text"} label={"Nombre de Usuario"} funcion={setUser} />
+                        <Input type={"text"} label={"Nombre Completo"} funcion={setNombreCompleto} />
+                        <Input type={"text"} label={"Rol"} funcion={setRol} />
+                        <Input type={"text"} label={"Apodo"} funcion={setApodo} />
 
-            <p className="font-body text-md">Elegí un fondo para el avatar</p>
-            <div className="flex mb-4">
+                        <p className="font-body text-md">Elegí un fondo para el avatar</p>
+                        <div className="flex mb-4">
 
-                {fondos.map(fondo => <img className="imgFondo " onClick={(e) => {
-                    let imagenes = document.getElementsByClassName("imgFondo");
-                    for (let i = 0; i < imagenes.length; i++) {
-                        imagenes[i].classList.remove("border-orange");
-                        imagenes[i].classList.remove("border-2");
-                    }
-                    e.target.classList.add("border-orange")
-                    e.target.classList.add("border-2")
-                    setFondo(e.target.src)
-                }} style={{ width: '80px', height: '80px', margin: '10px', borderRadius: '100%' }} key={fondo.id} data-id={fondo.id} src={fondo.src} />)}
+                            {fondos.map(fondo => <img className="imgFondo " onClick={(e) => {
+                                let imagenes = document.getElementsByClassName("imgFondo");
+                                for (let i = 0; i < imagenes.length; i++) {
+                                    imagenes[i].classList.remove("border-orange");
+                                    imagenes[i].classList.remove("border-2");
+                                }
+                                e.target.classList.add("border-orange")
+                                e.target.classList.add("border-2")
+                                setFondo(e.target.src)
+                            }} style={{ width: '80px', height: '80px', margin: '10px', borderRadius: '100%' }} key={fondo.id} data-id={fondo.id} src={fondo.src} />)}
+                        </div>
+                        <Input type={"file"} label={"Foto del Avatar"} funcion={subirFoto} />
+                        <button className=" w-full md:w-auto  bg-orange py-2 px-4 rounded-3xl text-white text-base" id="btn-create" onClick={crearUsuario}>Crear usuario </button>
+                    </div>
+
+                    <div className="grid-colspan-1 pl-24">
+                        <div id="avatar" style={{ width: '400px', height: '400px', borderRadius: '100%', background: `url(${fondo}) center center /cover` }}>
+                            <div style={{ width: '400px', height: '400px', borderRadius: '100%', background: `url(data:image/png;base64,${base64img}) center center/contain no-repeat` }}></div>
+                        </div></div>
+                </div>
             </div>
-            <Input type={"file"} label={"Foto del Avatar"} funcion={subirFoto} />
-            <button className=" w-full md:w-auto  bg-orange py-2 px-4 rounded-3xl text-white text-base" id="btn-create" onClick={crearUsuario}>Crear usuario </button>
-
-
-
-            <div id="avatar" style={{ width: '400px', height: '400px', borderRadius: '100%', background: `url(${fondo}) center center /cover` }}>
-                <div style={{ width: '400px', height: '400px', borderRadius: '100%', background: `url(data:image/png;base64,${base64img}) center center/contain no-repeat` }}></div>
-            </div>
-        </div>
+        </div >
 
     )
 }

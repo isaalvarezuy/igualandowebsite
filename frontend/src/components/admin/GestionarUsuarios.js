@@ -4,6 +4,7 @@ import Registro from './Registro'
 import TablaUsuarios from './TablaUsuarios'
 import Popup from './posteos/Popup'
 import Alerta from './Alerta'
+import EditarUsuario from './EditarUsuario'
 
 export const GestionarUsuarios = (props) => {
 
@@ -12,9 +13,11 @@ export const GestionarUsuarios = (props) => {
     const [mensaje, setMensaje] = useState("")
     const [tipoMensaje, setTipoMensaje] = useState("")
     const [popup, setPopup] = useState(false)
+    const [popupRegistro, setPopupRegistro] = useState(false)
     const [visible, setVisible] = useState("")
     const [idBorrar, setIdBorrar] = useState("")
     const [nombreBorrar, setNombreBorrar] = useState("")
+
 
 
 
@@ -39,15 +42,23 @@ export const GestionarUsuarios = (props) => {
     }
 
     const abrirPopup = (recibido) => {
-        console.log(recibido.target.dataset)
+        /*   console.log(recibido.target.dataset) */
         setIdBorrar(recibido.target.dataset.id)
         setNombreBorrar(recibido.target.dataset.nombre)
         setPopup(true)
+
+
     }
 
     const cerrarPopup = () => {
         setPopup(false)
     }
+
+    const cerrarPopupRegistro = () => {
+        setPopupRegistro(false)
+    }
+
+
 
     return (
         <div>
@@ -56,19 +67,23 @@ export const GestionarUsuarios = (props) => {
                 < Popup className={`${popup}`} borrarAlbum={borrarUsuario} idBorrar={idBorrar} nombreBorrar={nombreBorrar} cerrarPopup={cerrarPopup} />
                 : ""}
 
+            {(popupRegistro !== false) ?
+                < Registro cerrarPopupRegistro={cerrarPopupRegistro} />
+                : ""}
+
+
 
             <div className="w-full p-4  md:p-0 md:w-10/12 mx-auto pt-24 md:pt-48 w-10/12 mx-auto ">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <div className="col-span-1">
-                        <Registro />
 
-                    </div>
                     <div className="col-span-1">
                         <h2 className="font-body font-semibold text-2xl mb-2" >Usuarios</h2>
 
                         <TablaUsuarios abrirPopup={abrirPopup} />
+                        <button className=" mt-4 w-full md:w-auto  bg-orange py-2 px-4 rounded-3xl text-white text-base" onClick={() => setPopupRegistro(true)}>Agregar usuario </button>
                         {/*    <Tabla abrirPopup={abrirPopup} albums={albums} /> */}
                     </div>
+
                 </div>
             </div>
             <Alerta tipo={tipoMensaje} mensaje={mensaje} visible={visible} funcion={setVisible} duracion={2000} />

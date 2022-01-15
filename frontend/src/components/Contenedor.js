@@ -9,7 +9,7 @@ import AmpliacionFoto from './client/AmpliacionFoto'
 import PosteosContenedor from './admin/posteos/PosteosContenedor'
 import Login from './admin/Login'
 import Admin from './admin/Admin'
-import RemotionTest from './admin/RemotionTest'
+import Registro from './admin/Registro'
 import { connect } from 'react-redux'
 
 const Contenedor = (props) => {
@@ -30,6 +30,15 @@ const Contenedor = (props) => {
                         props.dispatch({
                             type: "LISTAR_DEPORTES", payload: r
                         });
+                        fetch(`${url}/listarUsuarios`, {
+                            method: "GET",
+                        }).then(r => r.json())
+                            .then(r => {
+                                props.dispatch({
+                                    type: "LISTAR_USUARIOS", payload: r
+                                });
+
+                            })
 
                     })
 
@@ -48,7 +57,7 @@ const Contenedor = (props) => {
                 <Route path="/admin/actualizar" component={EditarContenido} />
                 <Route path="/admin/subir" component={SubirAlbum} />
                 <Route path="/admin/nuevoposteo" component={PosteosContenedor} />
-                <Route path="/remotion" component={RemotionTest} />
+                <Route path="/registro" component={Registro} />
             </Switch>
 
 

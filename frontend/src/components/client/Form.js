@@ -69,7 +69,7 @@ const Form = (props) => {
                             </h2>
 
                         <p className="mt-0 md:-mt-4 font-body text-base md:p-0">Si querés ser parte del equipo o querés compartir tu historia ponete en contacto con nosotros!</p>
-                        {mail}-{mensaje}-{nombre}
+
                         <div className="mt-4" >
                             <Input contactForm={true} type={"text"} label={"Nombre"} placeholder={"Escribe tu nombre..."} funcion={setNombre} />
                             <Input contactForm={true} type={"mail"} label={"Mail"} placeholder={"Escribe tu mail..."} funcion={setMail} />
@@ -80,7 +80,7 @@ const Form = (props) => {
 
 
                     </div>
-                    <Alerta tipo={tipoMensaje} mensaje={mensajeAlerta} visible={visible} funcion={setVisible} />
+                    <Alerta tipo={tipoMensaje} mensaje={mensajeAlerta} visible={visible} funcion={setVisible} duracion={2000} />
 
                     <div className="hidden md:block col-span-1 flex items-center">
                         <img className="mx-auto w-9/12" srcSet="https://res.cloudinary.com/isita/image/upload/v1636937642/static/Group_101_1x_hjfzqp.png 1x,https://res.cloudinary.com/isita/image/upload/v1636937642/static/Group_101_2x_wgjlzg.png 2x" />

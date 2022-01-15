@@ -19,6 +19,15 @@ export const initialState = {
     ],
     usuarioLogueado: "",
     url: "http://localhost:3001",
+    fondos: [
+        { id: 1, src: "https://res.cloudinary.com/isita/image/upload/v1641861366/static/fondos/Property_1_2_cas5lb.png" },
+        { id: 2, src: "https://res.cloudinary.com/isita/image/upload/v1641861366/static/fondos/Property_1_3_wu8a5t.png" },
+        { id: 3, src: "https://res.cloudinary.com/isita/image/upload/v1641861366/static/fondos/Property_1_4_cs2cal.png" },
+        { id: 4, src: "https://res.cloudinary.com/isita/image/upload/v1641861366/static/fondos/Property_1_1_nk4ghu.png" },
+        { id: 5, src: "https://res.cloudinary.com/isita/image/upload/v1641861366/static/fondos/Property_1_Variant5_cp76k0.png" }
+    ],
+    usuarios: [],
+    storyEquipo: { integrante: "", darkMode: false, descripcion: "" }
 
 }
 

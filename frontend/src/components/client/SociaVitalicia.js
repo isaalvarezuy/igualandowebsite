@@ -72,12 +72,12 @@ const SociaVitalicia = () => {
         <div className="w-full md:w-10/12 mx-auto">
             <div className="grid grid cols-1 md:grid-cols-2 p-4 lg:py-24">
 
-                <div className="col-span-1 ">
+                <div className="col-span-1 md:pt-8 lg:pt-0">
                     <h2 className="md:hidden py-4 font-title text-5.5xl lg:text-hero text-left relative">Socias vitalicias
                     <div className="absolute bottom-6 md:bottom-6 right-8 md:left-96" style={{ width: '118px' }}> {renderLottie && <TitleArrowLottie />}</div>
                     </h2>
-                    <div className="relative mx-auto w-full h-28 md:w-96 md:h-100">
-                        <div className="hidden md:block w-64 text-center bg-black rounded-xl py-4  left-16 absolute z-30">
+                    <div className="relative mx-auto w-full h-28 lg:w-96 md:h-100">
+                        <div className="hidden  mx-auto md:block w-64 text-center bg-black rounded-xl py-4  lg:left-16 absolute z-30">
                             {(episodio !== undefined) ?
                                 <div className="">
                                     <img className="w-56 mx-auto rounded-xl mb-4" src="https://res.cloudinary.com/isita/image/upload/v1638128101/static/Instagram_post_-_59_eb6mfy.png" />
@@ -118,12 +118,10 @@ const SociaVitalicia = () => {
                                 <div></div>
                             }   </div>
 
-                        <div className="hidden md:block md:w-auto absolute bottom-4 md:-bottom-6 right-0" style={{ width: '367px' }}>
+                        <div className="hidden lg:block md:w-auto absolute bottom-4 md:-bottom-6 right-0" style={{ width: '367px' }}>
                             {renderLottie2 && <OrangeCurvedLottie />}
                         </div>
-                        {/*  <svg className="hidden md:block md:w-auto absolute bottom-4 md:-bottom-6 right-0" xmlns="http://www.w3.org/2000/svg" width="367" height="70" viewBox="0 0 367 70" fill="none">
-                            <path d="M361.788 35.4349C365.359 75.5115 322.511 75.5115 326.081 35.4349C329.652 -4.64169 286.804 -4.64169 290.374 35.4349C293.945 75.5115 251.097 75.5115 254.667 35.4349C258.238 -4.64169 215.39 -4.6417 218.96 35.4349C222.531 75.5115 179.683 75.5115 183.253 35.4349C186.824 -4.6417 143.976 -4.6417 147.546 35.4349C151.117 75.5115 108.269 75.5115 111.839 35.4349C115.41 -4.6417 72.5616 -4.64171 76.1323 35.4349C79.703 75.5115 36.8546 75.5115 40.4253 35.4349C43.996 -4.64171 1.14755 -4.64171 4.71825 35.4349" stroke="#F06F46" strokeWidth="8.90591" />
-                        </svg> */}
+
                         <svg className="h-full md:h-auto absolute -top-5 left-1" xmlns="http://www.w3.org/2000/svg" width="112" height="204" viewBox="0 0 112 204" fill="none">
                             <mask id="path-1-inside-1_15:2488" fill="white">
                                 <path d="M1.95638 200.256C2.78481 200.256 3.45638 200.928 3.45638 201.756C3.45638 202.584 2.78481 203.256 1.95638 203.256C1.12796 203.256 0.456383 202.584 0.456383 201.756C0.456383 200.928 1.12796 200.256 1.95638 200.256Z" />
@@ -357,12 +355,12 @@ const SociaVitalicia = () => {
                     </div>
 
                 </div>
-                <div className="col-span-1 text-right flex align-center">
+                <div className="col-span-1  lg:text-right flex align-center">
                     <div className="self-center">
-                        <h2 className="hidden md:block font-title text-5xl lg:text-hero text-right relative">Socias vitalicias
-                        <div className="absolute right-96 bottom-0 md:bottom-6" style={{ width: '118px' }}> {renderLottie && <TitleArrowLottie />}</div>
+                        <h2 className="hidden md:block font-title text-5xl md:text-left lg:text-right lg:text-hero text-right relative">Socias vitalicias
+                        <div className="absolute left-48 lg:right-96 bottom-0 lg:bottom-6" style={{ width: '118px' }}> {renderLottie && <TitleArrowLottie />}</div>
                         </h2>
-                        <p className="py-4 md:py-0 font-body text-base text-left md:text-right mb-4">
+                        <p className="py-4 md:py-0 font-body text-base text-left lg:text-right mb-4">
                             Todos los Domingos recibimos en nuestro programa a una figura del deporte femenino. Charlamos del deporte, los sacrificios y la vida misma.
                         </p>
                         <a href="https://open.spotify.com/show/6a14qoWlcAGixLfwVeyPOk?si=944b088ae93341f4" target="_blank" className="block text-center md:inline-block bg-orange py-3 px-8 rounded-3xl text-white text-base hover:bg-orangelight transition-all">Escuchanos en Spotify</a>

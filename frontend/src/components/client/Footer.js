@@ -18,7 +18,7 @@ const Footer = () => {
                     <path d="M14.9485 19.275C14.5412 18.4086 13.844 17.6766 12.9094 17.2367C12.5122 17.0497 12.1041 16.9303 11.6963 16.872C9.89156 16.6141 8.05697 17.5448 7.24195 19.2762M18.3812 17.6612C17.6121 16.0253 16.2874 14.6345 14.5249 13.8048C13.7824 13.4553 13.0103 13.2282 12.233 13.1171C8.82567 12.6301 5.35443 14.38 3.81006 17.6607" stroke="#171717" strokeWidth="1.33521" />
                     <path fillRule="evenodd" clipRule="evenodd" d="M12.9096 17.2361C13.8442 17.676 14.5415 18.408 14.9488 19.2744L18.3815 17.6606C17.6124 16.0247 16.2877 14.6339 14.5252 13.8042C13.7827 13.4547 13.0105 13.2276 12.2332 13.1165C8.82592 12.6295 5.35467 14.3793 3.8103 17.6601L7.24219 19.2756C8.05721 17.5442 9.8918 16.6135 11.6965 16.8714C12.1043 16.9297 12.5125 17.0491 12.9096 17.2361Z" fill="white" />
                 </svg></div>
-            <div className="flex flex-col md:flex-row font-body  pt-4 justify-around md:w-1/3 mx-auto">
+            <div className="flex flex-col md:flex-row font-body  pt-4 justify-around w-3/4 lg:w-1/3 mx-auto">
                 <NavLink className=" font-regular font-body opacity-50 hover:opacity-70 transition-all pb-2 " to={{ pathname: "/", aboutProps: { id: "quienes" } }}>Quiénes Somos</NavLink>
                 <NavLink className=" font-regular font-body opacity-50 hover:opacity-70 transition-all pb-2 " to={{ pathname: "/", aboutProps: { id: "sociasVitalicias" } }}>Socias Vitalicias</NavLink>
                 <NavLink className=" font-regular font-body opacity-50 hover:opacity-70 transition-all pb-2 " to={{ pathname: "/", aboutProps: { id: "galeria" } }}>Nuestra Galería</NavLink>

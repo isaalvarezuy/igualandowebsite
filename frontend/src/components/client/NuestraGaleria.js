@@ -30,8 +30,8 @@ const NuestraGaleria = (props) => {
             <div className="grid grid-cols-1 md:grid-cols-2 p-4 md:py-24">
                 <div className="col-span-1 text-left flex align-center">
                     <div className="self-center">
-                        <h2 className="py-4 md:p-0 font-title text-5.5xl md:text-hero relative">Nuestra galería
-                        <div className="absolute bottom-6 right-8 md:left-96" style={{ width: '118px', height: '24px' }}> {renderLottie && <TitleArrowLottie />}</div>
+                        <h2 className="py-4 md:p-0 font-title text-5xl lg:text-hero relative">Nuestra galería
+                        <div className="absolute bottom-1 left-48 lg:bottom-6  lg:right-8 " style={{ width: '118px', height: '24px' }}> {renderLottie && <TitleArrowLottie />}</div>
                         </h2>
                         <div className="block md:hidden relative mx-auto w-full ">
                             <div className="relative h-72 pl-2">
@@ -172,12 +172,12 @@ const NuestraGaleria = (props) => {
                 <div className="hidden md:block col-span-1">
                     <div className="relative mx-auto w-full md:w-96 ">
                         <div className="relative h-84 pl-2">
-                            <div style={{ background: "url(https://res.cloudinary.com/isita/image/upload/v1635200451/static/image_32_zjmn2y.png) center bottom /cover" }} className="h-52 w-72  bg-orange absolute bottom-0 z-10">
+                            <div style={{ background: "url(https://res.cloudinary.com/isita/image/upload/v1635200451/static/image_32_zjmn2y.png) center bottom /cover" }} className="h-48 w-64  lg:h-52 lg:w-72  bg-orange absolute left-8 lg:left-0 bottom-0 z-10">
 
                             </div>
-                            <div className="w-48 h-72  bg-orange absolute right-8 bg-black" style={{ background: "url(https://res.cloudinary.com/isita/image/upload/v1635200659/static/image_34_canwjl.png) center bottom /cover" }}>
+                            <div className="w-40 h-60 lg:w-48 lg:h-72 top-8 lg:top-0 bg-orange absolute right-12 lg:right-8 bg-black" style={{ background: "url(https://res.cloudinary.com/isita/image/upload/v1635200659/static/image_34_canwjl.png) center bottom /cover" }}>
                             </div>
-                            <svg className="absolute -left-3 bottom-16" xmlns="http://www.w3.org/2000/svg" width="111" height="204" viewBox="0 0 111 204" fill="none">
+                            <svg className="absolute left-4 lg:-left-3 bottom-16" xmlns="http://www.w3.org/2000/svg" width="111" height="204" viewBox="0 0 111 204" fill="none">
 
                                 <path d="M1.665 200.289C2.49343 200.289 3.165 200.96 3.165 201.789C3.165 202.617 2.49343 203.289 1.665 203.289C0.836571 203.289 0.165001 202.617 0.165001 201.789C0.165001 200.96 0.83657 200.289 1.665 200.289Z" fill="#031030" />
                                 <path d="M17.0464 200.289C17.8748 200.289 18.5464 200.96 18.5464 201.789C18.5464 202.617 17.8748 203.289 17.0464 203.289C16.218 203.289 15.5464 202.617 15.5464 201.789C15.5464 200.96 16.218 200.289 17.0464 200.289Z" fill="#031030" />
@@ -293,7 +293,7 @@ const NuestraGaleria = (props) => {
                                 <path d="M109.335 0.330261C110.163 0.330261 110.835 1.00183 110.835 1.83026C110.835 2.65869 110.163 3.33026 109.335 3.33026C108.507 3.33026 107.835 2.65869 107.835 1.83026C107.835 1.00183 108.507 0.330261 109.335 0.330261Z" fill="#031030" />
                             </svg>
 
-                            <div className="absolute -bottom-4 -right-1" style={{ width: '272px' }}>
+                            <div className="absolute -bottom-4 right-8 lg:-right-1" style={{ width: '272px' }}>
                                 {renderLottie2 && <ShortLinesLottie />}
                             </div>
 

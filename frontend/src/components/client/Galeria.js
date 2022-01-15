@@ -25,17 +25,23 @@ const Galeria = (props) => {
 
         for (let i = 0; i < albums.length; i++) {
             let anio = albums[i].fecha.substring(0, 4)
+
             if (aniosAux.length === 0) {
                 aniosAux = [...aniosAux, { "_id": anio, "nombre": anio }]
             } else {
+                console.log(anio)
                 let existe = false
                 for (let ii = 0; ii < aniosAux.length; ii++) {
                     if (anio === aniosAux[ii].nombre) {
                         existe = true
                     }
-                    if (existe === false) {
+                    /* if (existe === false) {
                         aniosAux = [...aniosAux, { "_id": anio, "nombre": anio }]
-                    }
+
+                    } */
+                }
+                if (existe === false) {
+                    aniosAux = [...aniosAux, { "_id": anio, "nombre": anio }]
                 }
             }
         }
@@ -105,7 +111,7 @@ const Galeria = (props) => {
             {/* filtros */}
             <div style={{ paddingTop: '88px', minHeight: "calc(100vh - 200px)" }} >
                 <div className="bg-white  py-2 items-center">
-                    <div className="w-10/12 mx-auto grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 ">
+                    <div className="w-10/12 mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 ">
 
                         <div className="col-span-1">
                             <Input type={"search"} label={"Buscar Partido..."} funcion={buscarPorTitulo} />
@@ -122,7 +128,7 @@ const Galeria = (props) => {
 
                 </div>
 
-                <div className="w-10/12 grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 mx-auto pt-3">
+                <div className="w-10/12 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 mx-auto pt-3 pb-8">
 
                     {albumsFiltrados.map(a => <div className="col-span-1 text-center font-body font-semibold" key={a._id}> <NavLink to={{ pathname: '/ampliacion', aboutProps: { album: a } }}><div className="h-40 mb-2" style={{ background: `url(${a.fotos[0].source})  center/cover` }} ></div>
                         {deportes.map(d => (d._id === a.deporte) ? <p key={d._id} className="text-xs tracking-wide opacity-75 uppercase">{d.nombre}</p> : "")}

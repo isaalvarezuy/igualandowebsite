@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux'
 import Input from '../formComponents/Input'
 import Alerta from '../admin/Alerta'
+import DottedLineLottie from '../lotties/DottedLineLottie'
+import { Waypoint } from 'react-waypoint'
 
 const Form = (props) => {
     let { url } = props
@@ -14,6 +16,7 @@ const Form = (props) => {
     const [visible, setVisible] = useState(0)
     const [tipoMensaje, setTipoMensaje] = useState(0)
 
+    let [renderLottie, setRenderLottie] = useState(false);
 
     useEffect(() => {
         /* validar boton */
@@ -82,8 +85,18 @@ const Form = (props) => {
                     </div>
                     <Alerta tipo={tipoMensaje} mensaje={mensajeAlerta} visible={visible} funcion={setVisible} duracion={2000} />
 
-                    <div className="hidden md:block col-span-1 flex items-center">
-                        <img className="mx-auto w-9/12" srcSet="https://res.cloudinary.com/isita/image/upload/v1636937642/static/Group_101_1x_hjfzqp.png 1x,https://res.cloudinary.com/isita/image/upload/v1636937642/static/Group_101_2x_wgjlzg.png 2x" />
+                    <div className="hidden md:block col-span-1 flex items-center relative">
+                        <img className=" absolute top-10" style={{ left: 'calc(50% - 178px)' }} srcSet="https://res.cloudinary.com/isita/image/upload/v1642273813/static/Group_102_1x_bggpue.png 1x,https://res.cloudinary.com/isita/image/upload/v1642273813/static/Group_102_2x_djvjud.png 2x" />
+                        <div className=" absolute top-10" style={{ left: 'calc(50% - 178px)' }}> {renderLottie && <DottedLineLottie />}</div>
+                        <Waypoint onEnter={() => {
+                            setTimeout(() => {
+                                console.log("entro")
+                                setRenderLottie(true)
+                            }, 3000);
+
+                        }
+                        }
+                        />
                     </div>
                 </div>
             </div>

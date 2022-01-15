@@ -63,12 +63,12 @@ const Form = (props) => {
     return (
         <div className="w-full p-4 md:p-0" style={{ background: "linear-gradient(180deg, rgba(252,253,254,1) 30%, rgba(23,23,23,1) 30%, rgba(23,23,23,1) 100%)" }}>
             <div className="w-full md:w-10/12 mx-auto bg-orange md:p-8 rounded-2xl">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4">
                     <div className="col-span-1 text-left ">
                         <div className="md:hidden col-span-1">
                             <img className="mx-auto w-full" srcSet="https://res.cloudinary.com/isita/image/upload/v1636937642/static/Group_101_1x_hjfzqp.png 1x,https://res.cloudinary.com/isita/image/upload/v1636937642/static/Group_101_2x_wgjlzg.png 2x" />
                         </div>
-                        <h2 className=" -mt-2 md:mt-0 font-title text-5.5xl md:text-hero relative text-black">Sumate!
+                        <h2 className=" -mt-2 md:mt-0 font-title text-5xl mb-2 lg:mb-0 lg:text-hero relative text-black">Sumate!
                             </h2>
 
                         <p className="mt-0 md:-mt-4 font-body text-base md:p-0">Si querés ser parte del equipo o querés compartir tu historia ponete en contacto con nosotros!</p>
@@ -85,7 +85,7 @@ const Form = (props) => {
                     </div>
                     <Alerta tipo={tipoMensaje} mensaje={mensajeAlerta} visible={visible} funcion={setVisible} duracion={2000} />
 
-                    <div className="hidden md:block col-span-1 flex items-center relative">
+                    <div className="hidden lg:block col-span-1 flex items-center relative">
                         <img className=" absolute top-10" style={{ left: 'calc(50% - 178px)' }} srcSet="https://res.cloudinary.com/isita/image/upload/v1642273813/static/Group_102_1x_bggpue.png 1x,https://res.cloudinary.com/isita/image/upload/v1642273813/static/Group_102_2x_djvjud.png 2x" />
                         <div className=" absolute top-10" style={{ left: 'calc(50% - 178px)' }}> {renderLottie && <DottedLineLottie />}</div>
                         <Waypoint onEnter={() => {

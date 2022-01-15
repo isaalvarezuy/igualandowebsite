@@ -129,7 +129,7 @@ const SubirAlbum = (props) => {
 
     return (
         <div>
-            <NavbarAdmin />
+
             {(popup !== false) ?
                 < Popup className={`${popup}`} borrarAlbum={borrarAlbum} idBorrar={albumElegidoId} nombreBorrar={albumElegidoNombre} cerrarPopup={cerrarPopup} />
                 : ""}
@@ -158,7 +158,7 @@ const SubirAlbum = (props) => {
                     </div>
                 </div>
             </div>
-            <Alerta tipo={tipoMensaje} mensaje={mensaje} visible={visible} funcion={setVisible} />
+            <Alerta tipo={tipoMensaje} mensaje={mensaje} visible={visible} funcion={setVisible} duracion={2000} />
         </div >
     )
 }

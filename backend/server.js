@@ -55,12 +55,43 @@ app.post("/iniciarsesion", (req, res) => {
 
 })
 
+app.post("/insertar", (req, res) => {
+    console.log(req.body);
+
+    let usuario = new Usuario({
+        user: req.body.user,
+        pass: req.body.pass,
+        nombreCompleto: req.body.nombreCompleto,
+        rol: req.body.rol,
+        apodo: req.body.apodo,
+        avatar: req.body.avatar,
+    })
+    usuario.save((err, usuario) => {
+        if (err) return res.json({ mensaje: "Error al insertar" });
+        res.json(usuario);
+    })
+})
+
+app.put("/cambiarContrasena", (req, res) => {
+    console.log(req.body)
+    Usuario.findByIdAndUpdate(req.body.user, { pass: req.body.passNuevo }, (err, usuario) => {
+        if (err) return res.json({ mensaje: "Error al modificar" });
+        res.json(usuario);
+    }
+    )
+})
 
 
 app.get("/listarDeportes", (req, res) => {
     Deporte.find((err, deporte) => {
         if (err) return res.json({ mensaje: "Error al consultar" });
         res.json(deporte);
+    })
+})
+app.get("/listarUsuarios", (req, res) => {
+    Usuario.find((err, usuario) => {
+        if (err) return res.json({ mensaje: "Error al consultar" });
+        res.json(usuario);
     })
 })
 
@@ -137,6 +168,13 @@ app.delete("/eliminarAlbum", (req, res) => {
     Album.findByIdAndDelete(req.body.idBorrar, (err, album) => {
         if (err) return res.json({ mensaje: "Error al eliminar album" });
         res.json(album);
+    })
+})
+app.delete("/eliminarUsuario", (req, res) => {
+    console.log(req.body)
+    Usuario.findByIdAndDelete(req.body.idBorrar, (err, usuario) => {
+        if (err) return res.json({ mensaje: "Error al eliminar album" });
+        res.json(usuario);
     })
 })
 

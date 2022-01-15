@@ -3,13 +3,13 @@ import React, { useState, useEffect } from 'react'
 
 const Alerta = (props) => {
 
-    let { mensaje, tipo, visible } = props
+    let { mensaje, tipo, visible, duracion } = props
 
     useEffect(() => {
 
         const timer = setTimeout(() => {
             props.funcion(0)
-        }, 2000);
+        }, duracion);
         return () => clearTimeout(timer);
 
     }, [visible]);

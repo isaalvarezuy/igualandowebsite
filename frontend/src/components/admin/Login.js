@@ -83,10 +83,10 @@ const Login = (props) => {
                 </div> */}
 
                 <button className="bg-orange py-3 px-8 rounded-3xl text-white text-base w-full" onClick={iniciarSesion}>Iniciar Sesión</button>
-                <p className="font-body mt-4 text-sm text-center">¿No tenes una cuenta? Registrate acá</p>
+
             </div>
 
-            <Alerta tipo={"error"} mensaje={mensaje} visible={visible} funcion={setVisible} />
+            <Alerta tipo={"error"} mensaje={mensaje} visible={visible} funcion={setVisible} duracion={2000} />
         </div>
     )
 }

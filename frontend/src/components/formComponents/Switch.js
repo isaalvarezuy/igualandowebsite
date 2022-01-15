@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Switch.css'
 const Switch = (props) => {
 
@@ -12,8 +12,10 @@ const Switch = (props) => {
 
                     if (toggle === false) {
                         toggle = true
+
                     } else {
                         toggle = false
+
                     }
                     props.funcion(toggle)
                 }} />

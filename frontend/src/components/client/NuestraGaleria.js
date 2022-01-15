@@ -1,5 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import TitleArrowLottie from '../lotties/TitleArrowLottie'
+import { Waypoint } from 'react-waypoint'
+import ShortLinesLottie from '../lotties/ShortLinesLottie'
 
 const NuestraGaleria = (props) => {
 
@@ -8,6 +11,9 @@ const NuestraGaleria = (props) => {
     let n;
     let invitado;
     let programa;
+
+    let [renderLottie, setRenderLottie] = useState(false);
+    let [renderLottie2, setRenderLottie2] = useState(false);
 
     if (props.episodio !== undefined) {
         episodio = props.episodio.items[0].name;
@@ -25,15 +31,9 @@ const NuestraGaleria = (props) => {
                 <div className="col-span-1 text-left flex align-center">
                     <div className="self-center">
                         <h2 className="py-4 md:p-0 font-title text-5.5xl md:text-hero relative">Nuestra galería
-                    <svg className="absolute bottom-6 right-8 md:left-96" xmlns="http://www.w3.org/2000/svg" width="118" height="24" viewBox="0 0 118 24" fill="none">
-                                <path fillRule="evenodd" clipRule="evenodd" d="M113.642 16.5005L106.571 23.5716L102.328 19.3289L109.399 12.2579L102.328 5.18678L106.571 0.944142L113.642 8.01521L117.885 12.2579L113.642 16.5005Z" fill="#F06F46" />
-                                <path fillRule="evenodd" clipRule="evenodd" d="M88.0857 16.5005L81.0147 23.5716L76.772 19.3289L83.8431 12.2579L76.772 5.18678L81.0147 0.944142L88.0857 8.01522L92.3284 12.2579L88.0857 16.5005Z" fill="#F06F46" />
-                                <path fillRule="evenodd" clipRule="evenodd" d="M62.5293 16.5005L55.4583 23.5716L51.2156 19.3289L58.2867 12.2579L51.2156 5.18678L55.4583 0.944142L62.5293 8.01522L66.772 12.2579L62.5293 16.5005Z" fill="#F06F46" />
-                                <path fillRule="evenodd" clipRule="evenodd" d="M36.9732 16.5005L29.9021 23.5716L25.6595 19.3289L32.7305 12.2579L25.6595 5.18678L29.9021 0.944142L36.9732 8.01522L41.2158 12.2579L36.9732 16.5005Z" fill="#F06F46" />
-                                <path fillRule="evenodd" clipRule="evenodd" d="M11.4168 16.5005L4.34572 23.5716L0.103075 19.3289L7.17415 12.2579L0.103075 5.18678L4.34572 0.944143L11.4168 8.01522L15.6594 12.2579L11.4168 16.5005Z" fill="#F06F46" />
-                            </svg>
+                        <div className="absolute bottom-6 right-8 md:left-96" style={{ width: '118px', height: '24px' }}> {renderLottie && <TitleArrowLottie />}</div>
                         </h2>
-                        <div className=" block md:hidden relative mx-auto w-full ">
+                        <div className="block md:hidden relative mx-auto w-full ">
                             <div className="relative h-72 pl-2">
                                 <div style={{ background: "url(https://res.cloudinary.com/isita/image/upload/v1635200451/static/image_32_zjmn2y.png) center bottom /cover" }} className="h-48 w-60  bg-orange absolute bottom-2 z-10">
 
@@ -162,10 +162,12 @@ const NuestraGaleria = (props) => {
                         </div>
                         <p className="font-body text-base mb-4 py-4 md:p-0">
                             Buscá en la primer galería uruguaya dedicada al deporte femenino fotos de tus jugadoras y partidos favoritos.
-                        </p>
+                        </p> <Waypoint onEnter={() => setRenderLottie(true)} />
+
                         <NavLink to={{ pathname: '/galeria' }} className="text-center block md:inline-block bg-orange py-3 px-8 rounded-3xl text-white text-base hover:bg-orangelight transition-all">Ver más fotos</NavLink>
                     </div>
                 </div>
+
 
                 <div className="hidden md:block col-span-1">
                     <div className="relative mx-auto w-full md:w-96 ">
@@ -290,12 +292,17 @@ const NuestraGaleria = (props) => {
                                 <path d="M93.9535 0.330263C94.7819 0.330263 95.4535 1.00183 95.4535 1.83026C95.4535 2.65869 94.7819 3.33026 93.9535 3.33026C93.1251 3.33026 92.4535 2.65869 92.4535 1.83026C92.4535 1.00183 93.1251 0.330263 93.9535 0.330263Z" fill="#031030" />
                                 <path d="M109.335 0.330261C110.163 0.330261 110.835 1.00183 110.835 1.83026C110.835 2.65869 110.163 3.33026 109.335 3.33026C108.507 3.33026 107.835 2.65869 107.835 1.83026C107.835 1.00183 108.507 0.330261 109.335 0.330261Z" fill="#031030" />
                             </svg>
-                            <svg className="absolute -bottom-4 -right-1" xmlns="http://www.w3.org/2000/svg" width="272" height="34" viewBox="0 0 272 34" fill="none">
+
+                            <div className="absolute -bottom-4 -right-1" style={{ width: '272px' }}>
+                                {renderLottie2 && <ShortLinesLottie />}
+                            </div>
+
+                            {/* <svg className="absolute -bottom-4 -right-1" xmlns="http://www.w3.org/2000/svg" width="272" height="34" viewBox="0 0 272 34" fill="none">
                                 <path d="M5.49121 33.3279L5.49121 0.955474M34.4983 33.3279L34.4983 0.955473M63.5054 33.3279L63.5054 0.955471M92.5124 33.3279L92.5124 0.95547M121.52 33.3279L121.52 0.955469M150.527 33.3279L150.527 0.955467M179.534 33.3279L179.534 0.955466M208.541 33.3279L208.541 0.955465M237.548 33.3279L237.548 0.955464M266.555 33.3279L266.555 0.955462" stroke="#F06F46" strokeWidth="10.8777" />
-                            </svg>
+                            </svg> */}
                         </div>
                     </div>
-
+                    <Waypoint onEnter={() => setRenderLottie2(true)} />
                 </div>
             </div>
         </div>

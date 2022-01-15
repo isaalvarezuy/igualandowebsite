@@ -25,7 +25,13 @@ const Video = () => {
 
 
             </div>
-            <ReactPlayer playing={true} volume={sonido} height="auto" width="100%" loop={true} url='https://res.cloudinary.com/isita/video/upload/v1637525748/static/Untitled_sxpxnt.mp4' />
+            <div className="md:hidden -mt-20">
+                <ReactPlayer playing={true} volume={sonido} height="auto" width="100%" loop={true} url='https://res.cloudinary.com/isita/video/upload/v1642283212/static/video_Vertical_uhrb9z.mp4' />
+            </div>
+            <div className="hidden md:block">
+                <ReactPlayer playing={true} volume={sonido} height="auto" width="100%" loop={true} url='https://res.cloudinary.com/isita/video/upload/v1637525748/static/Untitled_sxpxnt.mp4' />
+            </div>
+
         </div >
     )
 }

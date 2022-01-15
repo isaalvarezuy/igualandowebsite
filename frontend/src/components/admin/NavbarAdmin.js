@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import Avatar from './Avatar'
 
 const NavbarAdmin = () => {
 
@@ -35,10 +36,12 @@ const NavbarAdmin = () => {
                             }
                         </div>
                     </div>
-                    <div className="hidden md:block" >
+                    <div className="hidden md:flex items-center" >
                         <NavLink to={{ pathname: "/" }} className="bg-orange py-3 px-8 rounded-3xl text-white text-base">Ir al sitio</NavLink>
+                        <Avatar />
                     </div>
                 </nav>
+
                 <div className="hidden md:block bg-black  py-2 items-center">
                     <div className="w-10/12 mx-auto flex justify-around">
                         <NavLink className="text-white font-regular font-body hover:opacity-70 transition-all" to={{ pathname: "/admin", aboutProps: "nuevoPosteo" }}>Nuevo Posteo</NavLink>

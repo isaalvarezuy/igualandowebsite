@@ -72,6 +72,15 @@ app.post("/insertar", (req, res) => {
     })
 })
 
+app.put("/cambiarContrasena", (req, res) => {
+    console.log(req.body)
+    Usuario.findByIdAndUpdate(req.body.user, { pass: req.body.passNuevo }, (err, usuario) => {
+        if (err) return res.json({ mensaje: "Error al modificar" });
+        res.json(usuario);
+    }
+    )
+})
+
 
 app.get("/listarDeportes", (req, res) => {
     Deporte.find((err, deporte) => {

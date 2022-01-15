@@ -53,8 +53,14 @@ export const reducer = (state = initialState, action) => {
         case "SESION_INICIADA":
             return { ...state, usuarioLogueado: action.payload }
 
+        case "CAMBIAR_CONTRASENA":
+            return { ...state, usuarioLogueado: action.payload }
+
         case "LISTAR_USUARIOS":
             return { ...state, usuarios: action.payload }
+
+        case "CERRAR_SESION":
+            return { ...state, usuarioLogueado: "" }
 
         default:
             return state

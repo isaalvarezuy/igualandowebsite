@@ -7,6 +7,7 @@ import Input from '../../formComponents/Input'
 import IntegranteStory from './IntegranteStory'
 import Switch from '../../formComponents/Switch'
 import FormIntegranteStory from './form/FormIntegranteStory'
+import FormFinalStory from './form/FormFinalStory'
 
 const StoriesContenedor = (props) => {
 
@@ -32,21 +33,21 @@ const StoriesContenedor = (props) => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="col-span-1">
                         <div className="mb-6 col-span-1">
-                            <Input type={"select"} label={"Tipo de Story"} funcion={setTipoPosteo} opciones={[{ "nombre": "Conocé al equipo", "_id": "equipo" }, { "nombre": "Próximo Programa", "_id": "programa" }]} />
+                            <Input type={"select"} label={"Tipo de Story"} funcion={setTipoPosteo} opciones={[{ "nombre": "Conocé al equipo", "_id": "equipo" }, { "nombre": "Próximo Programa", "_id": "programa" }, { "nombre": "Resultado Parcial o Final", "_id": "storyFinal" }]} />
                         </div>
                         {
                             (tipoPosteo === "programa") ?
                                 <Programa funcion={setVideo} /> :
                                 (tipoPosteo === "equipo") ?
-                                    <div>
-                                        <FormIntegranteStory />
-                                    </div> : ""
+                                    <FormIntegranteStory />
+                                    : (tipoPosteo === "storyFinal") ?
+                                        <FormFinalStory funcion={setVideo} /> : ""
                         }
 
 
                     </div>
                     <div className="col-span-1">
-                        {(tipoPosteo === "programa") ?
+                        {(tipoPosteo === "programa" || tipoPosteo === "storyFinal") ?
                             <ReactPlayer playing={true} volume={0} height="500px" loop={true} url={video} className="mx-auto" /> :
                             (tipoPosteo === "equipo") ?
                                 <div>

@@ -33,7 +33,7 @@ const StoriesContenedor = (props) => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="col-span-1">
                         <div className="mb-6 col-span-1">
-                            <Input type={"select"} label={"Tipo de Story"} funcion={setTipoPosteo} opciones={[{ "nombre": "Conocé al equipo", "_id": "equipo" }, { "nombre": "Próximo Programa", "_id": "programa" }, { "nombre": "Final del Partido", "_id": "storyFinal" }]} />
+                            <Input type={"select"} label={"Tipo de Story"} funcion={setTipoPosteo} opciones={[{ "nombre": "Conocé al equipo", "_id": "equipo" }, { "nombre": "Próximo Programa", "_id": "programa" }, { "nombre": "Resultado Parcial o Final", "_id": "storyFinal" }]} />
                         </div>
                         {
                             (tipoPosteo === "programa") ?

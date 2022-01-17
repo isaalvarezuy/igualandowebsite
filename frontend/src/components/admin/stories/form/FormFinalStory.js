@@ -13,6 +13,7 @@ const FormFinalStory = (props) => {
 
     let { url, deportes } = props
 
+    const [momento, setMomento] = useState("")
     const [eqLocal, setEqLocal] = useState("")
     const [eqVisitante, setEqVisitante] = useState("")
     const [puntajeLocal, setPuntajeLocal] = useState("")
@@ -23,7 +24,7 @@ const FormFinalStory = (props) => {
     const [deporteElegido, setDeporteElegido] = useState("");
 
     useEffect(() => {
-        if (deporteElegido !== "" && eqLocal !== "" && eqVisitante !== "" && puntajeVisitante !== "" && puntajeVisitante !== "" && imgPartido !== "") {
+        if (momento !== "" && deporteElegido !== "" && eqLocal !== "" && eqVisitante !== "" && puntajeVisitante !== "" && puntajeVisitante !== "" && imgPartido !== "") {
             document.getElementById("btn-render").disabled = false;
             document.getElementById("btn-render").style.opacity = "1";
         } else {
@@ -93,7 +94,7 @@ const FormFinalStory = (props) => {
         setDuracion(30000)
         setTipoMensaje("loading")
         setVisible(1)
-        fetch(`http://localhost:8000/?equipo1=${eqLocal[0].nombre}&equipo2=${eqVisitante[0].nombre}&escudo1=${eqLocal[0].escudo}&escudo2=${eqVisitante[0].escudo}&puntaje1=${puntajeLocal}&puntaje2=${puntajeVisitante}&deporte=${deporteElegido[0].imgCancha}&imgPartido=${imgPartido}&tipo=FinalPartido`, {
+        fetch(`http://localhost:8000/?momento=${momento}&equipo1=${eqLocal[0].nombre}&equipo2=${eqVisitante[0].nombre}&escudo1=${eqLocal[0].escudo}&escudo2=${eqVisitante[0].escudo}&puntaje1=${puntajeLocal}&puntaje2=${puntajeVisitante}&deporte=${deporteElegido[0].imgCancha}&imgPartido=${imgPartido}&tipo=FinalPartido`, {
             method: "GET",
         }).then(response => response.json())
             .then(r => {
@@ -110,6 +111,7 @@ const FormFinalStory = (props) => {
     return (
         <div>
             <Alerta tipo={tipoMensaje} mensaje={mensaje} visible={visible} funcion={setVisible} duracion={duracion} />
+            <Input type={"text"} funcion={setMomento} label={"Momento del partido"} />
             <Input label={"Deporte"} defaultValue={"Elige un deporte"} type={"select"} opciones={deportes} funcion={buscarPorDeporte} />
             <Input label={"Equipo local"} type={"select"} defaultValue={"Elige un equipo"} opciones={equiposFiltrados} funcion={guardarEqLocal} />
             <Input label={"Equipo visitante"} type={"select"} defaultValue={"Elige otro equipo"} opciones={equiposFiltrados} funcion={guardarEqVisitante} />

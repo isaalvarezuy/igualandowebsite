@@ -46,7 +46,7 @@ export const IntegranteStory = (props) => {
                 <button className="btn disabled:opacity-75 w-full md:w-auto  bg-orange py-2 px-4 rounded-3xl text-white text-base" id="btn-download" download="post.jpg" onClick={descargarImg}>Descargar </button>
             </div>
             <div className="relative " style={{ width: '1080px', height: '1920px' }}>
-                <div className="absolute bg-white top-0 left-0 z-10" style={{ width: '1080px', height: '1920px' }} ></div>
+                <div className="absolute bg-black-50 top-0 left-0 z-10" style={{ width: '1080px', height: '1920px' }} ></div>
                 <div className={storyEquipo.darkMode === true ? 'dark absolute top-0 left-0' : 'absolute top-0 left-0'}>
                     <div id="storyEquipo" className="bg-white dark:bg-black relative" style={{ width: '1080px', height: '1920px' }}>
                         <svg className="absolute top-0 left-0" xmlns="http://www.w3.org/2000/svg" width="123" height="840" viewBox="0 0 123 840" fill="none">

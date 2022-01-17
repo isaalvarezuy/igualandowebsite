@@ -27,13 +27,12 @@ const StoriesContenedor = (props) => {
 
 
     return (
-        <div>
-            <NavbarAdmin />
-            <div className="w-screen overflow-hidden p-4  md:p-0 md:w-10/12 mx-auto pt-24 md:pt-48 w-10/12 mx-auto">
+        <div style={{ height: '100vh' }}>
+            <div className="h-screen w-screen overflow-hidden p-4  md:p-0 md:w-10/12 mx-auto pt-24 md:pt-48 w-10/12 mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="col-span-1">
                         <div className="mb-6 col-span-1">
-                            <Input type={"select"} label={"Tipo de Story"} funcion={setTipoPosteo} opciones={[{ "nombre": "Conocé al equipo", "_id": "equipo" }, { "nombre": "Próximo Programa", "_id": "programa" }, { "nombre": "Resultado Parcial o Final", "_id": "storyFinal" }]} />
+                            <Input type={"select"} label={"Tipo de Story"} bgColor={"grey"} funcion={setTipoPosteo} opciones={[{ "nombre": "Conocé al equipo", "_id": "equipo" }, { "nombre": "Próximo Programa", "_id": "programa" }, { "nombre": "Resultado Parcial o Final", "_id": "storyFinal" }]} />
                         </div>
                         {
                             (tipoPosteo === "programa") ?

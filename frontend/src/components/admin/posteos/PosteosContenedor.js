@@ -28,7 +28,7 @@ const PosteosContenedor = (props) => {
 
     return (
         <div>
-            <NavbarAdmin />
+            {/*  <NavbarAdmin /> */}
             <div className="w-screen overflow-hidden p-4  md:p-0 md:w-10/12 mx-auto pt-24 md:pt-48 w-10/12 mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="col-span-1">

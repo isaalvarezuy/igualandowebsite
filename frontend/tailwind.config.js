@@ -48,6 +48,11 @@ module.exports = {
         orangelight: '#F1764F',
         white: '#FFFFFF',
         black: '#171717',
+        'black-900': '#2F2F2F',
+        'black-800': '#454545',
+        'black-700': '#5D5D5D',
+        'black-600': '#747474',
+        'black-50': '#F3F3F3',
         input: '#C2C4D4'
       },
     },

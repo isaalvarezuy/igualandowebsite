@@ -124,8 +124,8 @@ export const Registro = (props) => {
     }
 
     return (
-        <div className=" fixed h-full w-full flex items-center jusitfy-center z-50 bg-black bg-opacity-20 ">
-            <div className="w-8/12 mx-auto bg-white p-12 pt-6 h-auto rounded-xl">
+        <div className=" left-0 fixed h-full w-full flex items-center jusitfy-center bg-black bg-opacity-60 " style={{ zIndex: '99999' }}>
+            <div className="w-8/12 mx-auto bg-black-50 p-12 pt-6 h-auto rounded-xl">
                 <div className="w-full flex justify-end"><button className="group" onClick={(e) => { props.cerrarPopupRegistro() }} >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

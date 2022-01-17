@@ -109,7 +109,7 @@ const Imagen = (props) => {
                                     ""
                     }
                 </div>
-                <div id="capture" style={{ position: "fixed", top: 0, left: 0, width: "1080px", height: "1080px", position: "absolute", backgroundColor: "white" }}>
+                <div className="bg-black-50 " style={{ position: "fixed", top: 0, left: 0, width: "1080px", height: "1080px", position: "absolute" }}>
 
                 </div>
             </div>

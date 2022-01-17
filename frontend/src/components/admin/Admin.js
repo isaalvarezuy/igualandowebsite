@@ -7,6 +7,7 @@ import EditarContenido from './EditarContenido'
 import Login from './Login'
 import StoriesContenedor from './stories/StoriesContenedor'
 import GestionarUsuarios from './GestionarUsuarios'
+import Sidebar from './Sidebar'
 
 const Admin = (props) => {
 
@@ -21,23 +22,33 @@ const Admin = (props) => {
                 <Login /> :
                 <div>
                     <NavbarAdmin />
-                    {(pagina === "nuestraGaleria") ?
-                        <SubirAlbum /> :
-                        (pagina === "editarDatos") ?
-                            <EditarContenido /> :
-                            (pagina === "nuevaStory") ?
-                                <StoriesContenedor /> :
-                                (pagina === "gestionarUsuarios") ?
-                                    <GestionarUsuarios /> :
-                                    <PosteosContenedor />
-                    }
+                    <div className="bg-black-50">
+                        <div className="col-span-2 h-screen fixed">
+                            <Sidebar paginaSeleccionada={pagina} />
+                        </div>
+
+                        <div style={{ paddingLeft: '234px' }} className="w-full h-screen">
+                            {(pagina === "nuestraGaleria") ?
+                                <SubirAlbum /> :
+                                (pagina === "editarDatos") ?
+                                    <EditarContenido /> :
+                                    (pagina === "nuevaStory") ?
+                                        <StoriesContenedor /> :
+                                        (pagina === "gestionarUsuarios") ?
+                                            <GestionarUsuarios /> :
+                                            <PosteosContenedor />
+                            }
+                        </div>
+                    </div>
+
+
                 </div>
 
             }
             {/*  <IntegranteStory integrante={"61de177df900c63ba93c6693"} /> */}
 
 
-        </div>
+        </div >
     )
 }
 

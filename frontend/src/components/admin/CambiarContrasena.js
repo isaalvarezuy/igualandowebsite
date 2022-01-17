@@ -67,9 +67,9 @@ const CambiarContrasena = (props) => {
 
     return (
         <div>
-            <div className=" left-0 top-0 fixed h-full w-full flex items-center jusitfy-center z-50 bg-black bg-opacity-20">
+            <div className=" left-0 top-0 fixed h-full w-full flex items-center jusitfy-center z-50 bg-black bg-opacity-60">
                 <Alerta tipo={tipoMensaje} mensaje={mensaje} visible={visible} funcion={setVisible} duracion={3000} />
-                <div className="w-10/12 mx-auto bg-white text-black md:w-1/3  top-20  rounded-xl shadow-md p-12 ">
+                <div className="w-10/12 mx-auto bg-black-50 text-black md:w-1/3  top-20  rounded-xl shadow-md p-12 ">
                     <h2 className="font-body font-semibold text-lg mb-8">Cambiar contraseña</h2>
                     <Input type={"password"} label={"Contraseña actual"} funcion={setPassViejo} />
                     <Input type={"password"} label={"Nueva contraseña"} funcion={setPassNuevo} />

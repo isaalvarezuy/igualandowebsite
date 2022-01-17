@@ -100,7 +100,7 @@ const FinalPartido = (props) => {
     return (
         <div>
             <Switch funcion={guardarDarkMode} />
-            <Input label={"Deporte"} defaultValue={"Elige un deporte"} type={"select"} opciones={deportes} funcion={buscarPorDeporte} />
+            <Input label={"Deporte"} defaultValue={"Elige un deporte"} type={"select"} opciones={deportes} funcion={buscarPorDeporte} bgColor={"grey"} />
             <Input label={"Equipo local"} type={"select"} defaultValue={"Elige un equipo"} opciones={equiposFiltrados} funcion={guardarEqLocal} />
             <Input label={"Equipo visitante"} type={"select"} defaultValue={"Elige otro equipo"} opciones={equiposFiltrados} funcion={guardarEqVisitante} />
             <Input label={"Puntaje local"} type={"text"} funcion={guardarPuntajeLocal} />

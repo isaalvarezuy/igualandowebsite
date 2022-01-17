@@ -12,7 +12,7 @@ const Programa = (props) => {
     const [video, setVideo] = useState("")
 
     const renderVideo = () => {
-        fetch(`http://localhost:8000/?temaUno=${tema1}&temaDos=${tema2}&temaTres=${tema3}&dia=${dia}&hora=${hora}`, {
+        fetch(`http://localhost:8000/?temaUno=${tema1}&temaDos=${tema2}&temaTres=${tema3}&dia=${dia}&hora=${hora}&tipo=Anuncio`, {
             method: "GET",
         }).then(response => response.json())
             .then(r => {

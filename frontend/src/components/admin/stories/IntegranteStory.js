@@ -46,7 +46,7 @@ export const IntegranteStory = (props) => {
                 <button className="btn disabled:opacity-75 w-full md:w-auto  bg-orange py-2 px-4 rounded-3xl text-white text-base" id="btn-download" download="post.jpg" onClick={descargarImg}>Descargar </button>
             </div>
             <div className="relative " style={{ width: '1080px', height: '1920px' }}>
-                <div className="absolute bg-black-50 top-0 left-0 z-10" style={{ width: '1080px', height: '1920px' }} ></div>
+                <div className=" absolute bg-black-50 top-0 left-0 z-10" style={{ width: '1080px', height: '1920px' }} ></div>
                 <div className={storyEquipo.darkMode === true ? 'dark absolute top-0 left-0' : 'absolute top-0 left-0'}>
                     <div id="storyEquipo" className="bg-white dark:bg-black relative" style={{ width: '1080px', height: '1920px' }}>
                         <svg className="absolute top-0 left-0" xmlns="http://www.w3.org/2000/svg" width="123" height="840" viewBox="0 0 123 840" fill="none">
@@ -78,7 +78,7 @@ export const IntegranteStory = (props) => {
 
                         {(usuario[0] !== undefined) ?
                             <div className="flex flex-col w-full items-center" style={{ lineHeight: '200%' }}>
-                                <div className="mb-14 mt-80" style={{ width: '500px', height: '500px', borderRadius: '100%', background: `url(${usuario[0].avatar}) center center no-repeat`, backgroundSize: '502px 502px' }}  ></div>
+                                <div className="mb-14 mt-80 overflow-hidden" style={{ width: '500px', height: '500px', borderRadius: '500px', backgroundImage: `url(${usuario[0].avatar})`, backgroundPosition: 'center center', backgroundRepeat: 'no-repeat', backgroundSize: '502px 502px' }}  ></div>
                                 {/* <img className="mb-14 mt-80" src={usuario[0].avatar} style={{ width: '500px', height: '500px', borderRadius: '100%' }} /> */}
                                 <p className="text-black dark:text-white font-body font-bold mb-14" style={{ fontSize: '80px' }}>{props.palabra}</p>
                                 <p className="text-black dark:text-white font-body font-bold mb-14" style={{ fontSize: '80px' }}>{usuario[0].nombreCompleto}</p>

@@ -11,7 +11,6 @@ import Sidebar from './Sidebar'
 
 const Admin = (props) => {
 
-    console.log(props.location.aboutProps)
     let pagina = props.location.aboutProps;
 
     let usuarioLogueado = props.usuarioLogueado;
@@ -27,7 +26,7 @@ const Admin = (props) => {
                             <Sidebar paginaSeleccionada={pagina} />
                         </div>
 
-                        <div style={{ paddingLeft: '234px' }} className="w-full h-screen">
+                        <div style={{ paddingLeft: '234px' }} className="w-full h-screen overflow-hidden ">
                             {(pagina === "nuestraGaleria") ?
                                 <SubirAlbum /> :
                                 (pagina === "editarDatos") ?

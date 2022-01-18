@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
 const Input = (props) => {
-    console.log(props)
 
     let { label, type, defaultValue, fotoSubida, opciones, placeholder, contactForm, bgColor } = props;
     const [filename, setFilename] = useState("")

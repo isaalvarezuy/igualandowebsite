@@ -8,6 +8,7 @@ let usuarioSchema = new Schema({
     rol: String,
     apodo: String,
     avatar: String,
+    visible: Boolean,
 });
 
 let Usuario = mongoose.model("Usuario", usuarioSchema);

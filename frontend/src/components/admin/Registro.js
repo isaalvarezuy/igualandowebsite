@@ -90,7 +90,7 @@ export const Registro = (props) => {
             const url = imgUrl;
             removeBackgroundFromImageUrl({
                 url,
-                apiKey: "BeFtvtA1dedPNPn6R2PrbZN3",
+                apiKey: "mPe1FAdtq8DKnhFnHgDT8VBi",
                 size: "regular",
                 type: "person",
             }).then((result) => {
@@ -160,8 +160,8 @@ export const Registro = (props) => {
                     </div>
 
                     <div className="grid-colspan-1 pl-24">
-                        <div id="avatar" style={{ width: '400px', height: '400px', borderRadius: '100%', background: `url(${fondo}) center center /cover` }}>
-                            <div style={{ width: '400px', height: '400px', borderRadius: '100%', background: `url(data:image/png;base64,${base64img}) center center/contain no-repeat` }}></div>
+                        <div id="avatar" style={{ width: '300px', height: '300px', borderRadius: '100%', background: `url(${fondo}) center center /cover` }}>
+                            <div style={{ width: '300px', height: '300px', borderRadius: '100%', background: `url(data:image/png;base64,${base64img}) center center/contain no-repeat` }}></div>
                         </div></div>
                 </div>
             </div>

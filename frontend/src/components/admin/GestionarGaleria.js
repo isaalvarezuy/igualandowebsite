@@ -59,7 +59,7 @@ const GestionarGaleria = (props) => {
             {(popup !== false) ?
                 < Popup className={`${popup}`} borrarAlbum={borrarAlbum} idBorrar={albumElegidoId} nombreBorrar={albumElegidoNombre} cerrarPopup={cerrarPopup} />
                 : ""}
-            <div className="w-full p-4  md:p-0 md:w-10/12 mx-auto pt-24 md:pt-48 w-10/12 mx-auto ">
+            <div className="w-full p-4  md:p-0 md:w-10/12 mx-auto pt-24 md:pt-32 w-10/12 mx-auto ">
                 <div className="grid grid-cols-1  gap-12">
 
                     <div className="col-span-1">

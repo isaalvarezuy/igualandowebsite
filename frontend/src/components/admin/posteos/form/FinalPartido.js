@@ -8,6 +8,10 @@ const FinalPartido = (props) => {
     let { url } = props
     let filtro;
 
+    useEffect(() => {
+        let last = document.getElementsByClassName("last")
+        props.setAlturaForm(last[0].offsetTop)
+    }, [])
 
     const [equipos, setEquipos] = useState([])
     const [equiposFiltrados, setEquiposFiltrados] = useState([])
@@ -106,6 +110,7 @@ const FinalPartido = (props) => {
             <Input label={"Puntaje local"} type={"text"} funcion={guardarPuntajeLocal} />
             <Input label={"Puntaje visitante"} type={"text"} funcion={guardarPuntajeVisitante} />
             <Input label={"Foto del partido"} funcion={guardarFoto} type={"file"} />
+            <div className="last"></div>
         </div>
     )
 }

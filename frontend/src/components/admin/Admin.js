@@ -27,7 +27,7 @@ const Admin = (props) => {
                             <Sidebar paginaSeleccionada={pagina} />
                         </div>
 
-                        <div style={{ paddingLeft: '234px' }} className="w-full h-screen overflow-hidden ">
+                        <div style={{ paddingLeft: '234px' }} className="w-full min-h-screen">
                             {(pagina === "nuestraGaleria") ?
                                 <GestionarGaleria /> :
                                 (pagina === "editarDatos") ?

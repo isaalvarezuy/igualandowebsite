@@ -44,7 +44,7 @@ const Galeria = (props) => {
         aniosAux.sort(function (a, b) {
             return parseInt(a._id) - parseInt(b._id);
         });
-        console.log(aniosAux)
+
         setAnios(aniosAux)
         setAlbumsFiltrados(albums)
 

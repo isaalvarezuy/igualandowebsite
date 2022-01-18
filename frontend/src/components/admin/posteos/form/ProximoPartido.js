@@ -8,6 +8,10 @@ const ProximoPartido = (props) => {
     let { url } = props
     let filtro;
 
+    useEffect(() => {
+        let last = document.getElementsByClassName("last")
+        props.setAlturaForm(last[0].offsetTop)
+    }, [])
 
     const [equipos, setEquipos] = useState([])
     const [equiposFiltrados, setEquiposFiltrados] = useState([])
@@ -140,7 +144,7 @@ const ProximoPartido = (props) => {
             <Input label={"Ubicación"} type={"text"} funcion={guardarLugar} />
             <Input label={"Foto del equipo local"} funcion={guardarFotoLocal} type={"file"} />
             <Input label={"Foto del equipo visitante"} funcion={guardarFotoVisitante} type={"file"} />
-
+            <div className="last"></div>
 
 
 

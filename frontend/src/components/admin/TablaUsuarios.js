@@ -51,7 +51,7 @@ const TablaUsuarios = (props) => {
             <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div className="w-full py-2 align-middle inline-block  sm:px-6 lg:px-8">
                     <div className="w-full shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                        <table className=" table-fixed break-words w-full divide-y divide-gray-200">
+                        <table className=" table-auto break-words w-full divide-y divide-black-50">
                             <thead className="bg-white w-full">
                                 <tr className="w-full">
                                     <th scope="col" className="text-xs px-6 py-3 text-left  font-body font-semibold text-black uppercase tracking-wider"   >
@@ -64,11 +64,11 @@ const TablaUsuarios = (props) => {
 
                                 </tr>
                             </thead>
-                            <tbody className="w-full">
+                            <tbody className="w-full bg-white ">
                                 {usuarios.map((usuario) =>
-                                    <tr key={usuario._id} >
+                                    <tr key={usuario._id} className="border-b border-black-50" >
 
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-black text-opacity-70 hover:text-opacity-90  overflow-hidden flex items-center">   <div style={{ width: '30px', height: '30px', borderRadius: '100%', background: `url(${usuario.avatar}) center center`, backgroundSize: '32px 32px', marginRight: '4px' }}  ></div>{usuario.nombreCompleto}</td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-black text-opacity-70   overflow-hidden flex items-center">   <div style={{ width: '30px', height: '30px', borderRadius: '100%', background: `url(${usuario.avatar}) center center`, backgroundSize: '32px 32px', marginRight: '4px' }}  ></div>{usuario.nombreCompleto}</td>
                                         <td className="hidden md:table-cell px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center overflow-hidden ">{usuario.rol}</td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center  overflow-hidden flex items-center justify-center">
                                             <button className="group flex items-center" onClick={(e) => { props.abrirPopup(e) }} data-accion="borrar" data-id={usuario._id} data-nombre={usuario.nombreCompleto}><svg style={{ pointerEvents: "none" }} xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-black mx-auto text-opacity-60 group-hover:text-opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -82,6 +82,14 @@ const TablaUsuarios = (props) => {
 
                                     </tr>
                                 )}
+                                <tr>
+                                    <td style={{ cursor: 'pointer' }} onClick={(e) => { props.setPopupRegistro(true) }} className="px-10 py-4 whitespace-nowrap text-base font-regular text-orange text-opacity-100 hover:text-opacity-80  overflow-hidden flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" style={{ pointerEvents: "none" }} className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg> Agregar usuario</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
 
 
                             </tbody>

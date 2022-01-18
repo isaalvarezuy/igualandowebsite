@@ -7,6 +7,7 @@ import EditarContenido from './EditarContenido'
 import Login from './Login'
 import StoriesContenedor from './stories/StoriesContenedor'
 import GestionarUsuarios from './GestionarUsuarios'
+import GestionarGaleria from './GestionarGaleria'
 import Sidebar from './Sidebar'
 
 const Admin = (props) => {
@@ -28,7 +29,7 @@ const Admin = (props) => {
 
                         <div style={{ paddingLeft: '234px' }} className="w-full h-screen overflow-hidden ">
                             {(pagina === "nuestraGaleria") ?
-                                <SubirAlbum /> :
+                                <GestionarGaleria /> :
                                 (pagina === "editarDatos") ?
                                     <EditarContenido /> :
                                     (pagina === "nuevaStory") ?

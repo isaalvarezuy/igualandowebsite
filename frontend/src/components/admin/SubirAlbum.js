@@ -13,17 +13,13 @@ const SubirAlbum = (props) => {
         setDeporte(deportes[0].id)
     }, [])
 
-    const [visible, setVisible] = useState(0)
-    const [tipoMensaje, setTipoMensaje] = useState(0)
+
     let { albums, deportes, url } = props;
     const [selectedFile, setSelectedFile] = useState([]);
     const [titulo, setTitulo] = useState("");
     const [deporte, setDeporte] = useState("");
     const [fecha, setFecha] = useState("");
-    const [mensaje, setMensaje] = useState("")
-    const [popup, setPopup] = useState(false)
-    const [albumElegidoId, setAlbumElegidoId] = useState("")
-    const [albumElegidoNombre, setAlbumElegidoNombre] = useState("")
+
 
     useEffect(() => {
         if (titulo !== "" && deporte !== "" && fecha !== "" && selectedFile !== "") {
@@ -42,36 +38,6 @@ const SubirAlbum = (props) => {
         setFecha(aux);
     }
 
-    const borrarAlbum = (recibido) => {
-        let idBorrar = recibido.target.dataset.id;
-        fetch(`${url}/eliminarAlbum`, {
-            method: "DELETE",
-            body: JSON.stringify({ idBorrar: idBorrar }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(r => r.json())
-            .then(album => {
-                console.log(album);
-                props.dispatch({ type: "ELIMINAR_ALBUM", payload: album });
-                cerrarPopup();
-                setMensaje("Album eliminado con éxito")
-                setTipoMensaje("exito")
-                setVisible(1)
-
-            })
-    }
-
-    const abrirPopup = (recibido) => {
-        console.log(recibido.target.dataset)
-        setAlbumElegidoId(recibido.target.dataset.id)
-        setAlbumElegidoNombre(recibido.target.dataset.titulo)
-        setPopup(true)
-    }
-
-    const cerrarPopup = () => {
-        setPopup(false)
-    }
 
     const crearAlbum = async () => {
         console.log(selectedFile)
@@ -96,9 +62,10 @@ const SubirAlbum = (props) => {
             .then(r => {
                 console.log(r);
                 props.dispatch({ type: "AGREGAR_ALBUM", payload: r });
-                setMensaje("Álbum subido con éxito")
-                setTipoMensaje("exito")
-                setVisible(1)
+                props.setMensaje("Álbum subido con éxito")
+                props.setTipoMensaje("exito")
+                props.setVisible(1)
+                props.setPopupAlbum(false)
 
             })
 
@@ -106,9 +73,9 @@ const SubirAlbum = (props) => {
 
 
     const uploadImages = () => {
-        setMensaje("Subiendo fotos...")
-        setTipoMensaje("loading")
-        setVisible(1)
+        props.setMensaje("Subiendo fotos...")
+        props.setTipoMensaje("loading")
+        props.setVisible(1)
         const fotos = selectedFile.map(file => {
             const formData = new FormData()
             formData.append("file", file);
@@ -128,37 +95,28 @@ const SubirAlbum = (props) => {
 
 
     return (
-        <div>
-
-            {(popup !== false) ?
-                < Popup className={`${popup}`} borrarAlbum={borrarAlbum} idBorrar={albumElegidoId} nombreBorrar={albumElegidoNombre} cerrarPopup={cerrarPopup} />
-                : ""}
-
-
-            <div className="w-full p-4  md:p-0 md:w-10/12 mx-auto pt-24 md:pt-48 w-10/12 mx-auto ">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <div className="col-span-1">
-                        <h2 className="font-body font-semibold text-2xl mb-2" >Subir album</h2>
-                        <Input type={"text"} label={"Título"} funcion={setTitulo} />
-
-
-                        <Input type={"select"} opciones={deportes} funcion={setDeporte} label={"Deporte"} />
-
-                        <Input type={"date"} label={"Fecha"} funcion={guardarFecha} />
-
-                        <Input type={"multiple files"} label={"Subir fotos"} funcion={setSelectedFile} />
-
-                        <button id="btn-upload" className="btn block bg-orange py-2 px-4 rounded-3xl text-white text-base mt-4 " onClick={crearAlbum}>Subir Album</button>
-
-                    </div>
-                    <div className="col-span-1">
-                        <h2 className="font-body font-semibold text-2xl mb-2" >Albumes</h2>
-
-                        <Tabla abrirPopup={abrirPopup} albums={albums} />
-                    </div>
+        <div className="left-0 top-0 fixed h-full w-full flex items-center justify-center bg-black bg-opacity-60 " style={{ zIndex: 999999 }}>
+            <div className="w-8/12 bg-black-50 py-8 px-12 rounded-xl ">
+                <div className="w-full flex justify-end"><button className="group" onClick={(e) => { props.setPopupAlbum(false) }} >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
                 </div>
+                <h2 className="font-body font-semibold text-2xl mb-2" >Subir album</h2>
+                <Input type={"text"} label={"Título"} funcion={setTitulo} />
+
+
+                <Input type={"select"} opciones={deportes} funcion={setDeporte} label={"Deporte"} />
+
+                <Input type={"date"} label={"Fecha"} funcion={guardarFecha} />
+
+                <Input type={"multiple files"} label={"Subir fotos"} funcion={setSelectedFile} />
+
+                <button id="btn-upload" className="btn block bg-orange py-2 px-4 rounded-3xl text-white text-base mt-4 " onClick={crearAlbum}>Subir Album</button>
+
+
             </div>
-            <Alerta tipo={tipoMensaje} mensaje={mensaje} visible={visible} funcion={setVisible} duracion={2000} />
         </div >
     )
 }

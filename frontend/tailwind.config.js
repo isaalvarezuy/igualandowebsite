@@ -22,6 +22,7 @@ module.exports = {
     },
 
     fontSize: {
+      'super-hero': '16rem',
       'hero': '6.25rem',
       'xxs': '0.5rem',
       'xs': '0.75rem',

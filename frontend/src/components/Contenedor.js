@@ -16,7 +16,6 @@ import Pagina404 from './Pagina404'
 const Contenedor = (props) => {
     let { url } = props
     useEffect(() => {
-
         fetch(`${url}/listarAlbums`, {
             method: "GET",
         }).then(r => r.json())

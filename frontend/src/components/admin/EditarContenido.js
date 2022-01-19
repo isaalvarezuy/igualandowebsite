@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import NavbarAdmin from './NavbarAdmin'
 import { connect } from 'react-redux'
 import Input from '../formComponents/Input'
 import Alerta from '../admin/Alerta'

@@ -39,7 +39,7 @@ const Sidebar = (props) => {
                 </svg>Nuestra Galería</NavLink>
             <NavLink id="editarDatos" className="navlink  text-white font-regular font-body hover:opacity-70 transition-all flex rounded-md mx-4 my-2 px-4 pr-10  py-2" to={{ pathname: "/admin", aboutProps: "editarDatos" }}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width={1.5} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                 </svg>Editar Datos</NavLink>
             <NavLink id="nuevaStory" className="navlink  text-white font-regular font-body hover:opacity-70 transition-all rounded-md mx-4 my-2 px-4  pr-10 py-2 flex" to={{ pathname: "/admin", aboutProps: "nuevaStory" }}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">

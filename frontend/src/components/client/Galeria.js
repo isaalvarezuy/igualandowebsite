@@ -35,10 +35,6 @@ const Galeria = (props) => {
                     if (anio === aniosAux[ii].nombre) {
                         existe = true
                     }
-                    /* if (existe === false) {
-                        aniosAux = [...aniosAux, { "_id": anio, "nombre": anio }]
-
-                    } */
                 }
                 if (existe === false) {
                     aniosAux = [...aniosAux, { "_id": anio, "nombre": anio }]
@@ -46,8 +42,9 @@ const Galeria = (props) => {
             }
         }
         aniosAux.sort(function (a, b) {
-            return b - a;
+            return parseInt(a._id) - parseInt(b._id);
         });
+
         setAnios(aniosAux)
         setAlbumsFiltrados(albums)
 

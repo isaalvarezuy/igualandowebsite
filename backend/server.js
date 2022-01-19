@@ -60,11 +60,12 @@ app.post("/insertar", (req, res) => {
 
     let usuario = new Usuario({
         user: req.body.user,
-        pass: req.body.pass,
+        pass: "igualando",
         nombreCompleto: req.body.nombreCompleto,
         rol: req.body.rol,
         apodo: req.body.apodo,
         avatar: req.body.avatar,
+        visible: false
     })
     usuario.save((err, usuario) => {
         if (err) return res.json({ mensaje: "Error al insertar" });
@@ -75,6 +76,22 @@ app.post("/insertar", (req, res) => {
 app.put("/cambiarContrasena", (req, res) => {
     console.log(req.body)
     Usuario.findByIdAndUpdate(req.body.user, { pass: req.body.passNuevo }, (err, usuario) => {
+        if (err) return res.json({ mensaje: "Error al modificar" });
+        res.json(usuario);
+    }
+    )
+})
+app.put("/mostrarUsuario", (req, res) => {
+    console.log(req.body)
+    Usuario.findByIdAndUpdate(req.body._id, { visible: true }, (err, usuario) => {
+        if (err) return res.json({ mensaje: "Error al modificar" });
+        res.json(usuario);
+    }
+    )
+})
+app.put("/ocultarUsuario", (req, res) => {
+    console.log(req.body)
+    Usuario.findByIdAndUpdate(req.body._id, { visible: false }, (err, usuario) => {
         if (err) return res.json({ mensaje: "Error al modificar" });
         res.json(usuario);
     }

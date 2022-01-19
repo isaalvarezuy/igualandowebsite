@@ -1,10 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import Input from '../../../formComponents/Input'
 import Switch from '../../../formComponents/Switch'
 
 
 const SociaVitalicia = (props) => {
+
+    useEffect(() => {
+        let last = document.getElementsByClassName("last")
+        props.setAlturaForm(last[0].offsetTop)
+    }, [])
 
     let fondo = "";
     let main = "";
@@ -119,6 +124,7 @@ const SociaVitalicia = (props) => {
             <Input label={"Código de Spotify"} funcion={guardarSpCode} type={"file"} />
 
 
+            <div className="last"></div>
         </div>
     )
 }

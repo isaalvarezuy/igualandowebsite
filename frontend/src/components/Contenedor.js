@@ -11,11 +11,11 @@ import Login from './admin/Login'
 import Admin from './admin/Admin'
 import Registro from './admin/Registro'
 import { connect } from 'react-redux'
+import Pagina404 from './Pagina404'
 
 const Contenedor = (props) => {
     let { url } = props
     useEffect(() => {
-
         fetch(`${url}/listarAlbums`, {
             method: "GET",
         }).then(r => r.json())
@@ -58,6 +58,7 @@ const Contenedor = (props) => {
                 <Route path="/admin/subir" component={SubirAlbum} />
                 <Route path="/admin/nuevoposteo" component={PosteosContenedor} />
                 <Route path="/registro" component={Registro} />
+                <Route component={Pagina404} />
             </Switch>
 
 

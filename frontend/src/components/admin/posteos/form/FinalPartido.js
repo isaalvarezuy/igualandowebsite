@@ -8,6 +8,10 @@ const FinalPartido = (props) => {
     let { url } = props
     let filtro;
 
+    useEffect(() => {
+        let last = document.getElementsByClassName("last")
+        props.setAlturaForm(last[0].offsetTop)
+    }, [])
 
     const [equipos, setEquipos] = useState([])
     const [equiposFiltrados, setEquiposFiltrados] = useState([])
@@ -100,12 +104,13 @@ const FinalPartido = (props) => {
     return (
         <div>
             <Switch funcion={guardarDarkMode} />
-            <Input label={"Deporte"} defaultValue={"Elige un deporte"} type={"select"} opciones={deportes} funcion={buscarPorDeporte} />
+            <Input label={"Deporte"} defaultValue={"Elige un deporte"} type={"select"} opciones={deportes} funcion={buscarPorDeporte} bgColor={"grey"} />
             <Input label={"Equipo local"} type={"select"} defaultValue={"Elige un equipo"} opciones={equiposFiltrados} funcion={guardarEqLocal} />
             <Input label={"Equipo visitante"} type={"select"} defaultValue={"Elige otro equipo"} opciones={equiposFiltrados} funcion={guardarEqVisitante} />
             <Input label={"Puntaje local"} type={"text"} funcion={guardarPuntajeLocal} />
             <Input label={"Puntaje visitante"} type={"text"} funcion={guardarPuntajeVisitante} />
             <Input label={"Foto del partido"} funcion={guardarFoto} type={"file"} />
+            <div className="last"></div>
         </div>
     )
 }

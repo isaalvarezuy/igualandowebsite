@@ -56,6 +56,29 @@ export const reducer = (state = initialState, action) => {
         case "CAMBIAR_CONTRASENA":
             return { ...state, usuarioLogueado: action.payload }
 
+        case "MOSTRAR_USUARIO":
+            let index = state.usuarios.findIndex((usuario) => usuario._id === action.payload._id)
+            return {
+                ...state,
+                usuarios: state.usuarios.map(
+                    (usuario, i) => i === index ? { ...usuario, visible: true }
+                        : usuario
+                )
+            }
+
+        case "OCULTAR_USUARIO":
+            let index2 = state.usuarios.findIndex((usuario) => usuario._id === action.payload._id)
+            return {
+                ...state,
+                usuarios: state.usuarios.map(
+                    (usuario, i) => i === index2 ? { ...usuario, visible: false }
+                        : usuario
+                )
+            }
+
+
+
+
         case "LISTAR_USUARIOS":
             return { ...state, usuarios: action.payload }
 

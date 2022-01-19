@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import Integrante from './Integrante'
 import TitleArrowLottie from '../lotties/TitleArrowLottie'
@@ -6,9 +6,13 @@ import { Waypoint } from 'react-waypoint'
 
 export const Quienes = (props) => {
 
-    let integrantes = props.integrantes
+    let {usuarios} = props
+    const [usuariosMostrar, setUsuariosMostrar] = useState([])
     let [renderLottie, setRenderLottie] = useState(false);
 
+    useEffect(() => {
+       setUsuariosMostrar(usuarios.filter(usuario=>usuario.visible===true))
+    }, [usuarios])
 
 
     return (
@@ -33,7 +37,7 @@ export const Quienes = (props) => {
                     <Waypoint onEnter={() => setRenderLottie(true)} />
                 </div>
                 <div className="col-span-1 flex-wrap md:col-span-12 flex flex-col md:flex-row md:justify-around">
-                    {integrantes.map(i => <Integrante key={i.foto} integrante={i} />)}
+                    {usuariosMostrar.map(usuario => <Integrante key={usuario.avatar} usuario={usuario} />)}
                 </div>
             </div>
 
@@ -42,7 +46,7 @@ export const Quienes = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-    integrantes: state.integrantes
+    usuarios: state.usuarios
 })
 
 export default connect(mapStateToProps)(Quienes)

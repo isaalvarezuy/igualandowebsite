@@ -74,14 +74,16 @@ export const GestionarUsuarios = (props) => {
 
 
             <div className="w-full p-4  md:p-0 md:w-10/12 mx-auto pt-24 md:pt-48 w-10/12 mx-auto ">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div className="grid grid-cols-1  gap-12">
 
                     <div className="col-span-1">
                         <h2 className="font-body font-semibold text-2xl mb-2" >Usuarios</h2>
 
-                        <TablaUsuarios abrirPopup={abrirPopup} />
-                        <button className=" mt-4 w-full md:w-auto  bg-orange py-2 px-4 rounded-3xl text-white text-base" onClick={() => setPopupRegistro(true)}>Agregar usuario </button>
-                        {/*    <Tabla abrirPopup={abrirPopup} albums={albums} /> */}
+
+
+                        <TablaUsuarios abrirPopup={abrirPopup} setPopupRegistro={setPopupRegistro} />
+                        {/*    <button className=" mt-4 w-full md:w-auto  bg-orange py-2 px-4 rounded-3xl text-white text-base" onClick={() => setPopupRegistro(true)}>Agregar usuario </button> */}
+
                     </div>
 
                 </div>

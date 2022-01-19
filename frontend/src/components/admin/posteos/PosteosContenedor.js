@@ -16,20 +16,22 @@ const PosteosContenedor = (props) => {
 
     let { url } = props;
 
+    const [alturaForm, setAlturaForm] = useState(0)
 
 
-    const armarForm = (e) => {
-        console.log(e.target.value)
-    }
 
     useEffect(() => {
         setTipoPosteo("socia")
     }, [])
 
+    useEffect(() => {
+        console.log(alturaForm)
+    }, [alturaForm])
+
     return (
         <div>
-            <NavbarAdmin />
-            <div className="w-screen overflow-hidden p-4  md:p-0 md:w-10/12 mx-auto pt-24 md:pt-48 w-10/12 mx-auto">
+            {/*  <NavbarAdmin /> */}
+            <div className="w-screen overflow-hidden p-4  md:p-0 md:w-10/12 mx-auto pt-24 md:pt-32 w-10/12 mx-auto" style={{ maxHeight: `${alturaForm}px` }}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="col-span-1">
                         <div className="mb-6 col-span-1">
@@ -39,13 +41,13 @@ const PosteosContenedor = (props) => {
 
                         {
                             (tipoPosteo === "socia") ?
-                                <SociaVitalicia /> :
+                                <SociaVitalicia setAlturaForm={setAlturaForm} /> :
                                 (tipoPosteo === "noticias") ?
-                                    <Noticias /> :
+                                    <Noticias setAlturaForm={setAlturaForm} /> :
                                     (tipoPosteo === "proximoPartido") ?
-                                        <ProximoPartido /> :
+                                        <ProximoPartido setAlturaForm={setAlturaForm} /> :
                                         (tipoPosteo === "finalPartido") ?
-                                            <FinalPartido /> :
+                                            <FinalPartido setAlturaForm={setAlturaForm} /> :
                                             ""
                         }
                     </div>

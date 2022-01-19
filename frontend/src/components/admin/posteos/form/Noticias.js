@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import Input from '../../../formComponents/Input'
 import Switch from '../../../formComponents/Switch'
@@ -9,6 +9,11 @@ const Noticias = (props) => {
     let foto = "";
     let titulo = "";
     let darkMode = false;
+
+    useEffect(() => {
+        let last = document.getElementsByClassName("last")
+        props.setAlturaForm(last[0].offsetTop)
+    }, [])
 
     const [fotoSubida, setFotoSubida] = useState("")
 
@@ -51,6 +56,7 @@ const Noticias = (props) => {
             <Switch funcion={guardarDarkMode} />
             <Input label={"Titulo de la Noticia"} funcion={guardarTitulo} type={"text"} />
             <Input label={"Foto de la noticia"} funcion={guardarFoto} type={"file"} />
+            <div className="last"></div>
         </div>
     )
 }

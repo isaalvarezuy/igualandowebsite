@@ -1,23 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const Input = (props) => {
 
-    let { label, type, defaultValue, fotoSubida, opciones, placeholder, contactForm } = props;
+    let { label, type, defaultValue, fotoSubida, opciones, placeholder, contactForm, bgColor } = props;
     const [filename, setFilename] = useState("")
     const [fileCount, setFileCount] = useState(0)
+
+
 
     return (
 
         <div className="mb-6 col-span-1 group ">
             {(type === "text" && contactForm === undefined || type === "date" || type === "password") ?
                 <div className="relative border border-black border-opacity-50 group-hover:border-opacity-70 group-focus:border-opacity-100 rounded-md px-3 py-2 shadow-sm  ">
-                    <label htmlFor={label} className="absolute -top-2 left-2 bg-white -mt-px inline-block px-1  text-xs font-medium text-black text-opacity-60 group-hover:text-opacity-80 group-focus:text-opacity-100 ">{label}</label>
-                    <input type={type} onChange={(e) => { props.funcion(e.target.value) }} required name={label} id={label} className="block w-full border-0 p-0 text-black placeholder-black placeholder-opacity-50 focus:ring-0 ring-opacity-0 focus:outline-none sm:text-sm" />
+                    <label htmlFor={label} className="absolute -top-2 left-2 bg-black-50 -mt-px inline-block px-1  text-xs font-medium text-black text-opacity-60 group-hover:text-opacity-80 group-focus:text-opacity-100 ">{label}</label>
+                    <input type={type} onChange={(e) => { props.funcion(e.target.value) }} required name={label} id={label} className=" bg-black-50 block w-full border-0 p-0 text-black placeholder-black placeholder-opacity-50 focus:ring-0 ring-opacity-0 focus:outline-none sm:text-sm" />
                 </div> :
                 (type === "textarea" && contactForm === undefined) ?
                     <div className="relative border border-black border-opacity-50 group-hover:border-opacity-70 group-focus:border-opacity-100 rounded-md px-3 py-2 shadow-sm  ">
-                        <label htmlFor={label} className="absolute -top-2 left-2 bg-white -mt-px inline-block px-1  text-xs font-medium text-black text-opacity-60 group-hover:text-opacity-80 group-focus:text-opacity-100 ">{label}</label>
-                        <textarea onChange={(e) => { props.funcion(e.target.value) }} name={label} id={label} className="block w-full border-0 p-0 text-black placeholder-black placeholder-opacity-50 focus:ring-0 ring-opacity-0 focus:outline-none sm:text-sm resize-none"></textarea>
+                        <label htmlFor={label} className="absolute -top-2 left-2 bg-black-50 -mt-px inline-block px-1  text-xs font-medium text-black text-opacity-60 group-hover:text-opacity-80 group-focus:text-opacity-100 ">{label}</label>
+                        <textarea onChange={(e) => { props.funcion(e.target.value) }} name={label} id={label} className="block bg-black-50  w-full border-0 p-0 text-black placeholder-black placeholder-opacity-50 focus:ring-0 ring-opacity-0 focus:outline-none sm:text-sm resize-none"></textarea>
                     </div> :
                     (type === "file") ?
 
@@ -28,7 +30,7 @@ const Input = (props) => {
                                 </svg>
                                 <div className="flex flex-row ml-2 items-baseline">
                                     <div className="flex text-sm text-gray-600 text-center ">
-                                        <label className="relative cursor-pointer bg-white rounded-md font-medium text-black text-opacity-50 group-hover:text-opacity-100 focus-within:outline-none ">
+                                        <label className="relative cursor-pointer bg-transparent rounded-md font-medium text-black text-opacity-50 group-hover:text-opacity-100 focus-within:outline-none ">
                                             <span>{label}</span>
                                             <input type="file" className="sr-only" onChange={(e) => {
                                                 props.funcion(e);
@@ -45,13 +47,13 @@ const Input = (props) => {
                         </div> :
                         (type === "number") ?
                             <div className="relative border border-black border-opacity-50 group-hover:border-opacity-70 group-focus:border-opacity-100 rounded-md px-3 py-2 shadow-sm  ">
-                                <label htmlFor={label} className="absolute -top-2 left-2 bg-white -mt-px inline-block px-1  text-xs font-medium text-black text-opacity-60 group-hover:text-opacity-80 group-focus:text-opacity-100 ">{label}</label>
-                                <input defaultValue={defaultValue} type={type} onChange={(e) => { props.funcion(parseInt(e.target.value)) }} required name={label} id={label} className="block w-full border-0 p-0 text-black placeholder-black placeholder-opacity-50 focus:ring-0 ring-opacity-0 focus:outline-none sm:text-sm" />
+                                <label htmlFor={label} className="absolute -top-2 left-2 bg-black-50 -mt-px inline-block px-1  text-xs font-medium text-black text-opacity-60 group-hover:text-opacity-80 group-focus:text-opacity-100 ">{label}</label>
+                                <input defaultValue={defaultValue} type={type} onChange={(e) => { props.funcion(parseInt(e.target.value)) }} required name={label} id={label} className=" bg-transparent block w-full border-0 p-0 text-black placeholder-black placeholder-opacity-50 focus:ring-0 ring-opacity-0 focus:outline-none sm:text-sm" />
                             </div> :
                             (type === "select") ?
                                 <div className="relative border border-black rounded-md px-3 py-2 shadow-sm border-opacity-40 hover:border-opacity-70 focus:border-opacity-100 ">
-                                    <label className="absolute -top-2 left-2 bg-white -mt-px inline-block px-1  text-xs font-medium text-black">{label}</label>
-                                    <select onChange={e => props.funcion(e.target.value)} className="block w-full border-0 p-0 text-black placeholder-black placeholder-opacity-50 focus:ring-0 ring-opacity-0 focus:outline-none sm:text-sm">
+                                    <label className="absolute -top-2 left-2 bg-black-50 -mt-px inline-block px-1  text-xs font-medium text-black">{label}</label>
+                                    <select onChange={e => props.funcion(e.target.value)} className=" bg-transparent block w-full border-0 p-0 text-black placeholder-black placeholder-opacity-50 focus:ring-0 ring-opacity-0 focus:outline-none sm:text-sm">
                                         {defaultValue !== undefined ?
                                             <option value="todos" >{defaultValue}</option> : ""}
                                         {opciones.map(op => <option key={op._id} value={op._id}>{op.nombre}</option>)}
@@ -66,7 +68,7 @@ const Input = (props) => {
                                             </svg>
                                             <div className="flex flex-row ml-2 items-baseline">
                                                 <div className="flex text-sm text-gray-600 text-center ">
-                                                    <label className="relative cursor-pointer bg-white rounded-md font-medium text-black text-opacity-50 group-hover:text-opacity-100 focus-within:outline-none ">
+                                                    <label className="relative cursor-pointer bg-black-50 rounded-md font-medium text-black text-opacity-50 group-hover:text-opacity-100 focus-within:outline-none ">
                                                         <span>{label}</span>
                                                         <input multiple type="file" className="sr-only" onChange={(e) => {
                                                             props.funcion([...e.target.files]);
@@ -95,11 +97,11 @@ const Input = (props) => {
                                         </div>
                                         : (contactForm === true && type !== "textarea") ?
                                             <div className="relative border border-black border-opacity-50 group-hover:border-opacity-70 group-focus:border-opacity-100 rounded-md px-3 py-2 shadow-sm  ">
-                                                <label htmlFor={label} className=" bg-orange absolute -top-2 left-2 bg-white -mt-px inline-block px-1  text-xs font-medium text-black text-opacity-60 group-hover:text-opacity-80 group-focus:text-opacity-100 ">{label}</label>
+                                                <label htmlFor={label} className=" bg-orange absolute -top-2 left-2  -mt-px inline-block px-1  text-xs font-medium text-black text-opacity-60 group-hover:text-opacity-80 group-focus:text-opacity-100 ">{label}</label>
                                                 <input type={type} onChange={(e) => { props.funcion(e.target.value) }} placeholder={props.placeholder} required name={label} id={label} className=" bg-orange block w-full border-0 p-0 text-black placeholder-black placeholder-opacity-50 focus:ring-0 ring-opacity-0 focus:outline-none sm:text-sm" />
                                             </div> : (type === "textarea" && contactForm === true) ?
                                                 <div className="relative border border-black border-opacity-50 group-hover:border-opacity-70 group-focus:border-opacity-100 rounded-md px-3 py-2 shadow-sm  ">
-                                                    <label htmlFor={label} className=" bg-orange absolute -top-2 left-2 bg-white -mt-px inline-block px-1  text-xs font-medium text-black text-opacity-60 group-hover:text-opacity-80 group-focus:text-opacity-100 ">{label}</label>
+                                                    <label htmlFor={label} className=" bg-orange absolute -top-2 left-2  -mt-px inline-block px-1  text-xs font-medium text-black text-opacity-60 group-hover:text-opacity-80 group-focus:text-opacity-100 ">{label}</label>
                                                     <textarea placeholder={placeholder} onChange={(e) => { props.funcion(e.target.value) }} name={label} id={label} className="bg-orange block w-full border-0 p-0 text-black placeholder-black placeholder-opacity-50 focus:ring-0 ring-opacity-0 focus:outline-none sm:text-sm resize-none"></textarea>
                                                 </div> : ""
 

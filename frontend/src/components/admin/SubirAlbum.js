@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux'
 import Axios from 'axios'
-import NavbarAdmin from './NavbarAdmin';
 import Input from '../formComponents/Input'
-import Tabla from './Tabla'
-import Popup from './posteos/Popup'
-import Alerta from './Alerta'
 
 const SubirAlbum = (props) => {
 
@@ -96,7 +92,7 @@ const SubirAlbum = (props) => {
 
     return (
         <div className="left-0 top-0 fixed h-full w-full flex items-center justify-center bg-black bg-opacity-60 " style={{ zIndex: 999999 }}>
-            <div className="w-8/12 bg-black-50 py-8 px-12 rounded-xl ">
+            <div className="w-11/12 md:w-8/12 bg-black-50 p-6 md:py-8 md:px-12 rounded-xl ">
                 <div className="w-full flex justify-end"><button className="group" onClick={(e) => { props.setPopupAlbum(false) }} >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -113,7 +109,7 @@ const SubirAlbum = (props) => {
 
                 <Input type={"multiple files"} label={"Subir fotos"} funcion={setSelectedFile} />
 
-                <button id="btn-upload" className="btn block bg-orange py-2 px-4 rounded-3xl text-white text-base mt-4 " onClick={crearAlbum}>Subir Album</button>
+                <button id="btn-upload" className="btn w-full md:w-auto block bg-orange py-2 px-4 rounded-3xl text-white text-base mt-4 " onClick={crearAlbum}>Subir Album</button>
 
 
             </div>

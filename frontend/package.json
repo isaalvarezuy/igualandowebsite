@@ -1,6 +1,6 @@
 {
   "name": "website",
-  "homepage": "igualandowebsite/",
+  "homepage": "igualando-build/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

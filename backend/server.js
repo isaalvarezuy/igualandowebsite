@@ -43,8 +43,10 @@ app.use((req, res, next) => {
 })
 
 
+
+
 app.get("/", (req, res) => {
-    res.send("Bienvenido");
+    console.log("Bienvenidox")
 })
 
 app.post("/iniciarsesion", (req, res) => {

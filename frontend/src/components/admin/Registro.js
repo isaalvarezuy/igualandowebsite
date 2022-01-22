@@ -74,7 +74,7 @@ export const Registro = (props) => {
         setTipoMensaje("loading")
         setMensaje("Eliminando fondo de imagen")
         const file = recibido.target.files[0];
-        const formData = new FormData;
+        const formData = new FormData();
         formData.append("file", file);
         formData.append("upload_preset", "fotosIntegrantes")
 
@@ -100,7 +100,7 @@ export const Registro = (props) => {
                         console.log(dataUrl)
 
                         /*2. subir a cloudinary */
-                        const formData = new FormData;
+                        const formData = new FormData();
                         formData.append("file", dataUrl);
                         formData.append("upload_preset", "fotosIntegrantes")
                         Axios.post("https://api.cloudinary.com/v1_1/isita/image/upload", formData).then((r) => {
@@ -124,15 +124,15 @@ export const Registro = (props) => {
     }
 
     return (
-        <div className=" left-0 fixed h-full w-full flex items-center jusitfy-center bg-black bg-opacity-60 " style={{ zIndex: '99999' }}>
-            <div className="w-8/12 mx-auto bg-black-50 p-12 pt-6 h-auto rounded-xl">
+        <div className=" left-0 fixed min-h-full w-full flex items-center jusitfy-center bg-black bg-opacity-60 " style={{ zIndex: '99999' }}>
+            <div className="w-11/12 md:w-8/12 mx-auto bg-black-50 p-12 pt-6 h-auto rounded-xl">
                 <div className="w-full flex justify-end"><button className="group" onClick={(e) => { props.cerrarPopupRegistro() }} >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
                 </div>
-                <div className="grid grid-cols-2">
+                <div className="grid-cols-1 grid lg:grid-cols-2">
                     <div className="grid-colspan-1">
                         <Alerta tipo={tipoMensaje} mensaje={mensaje} visible={visible} funcion={setVisible} duracion={3000} />
                         <h2 className="font-body font-semibold text-2xl mb-2" >Agregar Usuario</h2>
@@ -142,9 +142,9 @@ export const Registro = (props) => {
                         <Input type={"text"} label={"Apodo"} funcion={setApodo} />
 
                         <p className="font-body text-md">Elegí un fondo para el avatar</p>
-                        <div className="flex mb-4">
+                        <div className="flex flex-wrap mb-4">
 
-                            {fondos.map(fondo => <img className="imgFondo " onClick={(e) => {
+                            {fondos.map(fondo => <img className="imgFondo h-14 w-14 m-2 md:h-20 md:w-20" onClick={(e) => {
                                 let imagenes = document.getElementsByClassName("imgFondo");
                                 for (let i = 0; i < imagenes.length; i++) {
                                     imagenes[i].classList.remove("border-orange");
@@ -153,13 +153,13 @@ export const Registro = (props) => {
                                 e.target.classList.add("border-orange")
                                 e.target.classList.add("border-2")
                                 setFondo(e.target.src)
-                            }} style={{ width: '80px', height: '80px', margin: '10px', borderRadius: '100%' }} key={fondo.id} data-id={fondo.id} src={fondo.src} />)}
+                            }} style={{ borderRadius: '100%' }} key={fondo.id} data-id={fondo.id} src={fondo.src} />)}
                         </div>
                         <Input type={"file"} label={"Foto del Avatar"} funcion={subirFoto} />
                         <button className=" w-full md:w-auto  bg-orange py-2 px-4 rounded-3xl text-white text-base" id="btn-create" onClick={crearUsuario}>Crear usuario </button>
                     </div>
 
-                    <div className="grid-colspan-1 pl-24">
+                    <div className="hidden lg:block lg:grid-colspan-1 pl-24">
                         <div id="avatar" style={{ width: '300px', height: '300px', borderRadius: '100%', background: `url(${fondo}) center center /cover` }}>
                             <div style={{ width: '300px', height: '300px', borderRadius: '100%', background: `url(data:image/png;base64,${base64img}) center center/contain no-repeat` }}></div>
                         </div></div>

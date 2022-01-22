@@ -19,8 +19,8 @@ export const Avatar = (props) => {
                 <div className="bg-orange w-12 h-12 rounded-3xl" style={{ background: `url(${usuarioLogueado.avatar}) center center /cover`, backgroundSize: '50px 50px' }}>
 
                 </div>
-                <div className="m-0 px-2">
-                    <p className="text-base font-body opacity-70 ">{usuarioLogueado.nombreCompleto}</p>
+                <div className="m-0 px-2 w-auto">
+                    <p className="text-base font-body opacity-70 w-auto inline whitespace-nowrap">{usuarioLogueado.nombreCompleto}</p>
                     {/*   <p className="text-sm font-body opacity-70">{usuarioLogueado.rol}</p> */}
                 </div>
                 <button className="group"  > <svg xmlns="http://www.w3.org/2000/svg" className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

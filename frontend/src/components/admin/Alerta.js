@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 
 const Alerta = (props) => {
 
     let { mensaje, tipo, visible, duracion } = props
 
+    const [width, setWidth] = useState(400)
     useEffect(() => {
 
         const timer = setTimeout(() => {
@@ -14,8 +15,17 @@ const Alerta = (props) => {
 
     }, [visible]);
 
+    useEffect(() => {
+        var x = window.matchMedia("(max-width: 767px)")
+        if (x.matches) {
+            setWidth(320)
+        } else {
+            setWidth(400)
+        }
+    }, [])
+
     return (
-        <div className="duration-500 fixed  bottom-8 mx-auto" style={{ width: '400px', left: 'calc(50% - 200px)', opacity: `${visible}`, zIndex: 9999999 }}>
+        <div className="duration-500 fixed  bottom-8 mx-auto" style={{ width: `${width}px`, left: `calc(50% - ${width / 2}px)`, opacity: `${visible}`, zIndex: 9999999 }}>
             {(tipo === "error") ?
                 <div className="rounded-md shadow-sm bg-red-500 w-full p-4 w-10/12 flex flex-row items-center ">
 

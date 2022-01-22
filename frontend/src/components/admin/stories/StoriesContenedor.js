@@ -14,21 +14,33 @@ const StoriesContenedor = (props) => {
 
 
 
+    const [alturaForm, setAlturaForm] = useState("")
     const [tipoPosteo, setTipoPosteo] = useState("")
     const [video, setVideo] = useState("")
 
     useEffect(() => {
         setTipoPosteo("equipo")
     }, [])
-    const armarForm = (e) => {
-        console.log(e.target.value)
-    }
+
+    useEffect(() => {
+        var x = window.matchMedia("(max-width: 1023px)")
+        let last = document.getElementById("finalStories")
+        if (x.matches && tipoPosteo !== "equipo") {
+            setAlturaForm(last.offsetTop)
+        } else if (x.matches && tipoPosteo === "equipo") {
+            setAlturaForm(last.offsetTop - 1900)
+        }
+    }, [tipoPosteo])
+
+    useEffect(() => {
+        console.log(alturaForm)
+    }, [alturaForm])
 
 
 
     return (
-        <div style={{ /* height: '100vh' */ }}>
-            <div className="h-screen w-screen overflow-hidden p-4  md:p-0 md:w-10/12 mx-auto pt-24 md:pt-48 w-10/12 mx-auto">
+        <div className="bg-black-50 overflow-hidden" style={{ maxHeight: `${alturaForm}px` }}>
+            <div className="bg-black-50 w-screen overflow-hidden p-4  md:p-0 md:w-10/12 mx-auto pt-32 w-10/12 mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="col-span-1">
                         <div className="mb-6 col-span-1">
@@ -44,16 +56,18 @@ const StoriesContenedor = (props) => {
                         }
 
 
+
                     </div>
                     <div className="col-span-1">
                         {(tipoPosteo === "programa" || tipoPosteo === "storyFinal") ?
                             <ReactPlayer playing={true} volume={0} height="500px" loop={true} url={video} className="mx-auto" /> :
                             (tipoPosteo === "equipo") ?
                                 <div>
-                                    <IntegranteStory />
+                                    <IntegranteStory setAlturaForm={setAlturaForm} />
                                 </div> : ""}
 
                     </div>
+                    <div id="finalStories"></div>
 
                 </div>
             </div >

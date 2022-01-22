@@ -22,11 +22,11 @@ const Admin = (props) => {
                 <div>
                     <NavbarAdmin />
                     <div className="bg-black-50">
-                        <div className="col-span-2 h-screen fixed">
+                        <div className="hidden col-span-0 lg:block lg:col-span-2 h-screen fixed">
                             <Sidebar paginaSeleccionada={pagina} />
                         </div>
 
-                        <div style={{ paddingLeft: '234px' }} className="w-full min-h-screen">
+                        <div className="pl-0 lg:pl-60 w-full min-h-screen">
                             {(pagina === "nuestraGaleria") ?
                                 <GestionarGaleria /> :
                                 (pagina === "editarDatos") ?

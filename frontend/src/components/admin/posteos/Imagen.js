@@ -15,7 +15,8 @@ const Imagen = (props) => {
     let { tipo, sociaVitalicia, noticias, proximoPartido, finalPartido } = props;
 
     let preview;
-    let screenHeight;
+
+
 
     useEffect(() => {
         domtoimage.toJpeg(document.getElementById('capture'), { quality: 0.95 }).then(
@@ -96,6 +97,7 @@ const Imagen = (props) => {
             <div className="w-full md:w-10/12 mx-auto pt-4">
                 <button className="btn disabled:opacity-75 w-full md:w-auto  bg-orange py-2 px-4 rounded-3xl text-white text-base" id="btn-download" download="post.jpg" onClick={descargarImg}>Descargar </button>
             </div>
+            <div className="lastMobile"></div>
             <div style={{ position: "fixed", top: 0, left: 0, width: "1080px", height: "1080px", position: "relative", }}>
                 <div id="capture" style={{ width: "1080px", height: "1080px", position: "absolute", top: "0", zIndex: -10 }}>
                     {(tipo === "socia") ?

@@ -7,8 +7,14 @@ import Switch from '../../../formComponents/Switch'
 const SociaVitalicia = (props) => {
 
     useEffect(() => {
-        let last = document.getElementsByClassName("last")
-        props.setAlturaForm(last[0].offsetTop)
+        var x = window.matchMedia("(min-width: 1024px)")
+        if (x.matches) {
+            let last = document.getElementsByClassName("last")
+            props.setAlturaForm(last[0].offsetTop)
+            console.log("entro a socia")
+        }
+
+
     }, [])
 
     let fondo = "";

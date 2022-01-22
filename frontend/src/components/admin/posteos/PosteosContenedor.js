@@ -21,6 +21,14 @@ const PosteosContenedor = (props) => {
 
 
     useEffect(() => {
+        var x = window.matchMedia("(max-width: 1023px)")
+        if (x.matches) {
+            let last = document.getElementById("lastMobile")
+            setAlturaForm(last.offsetTop + 500)
+
+        }
+    }, [tipoPosteo])
+    useEffect(() => {
         setTipoPosteo("socia")
     }, [])
 
@@ -31,7 +39,7 @@ const PosteosContenedor = (props) => {
     return (
         <div>
             {/*  <NavbarAdmin /> */}
-            <div className="w-screen overflow-hidden p-4  md:p-0 md:w-10/12 mx-auto pt-24 md:pt-32 w-10/12 mx-auto" style={{ maxHeight: `${alturaForm}px` }}>
+            <div className="w-screen overflow-hidden p-4  md:p-0 md:w-10/12 mx-auto pt-32 md:pt-32 w-10/12 mx-auto lg:min-h-screen" style={{ maxHeight: `${alturaForm}px` }}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="col-span-1">
                         <div className="mb-6 col-span-1">
@@ -52,8 +60,9 @@ const PosteosContenedor = (props) => {
                         }
                     </div>
                     <div className="col-span-1">
+                        <div id="lastMobile"></div>
                         {
-                            <Imagen tipo={tipoPosteo} />
+                            <Imagen tipo={tipoPosteo} setAlturaForm={setAlturaForm} />
                         }
                     </div>
 

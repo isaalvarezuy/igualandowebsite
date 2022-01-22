@@ -59,7 +59,7 @@ const EditarContenido = (props) => {
     return (
         <div>
 
-            <div className="w-full p-4  md:p-0 md:w-10/12 mx-auto pt-24 md:pt-48"  >
+            <div className="w-full p-4  md:p-0 md:w-10/12 mx-auto pt-32 md:pt-48"  >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12">
                     <Alerta tipo={tipoMensaje} mensaje={mensaje} visible={visible} funcion={setVisible} duracion={3000} />
                     <div className="col-span-1">

@@ -4,7 +4,6 @@ import Registro from './Registro'
 import TablaUsuarios from './TablaUsuarios'
 import Popup from './posteos/Popup'
 import Alerta from './Alerta'
-import EditarUsuario from './EditarUsuario'
 
 export const GestionarUsuarios = (props) => {
 
@@ -73,7 +72,7 @@ export const GestionarUsuarios = (props) => {
 
 
 
-            <div className="w-full p-4  md:p-0 md:w-10/12 mx-auto pt-24 md:pt-48 w-10/12 mx-auto ">
+            <div className="w-full p-4  md:p-0 md:w-10/12 mx-auto pt-24 md:pt-32 w-10/12 mx-auto ">
                 <div className="grid grid-cols-1  gap-12">
 
                     <div className="col-span-1">

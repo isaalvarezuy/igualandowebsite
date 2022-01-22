@@ -10,12 +10,12 @@ export const IntegranteStory = (props) => {
 
     const [usuario, setUsuario] = useState("")
 
-
     useEffect(() => {
         if (usuarios !== "") {
             let aux = usuarios.filter(usuario => usuario._id === storyEquipo.integrante)
             setUsuario(aux)
         }
+
     }, [storyEquipo.integrante])
 
     useEffect(() => {
@@ -43,7 +43,7 @@ export const IntegranteStory = (props) => {
         <div>
             <img className="w-full md:w-1/3 mx-auto " id="preview" src={preview} />
             <div className="w-full md:w-10/12 mx-auto pt-4">
-                <button className="btn disabled:opacity-75 w-full md:w-auto  bg-orange py-2 px-4 rounded-3xl text-white text-base" id="btn-download" download="post.jpg" onClick={descargarImg}>Descargar </button>
+                <button id="btn-final-story" className="btn disabled:opacity-75 w-full md:w-auto  bg-orange py-2 px-4 rounded-3xl text-white text-base" id="btn-download" download="post.jpg" onClick={descargarImg}>Descargar </button>
             </div>
             <div className="relative " style={{ width: '1080px', height: '1920px' }}>
                 <div className=" absolute bg-black-50 top-0 left-0 z-10" style={{ width: '1080px', height: '1920px' }} ></div>
